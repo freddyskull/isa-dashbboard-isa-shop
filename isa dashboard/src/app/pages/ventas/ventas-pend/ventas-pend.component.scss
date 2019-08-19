@@ -1,0 +1,60 @@
+table {
+	width: 100%;
+	th, td{
+		color: rgb(157, 157, 158);
+	}
+}
+thead th {
+	cursor: pointer;
+	margin-right: 15px;
+	margin-left: 15px;
+  
+	span {
+	  visibility: hidden;
+	}
+  
+	&.active {
+	  color: rgb(231, 229, 229);
+  
+	  span {
+		visibility: visible;
+	  }
+	}
+  }
+
+  .filter{
+		color: #9b26be;
+  }
+  
+  th.mat-sort-header-sorted {
+	color: black;
+  }
+  input{
+	text-align: center;
+	font-size: 1rem
+  }
+  label{
+	font-size: 2rem;
+  }
+  .mat-sort-header,.mat-header-cell{
+	padding-left: 55px;
+  }
+// centering
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.close{
+	font-size: 30px;
+	color: red;
+	position: relative;
+	width: 10%;
+	left: 88%;
+	bottom: 75%;
+	transition: 1s;
+	i:hover{
+		color: #9b26be;
+	}
+}

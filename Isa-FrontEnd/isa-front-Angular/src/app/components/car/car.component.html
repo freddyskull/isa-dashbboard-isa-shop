@@ -1,0 +1,176 @@
+<div class="page-header-5" [ngStyle]="{'background': 'url(./assets/img/car.jpg)'}">
+    <div class="overlay">				
+        <div class="container">
+            <div class="inner-content row align-items-center">
+                <div class="col-md-6 col-lg-4">
+                    <h1 class="page-header-title">Mi cesta</h1>
+                    <h4 class="page-header-sub-title">Aquí se encuentran los productos comprados</h4>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <a [routerLink]="[ '/inicio']"> inicio</a> - <a [routerLink]="[ '/productos']"><span> Tienda</span></a> - <span> Cesta </span>
+                    </div>
+                </div>
+            </div>				
+        </div>
+    </div>			
+</div>
+<div id="content" style="padding: 125px 0 110px;">
+        <div class="text-center mb-4">
+            <h3>Pagar todo</h3>
+            <small>Eliga la manera de pagar que más le convenga.</small>
+            <br>
+            <button class="buttonT type1" (click)="allBs()">Bs</button> <button class="buttonT type1" (click)="allDolar()">$</button>
+            <br>
+            <br>
+            <button class="button rounded btn-danger text-light" (click)="deleteAll()">
+                Eliminar todo
+            </button>
+        </div>
+    <section class="">
+        <div class="container">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Productos detalles</th>
+                        <th>Precio unitario</th>
+                        <th>Cantidad</th>
+                        <th>Precio total</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of cesta">
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center justify-content-between justify-content-lg-start">
+                                <span class="cart-item-remove" (click)="delete(item)">
+                                    <i class="fa fa-times"></i>
+                                </span>
+                                <span class="cart-item-remove" (click)="edit(item)">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                                <div class="cart-item-thumbnail">
+                                    <img [src]="item.img" [alt]="item.nombre">
+                                </div>
+                                <div>
+                                    <div class="cart-item-name">{{item.nombre}}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <br>
+                            <span *ngIf="item.divisa">
+                                {{item.precioDolar | currency}}
+                            </span>
+                            <span *ngIf="!item.divisa">
+                                Bs {{item.precioBs | bs}}
+                            </span>
+                        </td>
+                        <td class="text-center">{{item.stock}}</td>
+                        <td>
+                            <span *ngIf="item.divisa">
+                                {{item.precioDolar * item.stock | currency}}
+                            </span>
+                            <span *ngIf="!item.divisa">
+                               Bs {{item.precioBs * item.stock | bs}}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center" *ngIf="cestaLenght == 0">
+                <h2> por ahora usted no posee productos en su cesta</h2>
+                <br>
+            </div>
+
+            <div class="cart-summary d-lg-flex flex-wrap justify-content-end align-items-center text-right">
+                <div class="item-text"><span class="mr-2 animated fadeIn"> Precios Total:</span> {{totales.dolar | currency}} </div>
+                <div class="item-text"><span class="mr-2 animated fadeIn"> Precios Total:</span> Bs {{totales.bolivares| bs}}  </div>
+                <a [routerLink]="['/pagar']" class="button rounded">
+                    Ir a pagar
+                </a>
+            </div>
+
+            <div class="cart-widgets" style="padding: 100px 0 0;">
+                <div class="row">
+                    <!-- <div class="col-md-6 col-lg-4">
+                        <div class="cart-widget">
+                            <div class="cart-widget-title">
+                                Calculate Shipping
+                            </div>
+                            <div class="cart-widget-form">
+                                <form action="#">
+                                    <div class="form-group form-group-select">
+                                        <select class="input-styled" name="" id="">
+                                            <option value="">United Kingdom (UK)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-select">
+                                        <select class="input-styled" name="" id="">
+                                            <option value="">State / Country</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input-styled" type="text" placeholder="Postcode / Zip">
+                                    </div>
+                                    <button class="button rounded button-red" type="button">Get a Quote</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-md-6 col-lg-4">
+                        <div class="cart-widget">
+                            <div class="cart-widget-title">
+                                Coupon Discount
+                            </div>
+                            <div class="cart-widget-form">
+                                <form action="#">
+                                    <p>Enter Your Coupon Code</p>
+                                    <div class="form-group mb-10px">
+                                        <input class="input-styled" type="text" placeholder="Enter your coupon code">
+                                    </div>
+                                    
+                                    <button class="button rounded button-red" type="button">Apply code</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="col-md-6 col-lg-6">
+                        <div class="cart-widget">
+                            <div class="cart-widget-title">
+                                Cesta total
+                            </div>
+                            <div class="cart-total-box">
+                                <div style="padding: 20px;">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="lb">TOTAl</span>  <b class="val"></b>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="lb">TOTAl</span>  <b class="val"></b>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">											
+                                        <span class="lb">IVA acumulado</span>  <b class="val">$ 295,15</b>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="lb">Monto exonerado de IVA</span>  <b class="val">$ 295,15</b>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="lb">SUB TOTAL BOLIVARES</span>  <b class="val">Bs {{totales.bolivares| bs}}</b>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="lb">SUB TOTAL DOLARES</span>  <b class="val">{{totales.dolar | currency}}</b>
+                                    </div>
+                                </div>
+                                <div class="mt-35px">
+                                    <a [routerLink]="['/pagar']" class="button rounded d-block button-red">
+                                        Ir a pagar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

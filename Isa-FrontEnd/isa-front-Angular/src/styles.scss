@@ -1,0 +1,157 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+mat-form-field{
+    width: 100%;
+}
+
+
+
+.buttonT {
+    position: relative;
+    padding: 1em 1.5em;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    font-size: 18px;
+    margin: 1em 0.8em;
+}
+
+.buttonT.type1 {
+    color: #566473;
+}
+
+.buttonT.type1.type1::after, .buttonT.type1.type1::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    border: 2px solid;
+    transition: all 0.6s ease;
+    border-radius: 2px;
+}
+
+.buttonT.type1.type1::after {
+    bottom: 0;
+    right: 0;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: #566473;
+    border-right-color: #566473;
+}
+
+.buttonT.type1.type1::before {
+    top: 0;
+    left: 0;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #566473;
+    border-left-color: #566473;
+}
+
+.buttonT.type1.type1:hover:after, .buttonT.type1.type1:hover:before {
+    width: 100%;
+    height: 100%;
+}
+
+.buttonT.type2 {
+    color: #16a085;
+}
+
+.buttonT.type2.type2:after, .buttonT.type2.type2:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #16a085;
+    transition: all 0.3s ease;
+    transform: scale(0.85);
+}
+
+.buttonT.type2.type2:hover:before {
+    top: 0;
+    transform: scale(1);
+}
+
+.buttonT.type2.type2:hover:after {
+    transform: scale(1);
+}
+
+.buttonT.type3 {
+    color: #435a6b;
+}
+
+.buttonT.type3.type3::after, .buttonT.type3.type3::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    border: 2px solid;
+    transition: all 0.6s ease;
+    border-radius: 2px;
+}
+
+.buttonT.type3.type3::after {
+    bottom: 0;
+    right: 0;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: #435a6b;
+    border-right-color: #435a6b;
+}
+
+.buttonT.type3.type3::before {
+    top: 0;
+    left: 0;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #435a6b;
+    border-left-color: #435a6b;
+}
+
+.buttonT.type3.type3:hover:after, .buttonT.type3.type3:hover:before {
+    border-bottom-color: #435a6b;
+    border-right-color: #435a6b;
+    border-top-color: #435a6b;
+    border-left-color: #435a6b;
+    width: 100%;
+    height: 100%;
+}
+
+
+.buttonT.type1.active-type{
+    color: #16a016;
+}
+
+.buttonT.type1.active-type1{
+    color: #9e2f27;
+}
+
+.email-input, .input-styled{
+    background: #f0f0f0;
+}
+
+
+.no-style{
+    border: none;
+    background: none;
+    transition: 0.5s;
+    :hover{
+        color: #9e2f27;
+    }
+}
+
+
+#divisa {
+    bottom:10px;
+    right:0px;
+    position: fixed;
+  }

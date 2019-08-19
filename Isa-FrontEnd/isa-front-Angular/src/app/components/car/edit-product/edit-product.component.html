@@ -1,0 +1,19 @@
+<h1 mat-dialog-title class="text-center">{{data.nombre}}</h1>
+<div mat-dialog-content>
+  <p>Cambie los campos que necesite</p>
+    <mat-form-field>
+        <input matInput type="number" name="cantidad" [(ngModel)]="data.stock">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Divisa</mat-label>
+        <select matNativeControl name="divisa" [(ngModel)]="data.divisa">
+            <option value="false">Bolivares</option>
+            <option value="true">Dolares</option>
+        </select>
+    </mat-form-field>
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

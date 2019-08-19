@@ -1,0 +1,10 @@
+this.app.use(indexRoutes);
+        this.app.use('/api/product/',productRoutes);
+        this.app.use('/api/provider/',providerRoutes);
+        this.app.use('/api/client/',clientRoutes);
+        this.app.use('/api/category/',categoryRoutes);
+        this.app.use('/api/pendientes',ventasPendRoutes);
+        this.app.use('/private/users/',userRoutes);
+        this.app.use('/private/ventas',ventasRoutes);
+        this.app.use('/private/permiss',permissRoutes);
+        this.app.use('/api/usdvalor', priceUsdRoutes);

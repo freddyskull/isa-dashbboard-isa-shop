@@ -1,0 +1,97 @@
+<div class="page-header-5" [ngStyle]="{'background': 'url(./assets/img/car.jpg)'}">
+    <div class="overlay">				
+        <div class="container">
+            <div class="inner-content row align-items-center">
+                <div class="col-md-6 col-lg-4">
+                    <h1 class="page-header-title">Facturación</h1>
+                    <h4 class="page-header-sub-title">Formulario de facturación necesario para recibir su producto.</h4>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <a [routerLink]="[ '/inicio']"> Inicio</a> - <a [routerLink]="[ '/productos']"><span> Tienda</span></a> - <a [routerLink]="[ '/cesta']"><span> Cesta </span></a> - <span> Factura </span>
+                    </div>
+                </div>
+            </div>				
+        </div>
+    </div>			
+</div>
+<div id="content" style="padding: 125px 0 110px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-8">
+                <div class="section-header-style-12">
+                    <h2 class="section-title">Datos de facturación</h2>
+                    <h4 class="section-sub-title">Por favor rellene los campos requridos</h4>
+                </div>
+                <div class="billing-infomation">
+                    <div class="example-container">
+                        <mat-form-field>
+                            <input matInput placeholder="Nombre completo" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="email" placeholder="Correo eléctronico" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput autocomplete="off" placeholder="Dirección de envio" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput autocomplete="off" type="number" placeholder="Código postal" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Cédula o rif" autocomplete="off" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <textarea matInput placeholder="Nota de compra"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <p>Luego de haber llenado todos los datos por favor eliga el método de pago que más le convenga, al precionar realizar orden se le será proporcionado un comprobante de compra el cúal no debe perder. Una vez echo esto su compra quedará en estado pendiente hasta que sea aprobada posteriormente por los trabajadores de insufarma.</p>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="checkout-payment">
+                    <div class="box-title">Métodos de pago</div>
+                    <div class="payment-pricing-compute ">
+                        <div class="px-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Sub total:</span> <span>$250.00</span>												
+                            </div>                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>inponible al 16%:</span> <span>$250.00</span>										
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Exonerado de iva:</span> <span>$250.00</span>										
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>IVA:</span> <span>$250.00</span>										
+                            </div>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="px-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Total:</span> <span>$250.00</span>												
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-methods">
+                        <div class="d-flex align-items-center mb-4">
+                            <mat-radio-button value="1" color="warn" >Efectivo</mat-radio-button>	
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <mat-radio-button value="3" color="warn" >Pago Móvil</mat-radio-button>											
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <mat-radio-button value="3" color="warn" >Depósito Bancario</mat-radio-button>											
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <mat-radio-button value="2" color="warn" >Transferencia</mat-radio-button>	
+                            <div class="payment-icons ml-3">
+                               
+                            </div>										
+                        </div>
+                    </div>
+                    <button class="button button-red rounded">Realizar orden</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

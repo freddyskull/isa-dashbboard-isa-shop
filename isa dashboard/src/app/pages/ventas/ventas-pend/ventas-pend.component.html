@@ -1,0 +1,154 @@
+<div class="animated fadeIn">
+  <app-navigate></app-navigate>
+  <div class="ml-5">
+      <nav class="nav-component">
+        <a [routerLink]="['/inicio']" routerLinkActive="router-link-active" >Inicio /</a>  <a [routerLink]="['/pendientes']" routerLinkActive="router-link-active" > Ventas pendientes & historial</a> 
+      </nav>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row text-center">
+      <div class="col-12 ">
+          <mat-tab-group  mat-align-tabs="center" >
+              <mat-tab label="Ventas pendientes" >
+                  <div class="row mt-5" *ngIf="position == 'jefe'">
+                    <div class="col-md-4" *ngFor="let item of pendientesJe">
+                      <div class="card card-profile" >
+                        <button class="close" (click)="delete(item.id)" matTooltip="Si presiona este botón este objeto será eliminado del estado pendiente, pero aún quedará en el historial de ventas, esta opción es solo disponible para los jefes"
+                        aria-label="Button that displays a tooltip when focused or hovered over">
+                          <i class="fas fa-times" ></i>
+                      </button>
+                        <div class="card-body">
+                          <small class="card-category"> Encargado de facturación "{{item.encargado}}"</small>
+                          <h6 class="card-category"> Vendedor {{item.vendedor}} | Tipo: {{item.tipo}} </h6>
+                          <h4 class="card-title mb2"> Comprador {{item.comprador}} </h4>
+                          <div class="row mt-2 mb-4 ">
+                            <div class="col-md-6 text-left">
+                              <span *ngIf="item.total$ == 0">Total {{item.total    | convertBs}}</span>
+                              <span *ngIf="item.total  == 0">Total {{item.total$  | currency}}</span>
+                              <span *ngIf="item.total$ > 0 && item.total > 0"> Total {{item.total$  | currency}} | Bs {{item.total | convertBs}}</span>
+                            </div>
+                            <div class="col-md-6 text-left">
+                              <span  *ngIf="item.estado == 0">Estado: <strong class="text-success">Pagado</strong></span>
+                              <span  *ngIf="item.estado == 1">Estado: <strong class="text-danger"> Pendiente</strong></span>
+                            </div>
+                            <div class="col-md-6 text-left">
+                              Observación: {{item.observa}}
+                            </div>
+                            <hr>
+                            <div class="col-md-12 text-center">
+                              <i class="fas fa-calendar-day"></i> {{item.fecha | date}}
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-center">
+                              <mat-slide-toggle name="swich"  [(ngModel)]="item.estado" (click)="openDialog(item.id, item.estado, item.idOrigen)" ></mat-slide-toggle>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="position != 'jefe'">
+                    <div class="col-md-4" *ngFor="let item of pendientesUs">
+                      <div class="card card-profile">
+                        <div class="card-body">
+                          <h6 class="card-category"> Vendedor {{item.vendedor}} | Tipo: {{item.tipo}} </h6>
+                          <h4 class="card-title mb2"> Comprador {{item.comprador}} </h4>
+                          <div class="row mt-2 mb-4 ">
+                            <div class="col-md-6 text-left">
+                              <span *ngIf="item.total$ == 0">Total {{item.total    | convertBs}}</span>
+                              <span *ngIf="item.total  == 0">Total {{item.total$  | currency}}</span>
+                              <span *ngIf="item.total$ > 0 && item.total > 0"> Total {{item.total$  | currency}} | Bs {{item.total | convertBs}}</span>
+                            </div>
+                            <div class="col-md-6 text-left">
+                              <span  *ngIf="item.estado == 0">Estado: <strong class="text-success">Pagado</strong></span>
+                              <span  *ngIf="item.estado == 1">Estado: <strong class="text-danger"> Pendiente</strong></span>
+                            </div>
+                            <div class="col-md-6 text-left">
+                              Observación: {{item.observa}}
+                            </div>
+                            <hr>
+                            <div class="col-md-12 text-center">
+                              <i class="fas fa-calendar-day"></i> {{item.fecha | date}}
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-center"  *ngIf="position == 'jefe' || position == 'empleado'">
+                            <ng-container *ngIf="item.estado == true; else elseTemplate">
+                                <mat-slide-toggle name="swich" [(ngModel)]="item.estado" (click)="updatePend(item.id, item.estado, item.idOrigen)" ></mat-slide-toggle>
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                                <mat-slide-toggle name="swich" disabled [(ngModel)]="item.estado" ></mat-slide-toggle>
+                            </ng-template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </mat-tab>
+              <mat-tab label="Historial de ventas" *ngIf="position == 'jefe'">
+                <app-history-ventas></app-history-ventas>
+              </mat-tab>
+              <mat-tab label="Historial de productos" *ngIf="position == 'jefe'">
+                <div class="row mt-5">
+                    <div class="col-md-12 text-center ">
+                      <div class="form-group">
+                        <p class="bmd-label-floating">Click en la cabecera de la tabla si deseea activar los filtros, esta tabla es filtrable en nombre, fecha de vencimineto y ultima actualización.</p>
+                        <label class="bmd-label-floating">Buscar registro en Historial de Productos</label>
+                        <input type="text" autofocus placeholder="Buscar..." autocomplete="off" class="form-control text-center" name="filter" [(ngModel)]="filter">
+                      </div>
+                    </div>
+                  <table  class="table">
+                    <thead>
+                      <th [class.active]="order === 'product.name'" (click)="setOrder('product.name')" class="mdl-data-table__cell--non-numeric">
+                          Nombre 
+                          <span [hidden]="reverse">▼</span>
+                          <span [hidden]="!reverse">▲</span>
+                        </th>
+                      <th>Encargado</th>
+                      <th>Cantidad</th>
+                      <th>Marca</th>
+                      <th [class.active]="order === 'product.fecven'" (click)="setOrder('product.fecven')">
+                        Fecha de vencimiento
+                        <span [hidden]="reverse">▼</span>
+                        <span [hidden]="!reverse">▲</span>
+                      </th>
+                      <th class="filter" [class.active]="order === 'product.create_at'" (click)="setOrder('product.create_at')">
+                        Ultima actualización
+                        <span [hidden]="reverse">▼</span>
+                        <span [hidden]="!reverse">▲</span>
+                      </th>
+                      <th>Precio Bs</th>
+                      <th>Precio Usd</th>
+                      <th>Editar</th>
+                  
+                  <!-- <th [class.active]="order === 'info.number'"
+                      (click)="setOrder('info.number')"
+                  >
+                    Phone number <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                  </th>
+                  <th [class.active]="order === 'info.age'"
+                      (click)="setOrder('info.age')"
+                  >
+                    Age <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span> -->
+                    </thead>
+                    <tbody *ngFor="let item of dataSource | orderBy: order:reverse:'case-insensitive' | filterProduct:filter">
+                      <td>{{item.name}}</td>
+                      <td>{{item.recibo}}</td>
+                      <td>{{item.stock}}</td>
+                      <td>{{item.marca}}</td>
+                      <td>{{item.fecven}}</td>
+                      <td>{{item.create_at | date}}</td>
+                      <td *ngIf="item.priceS != 0">{{item.priceS         | convertBs}}</td>
+                      <td *ngIf="item.priceS == 0">{{item.priceS$ * Usd  | convertBs}}</td>
+                      <td *ngIf="item.priceS$ != 0">{{item.priceS$       | currency}}</td>
+                      <td *ngIf="item.priceS$ == 0">{{item.priceS$ / Usd | currency}}</td>
+                      <td> <button class="btn btn-sm btn-warning"  [routerLink]="['/productos/editar',item.id]"><i class="material-icons">create</i></button> </td>
+                    </tbody>
+                  </table>
+                </div>  
+              </mat-tab>
+          </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,263 @@
+<body class="layout-5">
+    <div id="wrapper">	
+        <div class="page-header-5" 
+        [ngStyle]="{'background': 'url(./assets/img/department3.jpg)'}"
+        >
+            <div class="overlay">				
+                <div class="container">
+                    <div class="inner-content row align-items-center">
+                        <div class="col-md-6 col-lg-4">
+                            <h1 class="page-header-title">Detalles</h1>
+                            <h4 class="page-header-sub-title">{{product.nombre}}</h4>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="page-header-breadcrumb">
+                                <a [routerLink]="[ '/inicio']"> inicio</a> - <a [routerLink]="[ '/productos']"><span> Tienda</span></a> - <span> Detalle </span>
+                            </div>
+                        </div>
+                    </div>				
+                </div>
+            </div>			
+        </div>
+        <div id="content" style="padding: 125px 0 110px;">		
+            <section class="product-detail-2">
+                <div class="container">
+                    <div class="product-detail-header">
+                        <div class="row">
+                            <div class="col-lg-4 justify-content-center">
+                                <div class="product-detail-thumbnail">
+                                    <img src="./assets/images/product-detail.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-xl-6">
+                                <div class="pt-3 pl-4">
+                                    <div class="row justify-content-between">
+                                        <div class="col-md-6">
+                                            <h4 class="product-sub-title">Producto</h4>
+                                            <h2 class="product-title">{{product.nombre}}</h2>
+                                        </div>
+                                        <div class="col-auto text-right">
+                                            <div class="product-stock pb-4">
+                                                Disponibilidad: <span class="ml-2 color-primary">{{product.stock}}</span>
+                                            </div> 
+                                            <div class="stars-rating justify-content-center" data-rate="5">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <div class="product-price-2">
+                                                <ng-container *ngIf="divisa; else elseTemplate">
+                                                    <span class="regular-price mr-2">
+                                                        $12.00
+                                                    </span>
+                                                    <span class="sale-price animated fadeInRight">
+                                                        Bs{{product.precioBs | bs}} 
+                                                    </span>
+                                                </ng-container>
+                                                <ng-template #elseTemplate>
+                                                    <span class="regular-price mr-2">
+                                                        $12.00    
+                                                    </span>
+                                                    <span class="sale-price animated bounceInRight">
+                                                        {{product.precioDolar | currency}} $
+                                                    </span>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="product-description">
+                                        {{product.descripcion}}
+                                    </p>
+                                    <div class="d-flex flex-wrap align-items-center mb-4">
+                                        <div class="product-detail-quanty">
+                                            <input type="number" name="stock" min="1" [(ngModel)]="car.stock"  placeholder="Introduzca cantidad" class="input-styled">
+                                        </div>									
+                                        <div class="product-color-picker ml-3">
+                                            <a href="#" class="no-color" style="background: #20c6f6"></a>
+                                            <a href="#" class="no-color" style="background: #5ad439"></a>
+                                            <a href="#" class="no-color" style="background: #646c9b"></a>
+                                            <a href="#" class="no-color" style="background: #e32121"></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <button class="buttonT type1" (click)="divisa = false; auxD =! divisa" >Bs</button>
+                                        <button class="buttonT type1" (click)="divisa = true;  auxD =! divisa" >$</button>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <button class="button rounded-capsule animate-400 hover-background-primary hover-color-white" (click)="agregar()">
+                                                Comprar
+                                            </button>
+                                            <button title="Agregar a lista de deseos" class="button button-circle animate-400 hover-background-primary hover-color-white">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="compare-product-button">
+                                                <a href="#" class="no-color">
+                                                    <i class="fa fa-retweet"></i> Compare product
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-tags">
+                                        <i class="fa fa-tags color-primary mr-2"></i>
+                                        <a class="no-color" href="#">Gym</a>, 
+                                        <a class="no-color" href="#">Body Building</a>, 
+                                        <a class="no-color" href="#">bullet</a>, 
+                                        <a class="no-color" href="#">Quotes</a>, 
+                                        <a class="no-color" href="#">Medical</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="product-detail-content">
+                        <div class="row justify-content-center">
+                           <div class="col-12 col-xl-10">
+                                <p>
+                                    {{product.descripcion}}
+                                </p>
+                                <div class="product-additional-information">
+                                    <div class="section-header-style-12">
+                                        <h2 class="section-title">Información adicional</h2>
+                                    </div>
+                                    <ul class="no-style">
+                                        <li class="d-flex">
+                                            <span class="lb flex-auto">Weight:</span>
+                                            <span class="flex-fill">2 kg</span>
+                                        </li>
+                                        <li class="d-flex">
+                                            <span class="lb flex-auto">Dimensions:</span>
+                                            <span class="flex-fill">60 x 40 x 60 cm</span>
+                                        </li>
+                                        <li class="d-flex">
+                                            <span class="lb flex-auto">Colors:</span>
+                                            <span class="flex-fill">Blue, Red, Yellow, Grey</span>
+                                        </li>
+                                        <li class="d-flex">
+                                            <span class="lb flex-auto">Size:</span>
+                                            <span class="flex-fill">large, Small, X Large</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section style="padding: 70px 0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-10 offset-xl-1">
+                            <div class="section-header-style-11">
+                                <h2 class="section-title">Comentarios</h2>							
+                            </div>
+    
+                            <div class="list-comments">
+    
+                                <div class="comment-item-5">
+                                    <div class="comment-avatar">
+                                        <img src="./assets/images/l5-comment-1.png" alt="">									
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="comment-header">
+                                            <span class="comment-author">Jane Doe</span>
+                                            <span class="comment-time">April 2, 2014 at 2:27 am</span>
+                                            <div class="comment-actions">
+                                                <a href="#" class="comment-reply color-primary">Reply Comment</a>
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Integer sollicitudin ligula non enim sodales, non lacinia nunc ornare Sewid commodo are risus in euismod varius 
+                                            Lorimgsanullam feugiat ultrices.
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="comment-children">
+    
+                                    <div class="comment-item-5">
+                                        <div class="comment-avatar">
+                                            <img src="./assets/images/l5-comment-2.png" alt="">									
+                                        </div>
+                                        <div class="comment-content">
+                                            <div class="comment-header">
+                                                <span class="comment-author">Robert Louis</span>
+                                                <span class="comment-time">April 2, 2014 at 2:27 am</span>
+                                                <div class="comment-actions">
+                                                    <a href="#" class="comment-reply color-primary">Reply Comment</a>
+                                                </div>
+                                            </div>
+                                            <div class="comment-text">
+                                                Integer sollicitudin ligula non enim sodales, non lacinia nunc ornare Sewid commodo are risus in euismod varius 
+                                                Lorimgsanullam feugiat ultrices.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+    
+                            </div>
+    
+                        </div>
+                    </div>				
+                </div>
+            </section>
+    
+            <section style="padding-bottom: 70px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-10 offset-xl-1">
+                            <div class="section-header-style-11">
+                                <h2 class="section-title">Dejar un comentario</h2>							
+                            </div>
+                            <div class="form-style-7">
+                                <form action="#">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <input class="input-styled" type="text" name="name" placeholder="Nombre completo *">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <input class="input-styled" type="email" name="email" placeholder="Correo eléctronico">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="p-4">
+                                                <div class="form-group">
+                                                    <div class="py3 d-flex align-items-center">
+                                                        <i style="font-family: Lato;" class="color-lighten mr-2">Rating*</i> 
+                                                        <div class="stars-rating justify-content-center" data-rate="0">
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>					
+                                    <div class="form-group">
+                                        <textarea class="input-styled" name="message" id="" rows="10" placeholder="Tu mensaje *"></textarea>
+                                    </div>
+                                    <div class="form-group py-15px">
+                                        <button class="button button-primary rounded-capsule comment-submit">Comentar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+        </div>
+    </div>
+</body>

@@ -1,0 +1,16 @@
+/node_modules
+/isa dashboard/node_modules
+/isa dashboard/server/node_modules
+/Isa-FrontEnd/isa-front-Angular/node_modules
+/Isa-FrontEnd/db_isa_front/vendor
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log

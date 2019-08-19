@@ -1,0 +1,440 @@
+<div id="slider">
+    <ngb-carousel *ngIf="images" [showNavigationIndicators]="false">
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper animated fadeIn">
+                <img [src]="images[0]" width="100%" alt="Random first slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper animated fadeIn">
+                <img [src]="images[1]" width="100%" alt="Random second slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper animated fadeIn">
+                <img [src]="images[2]" width="100%" alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</div>
+<div id="content">
+    <section class="policies position-relative" style="top: -50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xl-3">
+                    <div class="article-with-icon-3 text-center">
+                        <div class="icon color-primary">
+                            <i class="flaticon-box"></i>
+                        </div>
+                        <h3 class="item-title">Free Shipping</h3>
+                        <div class="item-text">
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit. Phasellus sagittis semper 
+                            tortor. Quisque non Nam...
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="article-with-icon-3 text-center">
+                        <div class="icon color-primary">
+                            <i class="flaticon-support"></i>
+                        </div>
+                        <h3 class="item-title">24/7 Support</h3>
+                        <div class="item-text">
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit. Phasellus sagittis semper 
+                            tortor. Quisque non Nam...
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="article-with-icon-3 text-center">
+                        <div class="icon color-primary">
+                            <i class="flaticon-savings"></i>
+                        </div>
+                        <h3 class="item-title">return & exchange</h3>
+                        <div class="item-text">
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit. Phasellus sagittis semper 
+                            tortor. Quisque non Nam...
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="article-with-icon-3 text-center">
+                        <div class="icon color-primary">
+                            <i class="flaticon-reward"></i>
+                        </div>
+                        <h3 class="item-title">Customer Care</h3>
+                        <div class="item-text">
+                            Lorem ipsum dolor sit amet, consectetur 
+                            adipiscing elit. Phasellus sagittis semper 
+                            tortor. Quisque non Nam...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-btn-float (change)="divisaChange($event)" ></app-btn-float>
+    <section class="product-deal">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10">
+                    <div class="row align-items-center" *ngFor="let item of promoDia">
+                        <div class="col-md-8 mb-5 mb-md-0 text-right">
+                            <div class="section-header">
+                                <h2 class="section-title color-primary">Oferta del dia</h2>
+                                <h3 class="product-name">{{item.nombre}}</h3>
+                                <div class="product-id"><span class="mr-2">Cantidad:</span> {{item.stock}}</div>
+                            </div>
+                            <p>
+                               {{item.descripcion}}
+                            </p>
+                            <div class="product-price-2">
+                                <span class="regular-price mr-2">
+                                    
+                                </span>
+                                <span class="sale-price">
+                                    <div class="animated fadeIn" *ngIf="divisa">{{item.precioDolar | currency}}</div>
+                                    <div class="animated fadeIn" *ngIf="!divisa">Bs {{item.precioBs | bs}}</div>
+                                </span>
+                            </div>
+                            <div class="row align-items-center justify-content-end">
+                                <div class="col-auto">
+                                    <button class="button rounded-capsule animate-400 hover-background-primary hover-color-whit">
+                                        Comprar ahora
+                                    </button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <img [src]="item.img" [alt]="item.alt">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 115px 0;background: #fdfdfd;">
+        <div class="container">
+            <div class="section-header-style-13 text-center">
+                <h4 class="section-sub-title">Disfruta de nuestras promociones y descuentos</h4>
+                <h2 class="section-title">Promociones</h2>
+            </div>
+            <!-- Products -->
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="row justify-content-center">
+                        <!-- Product-item -->
+                        <div class="col-sm-6 col-lg-4" *ngFor="let item of promo">
+                            <article class="product-item-4">
+                                <div class="position-relative">
+                                    <div class="thumbnail animate-zoom">
+                                        <a [routerLink]="[ '/detalles', item.id]">
+                                            <img [src]="item.img" [alt]="item.alt">
+                                        </a>
+                                    </div>
+                                    <div class="price-n-rating d-flex justify-content-between align-items-center">
+                                        <div class="product-price-2 animated fadeIn" *ngIf="!divisa">{{item.precioBs}}</div>
+                                        <div class="product-price-2 animated fadeIn" *ngIf="divisa"> {{item.precioDolar}}</div>
+                                        <div class="stars-rating" data-rate="5">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-content text-center">
+                                    <div class="product-id">
+                                        Categoria: {{item.category_id | category:categorys}}
+                                    </div>
+                                    <a class="no-color" [routerLink]="[ '/detalles']">
+                                        <h3 class="product-name animate-300 hover-color-primary">
+                                            {{item.nombre}}
+                                        </h3>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <article class="article-with-overlay-6">
+                        <div class="thumbnail">
+                            <img [src]="promoDestac.img" alt="promoDestac.alt">
+                        </div>
+                        <a [routerLink]="[ '/detalles', promoDestac.id]">
+                            <div class="overlay d-flex flex-column justify-content-end">
+                                <h2 class="item-title">
+                                    {{promoDestac.nombre}}
+                                </h2>
+                                <p>{{promoDestac.descripcion}}</p>
+                                <h4 class="item-sub-title animated fadeIn" *ngIf="divisa">
+                                    {{promoDestac.precioDolar | currency}}
+                                </h4>
+                                <h4 class="item-sub-title animated fadeIn" *ngIf="!divisa">
+                                    Bs {{promoDestac.precioBs | bs}}
+                                </h4>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+            <div class="section-header-style-13 text-center">
+                <h4 class="section-sub-title">LOS ULTIMOS AGREGADOS</h4>
+                <h2 class="section-title">lo más actualizado</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-4">
+                    <article class="article-with-overlay-6">
+                        <div class="thumbnail">
+                            <img [src]="productDestac.img" [alt]="productDestac.alt">
+                        </div>
+                        <a [routerLink]="[ '/detalles', productDestac.id]">
+                            <div class="overlay d-flex flex-column justify-content-end">
+                                <h2 class="item-title">
+                                    {{productDestac.nombre}}
+                                </h2>
+                                <p>{{productDestac.descripcion}}</p>
+                                <h4 class="item-sub-title animated fadeIn" *ngIf="divisa">
+                                   {{productDestac.precioDolar | currency}}
+                                </h4>
+                                <h4 class="item-sub-title animated fadeIn" *ngIf="!divisa">
+                                   Bs {{productDestac.precioBs | bs}}
+                                </h4>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+                <div class="col-xl-8">
+                    <div class="row justify-content-center">						
+                        <!-- Product-item -->
+                        <div class="col-sm-6 col-lg-4" *ngFor="let item of products">
+                            <article class="product-item-4">
+                                <div class="item-badge item-badge-red">Nuevo</div>
+                                <div class="position-relative">
+                                    <div class="thumbnail animate-zoom">
+                                        <a [routerLink]="[ '/detalles', item.id ]">
+                                            <img [src]="item.img" [alt]="item.alt">
+                                        </a>
+                                    </div>
+                                    <div class="price-n-rating d-flex justify-content-between align-items-center">
+                                        <div class="product-price-2 animated fadeIn" *ngIf="divisa">{{item.precioDolar | currency}}</div>
+                                        <div class="product-price-2 animated fadeIn" *ngIf="!divisa">Bs {{item.precioBs | bs}}</div>
+                                        <div class="stars-rating" data-rate="5">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-content text-center">
+                                    <div class="product-id">
+                                        Categoria: {{item.category_id | category:categorys}}
+                                    </div>
+                                    <a class="no-color" [routerLink]="[ '/detalles', item.id ]">
+                                        <h3 class="product-name animate-300 hover-color-primary">
+                                            {{item.nombre}}
+                                        </h3>
+                                    </a>
+                                   En stock: {{item.stock}}
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>				
+            </div>
+            <!-- /Products -->
+            <div class="text-center py-4">
+                <a [routerLink]="[ '/productos' ]" class="button rounded-capsule button-primary">
+                    Ver todos los productos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="sale-campaign text-center background-cover" style="background-image: url(./assets/img/banner.jpg);" >
+        <div class="overlay">
+            <div class="container">
+                <div class="icon">
+                    <i class="flaticon-savings"></i>
+                </div>
+                <h2 class="section-title">OBTENGA UN DESCUENTO</h2>
+                <div class="section-text-1 color-primary">Descuento 10%</div>
+                <div class="section-text-2">OBTENGA UN DESCUENTO AL REALIZAR COMPRAS AL MAYOR</div>
+                <div class="pt-4">
+                    <a [routerLink]="[ '/productos' ]" class="button rounded-capsule hover-background-primary">
+                        Ordene ahora
+                    </a>
+                    <a [routerLink]="[ '/contacto' ]" class="button rounded-capsule hover-background-primary">
+                        Contactenos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-poppular-brands" style="padding: 110px 0 100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h2 class="section-title">Métodos de pago</h2>
+                    <p>
+                        En Insufarma queremos que sus compras sean rápidas y efectivas por lo cual le brindamos varios métodos por donde podrá realizar sus compras.
+                    </p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="brand-logos row flex-wrap justify-content-around">
+                        <div class="col-auto">
+                            <img src="./assets/img/venezuela.png" title="Banco de Veneuzela" alt="venezuela-logo">
+                        </div>
+                        <div class="col-auto">
+                            <img src="./assets/img/bod.png" title="Bod" alt="Bod-logo">
+                        </div>
+                        <div class="col-auto">
+                            <img src="./assets/img/caroni.png" title="Caroni" alt="caroni-logo">
+                        </div>
+                        <div class="col-auto">
+                            <img src="./assets/img/banesco.png" title="Banesco" alt="banesco-logo">
+                        </div>
+                        <div class="col-auto">
+                            <img src="./assets/img/mercantil.png" title="Mercantil" alt="mercantil-logo">
+                        </div>
+                        <div class="col-auto">
+                            <img src="./assets/img/pagomovil.png" title="Pago Movil" alt="pago-movil-logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section style="padding: 80px 0 0;">
+        <div class="container">
+            <div class="section-header-style-13 text-center">
+                <h4 class="section-sub-title">NOTICIAS RELEVANTES</h4>
+                <h2 class="section-title">ULTIMAS NOTICIAS</h2>
+            </div>
+            <div class="mx-auto blog-post-5-wrap">
+                <div class="container">
+                    <div class="row blog-post-5-row">
+                        <div class="col-md-6 col-lg-4">
+                            <article class="blog-post-item-6 text-center">
+                                <div class="thumbnail animate-zoom">
+                                    <a href="blog-detail.html">
+                                        <img src="./assets/images/l5-blog-post-item-1.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="post-description color-primary">
+                                    Jan 15, 2016  -  By john smith
+                                </div>
+                                <a href="blog-detail.html" class="no-color">
+                                    <h3 class="post-title animate-300 hover-color-primary">
+                                        Simple & Easy DIY Flower 
+                                        Pot Designs
+                                    </h3>
+                                </a>
+                                <div class="post-excerpt">
+                                    Donec nec eros egetpellentesque et non erat 
+                                    Maecenas Lorimes et cenasgue ut ultricies 
+                                    ipsome uil tristiq eget…
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <article class="blog-post-item-6 text-center">
+                                <div class="thumbnail animate-zoom">
+                                    <a href="blog-detail.html">
+                                        <img src="./assets/images/l5-blog-post-item-2.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="post-description color-primary">
+                                    Jan 15, 2016  -  By john smith
+                                </div>
+                                <a href="blog-detail.html" class="no-color">
+                                    <h3 class="post-title animate-300 hover-color-primary">
+                                        Simple & Easy DIY Flower 
+                                        Pot Designs
+                                    </h3>
+                                </a>
+                                <div class="post-excerpt">
+                                    Donec nec eros egetpellentesque et non erat 
+                                    Maecenas Lorimes et cenasgue ut ultricies 
+                                    ipsome uil tristiq eget…
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <article class="blog-post-item-6 text-center">
+                                <div class="thumbnail animate-zoom">
+                                    <a href="blog-detail.html">
+                                        <img src="./assets/images/l5-blog-post-item-3.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="post-description color-primary">
+                                    Jan 15, 2016  -  By john smith
+                                </div>
+                                <a href="blog-detail.html" class="no-color">
+                                    <h3 class="post-title animate-300 hover-color-primary">
+                                        Simple & Easy DIY Flower 
+                                        Pot Designs
+                                    </h3>
+                                </a>
+                                <div class="post-excerpt">
+                                    Donec nec eros egetpellentesque et non erat 
+                                    Maecenas Lorimes et cenasgue ut ultricies 
+                                    ipsome uil tristiq eget…
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>
+    </section> -->
+    
+    <section class="newsletter">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10">
+                    <div class="inner-box text-center">
+                        <h2 class="box-title">
+                            SUSCRIBASE <br>
+                            PARA RECIBIR NOTIFICACIONES
+                        </h2>
+                        <div class="mx-auto" style="max-width: 600px;">
+                            <p>
+                                Ingrese su correo eléctronico para recibir información importante acerca de eventos descuentos y mucho más.
+                            </p>
+                        </div>
+                        <div class="mx-auto form-group" style="max-width: 375px;">
+                            <input type="email" class="input-field" placeholder="Ingrese su Email">
+                        </div>
+                        <div class="pt-4">
+                            <button class="button button-secondary rounded-capsule">Sucribir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,222 @@
+<body class="layout-5">
+    <mat-drawer-container class="example-container" [hasBackdrop]="true">
+        <mat-drawer #drawer [mode]="over" class="example-sidenav">
+            <img src="./assets/img/logo.png" width="200" alt="Logo-insufarma">
+            <mat-list>
+                <mat-list-item>
+                    <a [routerLink]="[ '/inicio' ]" routerLinkActive="active">Incio</a>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a [routerLink]="[ '/productos' ]" routerLinkActive="active">
+                        Tienda
+                    </a>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <a [routerLink]="[ '/contacto' ]" routerLinkActive="active">
+                        Contacto    
+                    </a>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div id="wrapper">        
+                <div class="hidden-search-form">
+                    <div class="overlay-absolute">
+                        <div class="search-form">
+                            <div class="text-right">
+                                <span class="form-close">
+                                    <i class="fa fa-times-circle"></i>
+                                </span>
+                            </div>
+                            <form action="#">
+                                <div class="form-group-with-button">
+                                    <input class="form-element-styled form-group-input" type="search" name="s" placeholder="Enter keywords">
+                                    <button class="form-group-button background-primary color-inverse" type="submit"><i class="fa fa-search"></i></button>
+                                </div>										
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        
+            <!-- Header -->
+            <div id="header" class="header-5">
+                <div class="" [ngClass]="{'header-nav color-inverse': true}">
+                    <div class="container">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-auto">
+                                <div class="header-nav-icons">
+                                    <ul class="no-style">
+                                        <li>
+                                            <a href="#" class="no-color animate-300 hover-color-primary hidden-search-form-toggler">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a id="sc-toggle" href="avascript:void(0)" (click)="drawer.toggle()" title="Ver menú" class="flex-auto d-flex align-items-center justify-content-center nav-button ">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>						
+                            </div>
+                            <div class="col-auto">
+                                <div class="site-branding">
+                                    <a [routerLink]="[ '/inicio' ]" class="no-color">
+                                        <span style="color:#009933">Insu</span><span style="color:#ff4609" >farma</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="header-nav-icons">
+                                    <ul class="no-style">
+                                        <li>
+                                            <a [routerLink]="[ '/usuario']" class="no-color animate-300 hover-color-primary">
+                                                <i class="fa fa-user"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a [routerLink]="[ '/deseos']" class="no-color animate-300 hover-color-primary">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a [routerLink]="[ '/cesta']" class="no-color animate-300 hover-color-primary">
+                                                <i class="fa fa-shopping-basket" [matBadge]="carLength" [matBadgeHidden]="!show" matBadgeSize="small" matBadgeColor="warn"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
+            <footer id="footer" class="footer-5 color-inverse">
+                <div class="overlay">
+                    <div class="container">
+                        <div class="inner-content">
+                            <div class="row">
+                                <div class="col-md-6 col-xl-3">
+                                    <div class="widget">
+                                        <h3 class="widget-title">ACERCA DE NOSOTROS</h3>
+                                        <div class="widget-text">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur ilm
+                                                elit fringilla commodo  Maecenasgue ege ui
+                                                nsectetur ili adipiscing  elit…
+                                            </p>
+                                            <ul class="list-unstyled" style="margin-bottom: 30px;font-family: Montserrat;font-size: 13px;font-weight: 500;">
+                                                <li>
+                                                    <span class="color-primary mr-4">Email:</span> soporte@insufarma.com
+                                                </li>
+                                                <li>
+                                                    <span class="color-primary mr-4">Teléfono:</span> + 33 323 34522
+                                                </li>
+                                                <li>
+                                                    <span class="color-primary mr-4">Fax:</span> +33 3467888
+                                                </li>
+                                            </ul>
+                                            <p class="color-lighten font-italic" style="font-family: Lato;">
+                                                Coro 4101, Falcón, Calle González
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-3">
+                                    <div class="widget">
+                                        <h3 class="widget-title text-uppercase">Ultimas noticias</h3>
+                                        <div class="">
+                                            <div class="widget-post-item-4">
+                                                <div class="post-date color-primary">Jan 15, 2016</div>
+                                                <div class="post-excerpt">
+                                                    Vestibulum gravida mi at tellus porta 
+                                                    hendrerit
+                                                </div>
+                                            </div>
+                                            <div class="widget-post-item-4">
+                                                <div class="post-date color-primary">Jan 15, 2016</div>
+                                                <div class="post-excerpt">
+                                                    Justo quis ullamcorper finibus, neque 
+                                                    augue pulvinar metus
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xl-2">
+                                    <div class="widget">
+                                        <h3 class="widget-title">MI CUENTA</h3>
+                                        <div class="widget-menu">
+                                            <ul class="no-style">
+                                                <li>
+                                                    <a href="#" class="no-color">Mi cuenta </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="no-color">Lista de deseos </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="no-color">historial de ordenes</a>
+                                                </li>										
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xl-2">
+                                    <div class="widget">
+                                        <h3 class="widget-title">LINKS</h3>
+                                        <div class="widget-menu">
+                                            <ul class="no-style">
+                                                <li>
+                                                    <a [routerLink]="[ '/inicio' ]" class="no-color">Inicio</a>
+                                                </li>
+                                                <li>
+                                                    <a [routerLink]="[ '/productos' ]" class="no-color">Tienda</a>
+                                                </li>
+                                                <li>
+                                                    <a [routerLink]="[ '/contacto' ]" class="no-color">Contacto</a>
+                                                </li>										
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xl-2">
+                                    <div class="widget">
+                                        <h3 class="widget-title">Soporte</h3>
+                                        <div class="widget-menu">
+                                            <ul class="no-style">
+                                                <li>
+                                                    <a href="#" class="no-color">Como comprar </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="no-color">Preguntas frecuentes </a>
+                                                </li>									
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="copyright dark-style">
+                <div class="container">
+                    <div class="row flex-wrap justify-content-between">
+                        <div class="col-auto">
+                            <a href="#" class="color-primary">ISA System</a> - Sistema de Administración de Insumos
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</body>
+

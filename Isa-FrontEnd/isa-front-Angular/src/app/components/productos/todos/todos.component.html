@@ -1,0 +1,79 @@
+<div class="row mt-5">
+    <div class="col-md-9 col-sm-12">
+        <div id="content">
+            <div class="container">
+                <!-- Products -->
+                <div class="row justify-content-center">
+                    <!-- Product-item -->
+                    <div class="col-sm-6 col-lg-4" *ngFor="let item of productos | filter:category">
+                        <article class="product-item-4">
+                            <div class="position-relative">
+                                <div class="thumbnail animate-zoom">
+                                    <a [routerLink]="[ '/detalles', item.id ]">
+                                        <img [src]="item.img" alt="item.alt">
+                                    </a>
+                                </div>
+                                <div class="price-n-rating d-flex justify-content-between align-items-center">
+                                    <div class="product-price-2 animated fadeIn" *ngIf="divisa == false">{{item.precioDolar | currency}}</div>
+                                    <div class="product-price-2 animated fadeIn" *ngIf="divisa">Bs {{item.precioBs | bs}}</div>
+                                    <div class="stars-rating" data-rate="5">
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-content text-center">
+                                <div class="product-id">
+                                    Cantidad disponible: {{item.stock}}
+                                </div>
+                                <a class="no-color" [routerLink]="[ '/detalles', item.id ]">
+                                    <h3 class="product-name animate-300 hover-color-primary">
+                                        {{item.nombre}}
+                                    </h3>
+                                </a>
+                                <a class="button button-default hover-background-primary rounded-capsule" href="my-cart.html">Enviar al carrito</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-12">
+        <div class="container">
+            <div class="widget-subscribe mb-5">
+                <mat-form-field class="example-full-width">
+                    <input type="search" matInput placeholder="Buscar">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+            </div>
+                <div class="text-center">
+                        <h6>Filtrar por categoria</h6>
+                    </div>
+            <mat-form-field>
+                <mat-label>Categorias</mat-label>
+                <mat-select name="cat" [(ngModel)]="category">
+                <mat-option *ngFor="let item of categorys" [value]="item.id">
+                    {{item.nombre}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <h5>Divisa</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 text-center">
+                    <button class="buttonT type1" [ngClass]="{'active-type': aux}" (click)="divisa = false; aux =! divisa">$</button>
+                </div>
+                <div class="col-md-6 col-sm-12 text-center">
+                    <button class="buttonT type1" [ngClass]="{'active-type1': divisa}" (click)="divisa = true; aux =! divisa">Bs</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,211 @@
+<div class="container-fluid">
+  <!-- dasboard jefe -->
+  <div class="row" *ngIf="position == 'jefe'">
+    <div class="col-xl-4 col-lg-12">
+      <div class="card card-chart">
+        <div class="card-body">
+          <h4 class="card-title">Establecer Precio del dolar</h4>
+          <div class="card-category">
+            <div class="row">
+              <form #form="ngForm" (ngSubmit)="update(form)">
+                <table class="example-full-width ml-3 mt-2" cellspacing="4">
+                  <tr>
+                    <td><mat-form-field class="example-form-field">
+                        <input matInput type="number" placeholder="Ultimo Precio: {{(USD.toLocaleString())}} BS" name="priceUsd" [(ngModel)]="priceUSD.priceUSD">
+                      </mat-form-field></td>
+                    <td>
+                      <button type="submit" mat-fab color="primary">
+                        <small>cambiar</small>
+                      </button>
+                    </td>                   
+                  </tr>
+                </table>                
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">access_time</i>Ultimo cambio por: {{userUSD}} el {{dateUSD |date:'shortDate'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-12">
+      <div class="card card-chart">
+        <div class="card-body">
+          <h4 class="card-title">Ventas de este mes</h4>
+          <div class="card-category">
+            <ul class="list-inline m-2">
+              <ng-container *ngIf="BsTot > BsTotAnt; else elseTemplateBsDown">
+                <li class="list-inline-item text-success"><h4>Bs {{BsTot | convertBs}}<i class="material-icons">trending_up</i> |</h4></li>
+              </ng-container>
+              <ng-template #elseTemplateBsDown>
+                <li class="list-inline-item text-danger"><h4>Bs {{BsTot | convertBs}}<i class="material-icons">trending_down</i> | </h4></li>
+              </ng-template>
+              <ng-container *ngIf="UsdTot > UsdTotAnt; else elseTemplate">
+                <li class="list-inline-item text-success"><h4>{{UsdTot | currency}}<i class="material-icons">trending_up</i></h4></li>
+              </ng-container>
+              <ng-template #elseTemplate>
+                  <li class="list-inline-item text-danger"><h4>{{UsdTot | currency}}<i class="material-icons">trending_down</i></h4></li>
+              </ng-template>
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <ul class="list-inline">
+              <ng-container *ngIf="BsTot > BsTotAnt; else elseTemplateBs">
+                <li class="list-inline-item">Alza en Bs</li>
+              </ng-container>
+              <ng-template #elseTemplateBs>
+                <li class="list-inline-item">Baja en Bs</li>
+              </ng-template>
+
+              <ng-container *ngIf="UsdTot > UsdTotAnt; else elseTemplateUsd">
+                <li class="list-inline-item">y alza en $</li>
+              </ng-container>
+              <ng-template #elseTemplateUsd>
+                <li class="list-inline-item">y baja en $</li>
+              </ng-template>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-12">
+      <div class="card card-chart">
+        <div class="card-body">
+          <h4 class="card-title">Ventas del mes pasado</h4>
+          <div class="card-category">
+            <ul class="list-inline m-2">
+                <li class="list-inline-item text-warning"><h4>Bs {{BsTotAnt | convertBs}} |</h4></li>
+                <li class="list-inline-item text-warning"><h4>{{UsdTotAnt | currency}}</h4></li>
+              </ul>
+           </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">access_time</i> Ultima actualización
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- dasboard empleados y vendedores -->
+  <div class="row" *ngIf="position != 'jefe'">
+    <div class="col-xl-4 col-lg-12" *ngFor="let item of user">
+      <div class="card card-profile">
+        <div class="card-avatar">
+          <ng-container *ngIf="item.img != ''; else elseTemplate">
+            <img class="img" [src]="item.img" />
+          </ng-container>
+          <ng-template #elseTemplate>
+            <img  src="./assets/img/jefe.png"       *ngIf="item.position == 'jefe'"/>
+            <img  src="./assets/img/vendedor.png"   *ngIf="item.position == 'vendedor'">
+            <img  src="./assets/img/empleado.png"   *ngIf="item.position == 'empleado'">
+          </ng-template>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"> {{item.userName}} : {{item.position}} </h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-12">
+      <div class="card card-chart">
+        <div class="card-body">
+          <h4 class="card-title">Precio del dolar establecido</h4>
+          <div class="card-category">
+            <h3 class="text-success">{{USD | convertBs}} BS</h3>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">access_time</i>Ultimo cambio por: {{userUSD}} el {{dateUSD |date:'shortDate'}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6" *ngIf="position == 'jefe' || position == 'empleado'">
+      <div class="card card-stats">
+        <div class="card-header card-header-warning card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">content_paste</i>
+          </div>
+          <p class="card-category">Total en mercancia</p>
+          <h4 class="card-title">{{suma}}
+            <small>productos</small>
+          </h4>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons text-warning">warning</i>
+            <a class="warning-link" [routerLink]="['/existencias']" routerLinkActive="router-link-active" >{{poca}} Productos con poca existencia</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 animated pulse">
+      <div class="card card-stats">
+        <div class="card-header card-header-success card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">attach_money</i>
+          </div>
+          <p class="card-category">Precio DolarToday</p>
+          <h4 class="card-title">{{usdValor}} 
+            <small>Bs</small>
+          </h4>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">date_range</i> {{usdfecValor}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6" *ngIf="position == 'jefe'">
+      <div class="card card-stats">
+        <div class="card-header card-header-danger card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">info_outline</i>
+          </div>
+          <p class="card-category">Inverción Bs</p>
+          <h5 class="card-title" style="font-size:1rem">{{sumaBs | convertBs}}
+            <small>Bs</small>
+          </h5>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">local_offer</i> Bs en productos en el almacén
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6" *ngIf="position == 'jefe'">
+      <div class="card card-stats">
+        <div class="card-header card-header-info card-header-icon">
+          <div class="card-icon">
+              <i class="material-icons">all_inclusive</i>
+          </div>
+          <p class="card-category">Inverción $</p>
+          <h4 class="card-title"> {{Usd | currency}} </h4>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">local_offer</i>Total invertido en $
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12" *ngIf="position == 'jefe' || userName == 'Freddy P Caldera'">
+      <mat-slide-toggle name="pemiss" [(ngModel)]="inputPermiss" (click)="updatePemiss()" >
+        <small>Activar o desactiva la Edición de inventario, </small>
+      </mat-slide-toggle>
+      <small> tenga en cuenta que este cambio serán visible solo para los empleados, los vendedores simplemente no pueden hacer cambios al inventario</small>
+    </div>
+  </div>
+  
+

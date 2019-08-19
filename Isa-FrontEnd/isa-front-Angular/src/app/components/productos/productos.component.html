@@ -1,0 +1,31 @@
+<div class="page-header-5" [ngStyle]="{'background': 'url(./assets/img/detail.jpg)'}">
+    <div class="overlay">				
+        <div class="container">
+            <div class="inner-content row align-items-center">
+                <div class="col-md-6 col-lg-4">
+                    <h1 class="page-header-title">Detalles</h1>
+                    <h4 class="page-header-sub-title">New Arrival Fashion Dresses</h4>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <a [routerLink]="[ '/inicio']"> Inicio</a> - <span>Tienda</span>
+                    </div>
+                </div>
+            </div>				
+        </div>
+    </div>			
+</div>
+<div class="mt-5">
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Productos">
+            <div class="container-fluid">
+                <app-todos></app-todos>
+            </div>
+        </mat-tab>
+        <mat-tab label="Promociones">
+            <div class="container-fluid">
+                <app-promociones></app-promociones>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

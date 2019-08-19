@@ -1,0 +1,75 @@
+#contactos{
+    height: 60px;
+    -webkit-box-shadow: 0px 10px 8px -4px rgba(0,0,0,0.07);
+-moz-box-shadow: 0px 10px 8px -4px rgba(0,0,0,0.07);
+box-shadow: 0px 10px 8px -4px rgba(0,0,0,0.07);
+    li{
+        color: rgb(158, 158, 158);
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    .navbar-text{
+        margin-bottom: 10px;
+        margin-right: 80px;
+        ul, li{
+            list-style: none;
+            display: inline;
+            margin-right: 20px;
+        }
+        span{
+            margin-right: 15px;
+        }
+    }
+}
+#navbar{
+    margin-top: 20px;
+}
+
+.content-fluid{
+    margin-left:100px; 
+    margin-right:50px; 
+}
+.content{
+    margin-left:100px; 
+    margin-right:100px; 
+}
+
+.bg-footer{
+    background-color: rgb(54, 54, 54);
+}
+.bg-pie{
+    background-color: rgb(24, 24, 24);
+}
+.contact-2{
+    .description{
+        padding-right: 35px;
+        text-align: left;
+    }
+    ul, li{
+        list-style: none;
+        margin-top: 10px;
+        position: relative;
+        right: 20px;
+    }    
+}
+.shop-cart{
+    position: relative;
+    top: 40px;
+    transition: 1s;
+    :hover{
+        color: rgb(120, 206, 34)
+    }
+}
+
+
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 40px;
+  }
