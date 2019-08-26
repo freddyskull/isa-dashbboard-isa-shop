@@ -15,8 +15,12 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
     imports: [
+        MatListModule,
+        MatCheckboxModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatTooltipModule,
@@ -35,6 +39,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         MatFormFieldModule
     ],
     exports: [
+        MatListModule,
+        MatCheckboxModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatTooltipModule,

@@ -24,6 +24,9 @@ import { EditProductComponent } from './components/car/edit-product/edit-product
 import { BtnFloatComponent } from './components/btn-float/btn-float.component';
 import { TodosComponent } from './components/productos/todos/todos.component';
 import { PromocionesComponent } from './components/productos/promociones/promociones.component';
+import { BtnComprarComponent } from './dialog/btn-comprar/btn-comprar.component';
+import { SliderInicioComponent } from './components/inicio/slider-inicio/slider-inicio.component';
+import { PruebaComponent } from './prueba/prueba.component';
 
 
 @NgModule({
@@ -41,7 +44,10 @@ import { PromocionesComponent } from './components/productos/promociones/promoci
     EditProductComponent,
     BtnFloatComponent,
     TodosComponent,
-    PromocionesComponent
+    PromocionesComponent,
+    BtnComprarComponent,
+    SliderInicioComponent,
+    PruebaComponent
   ],
   imports: [
     OrderModule,
@@ -55,7 +61,10 @@ import { PromocionesComponent } from './components/productos/promociones/promoci
     BrowserAnimationsModule
   ],
   providers: [IsaBackendDataService],
-  entryComponents: [EditProductComponent],
+  entryComponents: [
+    EditProductComponent,
+    BtnComprarComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

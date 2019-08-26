@@ -1,34 +1,4 @@
-<div id="slider">
-    <ngb-carousel *ngIf="images" [showNavigationIndicators]="false">
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper animated fadeIn">
-                <img [src]="images[0]" width="100%" alt="Random first slide">
-            </div>
-            <div class="carousel-caption">
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper animated fadeIn">
-                <img [src]="images[1]" width="100%" alt="Random second slide">
-            </div>
-            <div class="carousel-caption">
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide>
-            <div class="picsum-img-wrapper animated fadeIn">
-                <img [src]="images[2]" width="100%" alt="Random third slide">
-            </div>
-            <div class="carousel-caption">
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-        </ng-template>
-    </ngb-carousel>
-</div>
+<app-slider-inicio></app-slider-inicio>
 <div id="content">
     <section class="policies position-relative" style="top: -50px;">
         <div class="container">
@@ -38,11 +8,9 @@
                         <div class="icon color-primary">
                             <i class="flaticon-box"></i>
                         </div>
-                        <h3 class="item-title">Free Shipping</h3>
+                        <h3 class="item-title">Envio a convniencia</h3>
                         <div class="item-text">
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit. Phasellus sagittis semper 
-                            tortor. Quisque non Nam...
+                            Es posible realizar envios a todas partes del pais, por distitos courriers
                         </div>
                     </div>
                 </div>
@@ -51,11 +19,9 @@
                         <div class="icon color-primary">
                             <i class="flaticon-support"></i>
                         </div>
-                        <h3 class="item-title">24/7 Support</h3>
+                        <h3 class="item-title">Respaldado</h3>
                         <div class="item-text">
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit. Phasellus sagittis semper 
-                            tortor. Quisque non Nam...
+                            Insufarma es respaldada por tiendas fisicas ubicadas en el estado falcón, insufarma-falcon & insufarma drogeria
                         </div>
                     </div>
                 </div>
@@ -64,11 +30,9 @@
                         <div class="icon color-primary">
                             <i class="flaticon-savings"></i>
                         </div>
-                        <h3 class="item-title">return & exchange</h3>
+                        <h3 class="item-title">Reenvolso</h3>
                         <div class="item-text">
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit. Phasellus sagittis semper 
-                            tortor. Quisque non Nam...
+                            Son realizados reembolzos en cazo de que nuestro productos lleguen a sus manos rotos o estropeados. 
                         </div>
                     </div>
                 </div>
@@ -77,17 +41,19 @@
                         <div class="icon color-primary">
                             <i class="flaticon-reward"></i>
                         </div>
-                        <h3 class="item-title">Customer Care</h3>
+                        <h3 class="item-title">ATENCIÓN AL CLIENTE</h3>
                         <div class="item-text">
-                            Lorem ipsum dolor sit amet, consectetur 
-                            adipiscing elit. Phasellus sagittis semper 
-                            tortor. Quisque non Nam...
+                            Nuestra atención hacia nuestro clientes siempre es y seguirá siendo una de nuestras cualidades más admirables.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <mat-form-field>
+            <input matInput placeholder="label" value="value" name="number" [(ngModel)]="left">
+        </mat-form-field>
     <app-btn-float (change)="divisaChange($event)" ></app-btn-float>
     <section class="product-deal">
         <div class="container">
@@ -114,7 +80,7 @@
                             </div>
                             <div class="row align-items-center justify-content-end">
                                 <div class="col-auto">
-                                    <button class="button rounded-capsule animate-400 hover-background-primary hover-color-whit">
+                                    <button (click)="comparaModal(item)" class="button rounded-capsule animate-400 hover-background-primary hover-color-whit">
                                         Comprar ahora
                                     </button>
                                 </div>

@@ -57,10 +57,13 @@ export class DetailComponent implements OnInit {
     this.car.img            = this.product.img;
     this.car.id_isa_backend = this.product.id_isa_backend;
     this.car.divisa         = this.divisa;
-    this.cart.addproduct(this.car);
-    this.serv.openDialog("¡El producto ha sido añadido a su cesta de compras!","Ok");
-    this.rout.navigate(['/productos']);
-    
+    if(this.product.stock > this.car.stock){
+      this.cart.addproduct(this.car);
+      this.serv.openDialog("¡El producto ha sido añadido a su cesta de compras!","Ok");
+      this.rout.navigate(['/productos']);
+    }else{
+      this.serv.openDialog("La cantidiad que desea comprar no está disponible","Ok");
+    }
   }
 
 

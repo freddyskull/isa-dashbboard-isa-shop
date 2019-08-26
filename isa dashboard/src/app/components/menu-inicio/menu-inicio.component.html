@@ -58,6 +58,12 @@
           <p *ngIf="position == 'jefe'" matBadge="{{pendJe}}" matBadgeOverlap="false"><small>Ventas pendientes & historial</small></p>
         </a>
       </li>
+      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe' || position == 'empleado'">
+        <a class="nav-link" [routerLink]="['/tienda']" routerLinkActive="router-link-active">
+          <i class="material-icons">store</i>
+          <p>Tienda</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

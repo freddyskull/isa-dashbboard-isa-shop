@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IsaBackendDataService } from 'src/app/services/isa-backend-data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { OrderPipe } from 'ngx-order-pipe';
+import { MatDialog } from '@angular/material';
+import { BtnComprarComponent } from '../../dialog/btn-comprar/btn-comprar.component'
 
 @Component({
   selector: 'app-inicio',
@@ -10,7 +12,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 })
 export class InicioComponent implements OnInit {
 
-  constructor(private serv:IsaBackendDataService, private orderPipe: OrderPipe) { }
+  constructor(private serv:IsaBackendDataService, private orderPipe: OrderPipe, private dialog:MatDialog) { }
   promo:any = [];
   products:any = [];
   promoDia:any = [];
@@ -19,31 +21,7 @@ export class InicioComponent implements OnInit {
   productDestac:any = [];
   divisa:boolean = false;
   divisaAux:boolean = true;
-  images = [1, 2, 3].map(() => `https://picsum.photos/600/200?random&t=${Math.random()}`);
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  }
+  
   ngOnInit() {
     this.getProudctData();
     this.getcategorys();
@@ -100,7 +78,16 @@ export class InicioComponent implements OnInit {
       }
     )
   }
+  comparaModal(item:any){
+    const dialogRef = this.dialog.open(BtnComprarComponent, {
+      width: '450px',
+      data: item
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
   
 
   divisaChange(e){

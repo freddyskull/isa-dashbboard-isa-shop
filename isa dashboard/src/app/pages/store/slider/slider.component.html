@@ -1,0 +1,108 @@
+<div class="animated fadeIn">
+    <app-navigate></app-navigate>
+    <div class="ml-5">
+      <nav class="nav-component">
+        <a [routerLink]="['/inicio']" routerLinkActive="router-link-active" >Inicio / </a> <a [routerLink]="['/tienda']" routerLinkActive="router-link-active" >  Tienda / </a> <span> Slider </span>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center des">
+          <h3>Slider</h3>
+          <p>Slider es la cabecera de la página y es donde se muestran las imágenes que cambian dinámicamente despues de unos segundos, en esta sección se crean los sliders y se configuran para poderlo monstrara posteriormente en la tienda.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Agregar nuevo cliente</h4>
+            <p class="card-category">Completa los datos requerido</p>
+          </div>
+          <div class="card-body">
+            <form class="form">
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput placeholder="Img Link" name="img" [(ngModel)]="sli.img">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput placeholder="Tamaño" name="width" [(ngModel)]="sli.width" >
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput placeholder="Titulo" name="title" [(ngModel)]="sli.title" >
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput placeholder="Subtitulo" name="subtitle" [(ngModel)]="sli.subtitle" >
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-checkbox name ="supImg" [(ngModel)]="sli.imgSuper">Imágen superpuesta</mat-checkbox>
+                </div>
+                <div class="col-md-6">
+                  <mat-checkbox name="titleSup" [(ngModel)]="sli.titleSuper">Titulo superpuesto</mat-checkbox>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field>
+                    <textarea matInput placeholder="Descripción de la imágen" name="desc" [(ngModel)]="sli.alt" cols="5"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary  mt-5" (click)="addSliders()">Agregar slider</button>
+              <button type="submit" class="btn btn-success  mt-5 ml-4" (click)="addSliders()">Visualizar</button>
+              <div class="clearfix"></div>
+              
+            </form>
+          </div>
+        </div>
+        <!-- <div class="card animated fadeIn" *ngIf="slider.imgSuper || slider.titleSuper">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Configuraciones</h4>
+            <p class="card-category">Cree una posición para objeto</p>
+          </div>
+          <div class="card-body">
+            <div class="animated fadeIn" *ngIf="slider.titleSuper">
+              <div class="row">
+                <mat-form-field>
+                  <input matInput placeholder="posición en Y para el titulo" >
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field>
+                    <input matInput placeholder="posición en X para el titulo" >
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="animated fadeIn" *ngIf="slider.imgSuper">
+                <div class="row">
+                  <mat-form-field>
+                    <input matInput placeholder="posición en Y para la imágen" >
+                  </mat-form-field>
+                </div>
+               <div class="row">
+                  <mat-form-field>
+                      <input matInput placeholder="posición en X para la imágen" >
+                  </mat-form-field>
+               </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="col-md-6" >
+        <div *ngFor="let item of sliders">
+          <img src="item.img" alt="">
+        </div>   
+      </div>
+    </div>
+</div>

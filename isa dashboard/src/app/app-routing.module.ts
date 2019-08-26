@@ -19,6 +19,10 @@ import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { AddEmpleadosComponent } from './pages/empleados/add-empleados/add-empleados.component';
 import { VentasPendComponent } from './pages/ventas/ventas-pend/ventas-pend.component';
+import { StoreComponent } from './pages/store/store.component';
+import { ConfigComponent } from './pages/store/config/config.component';
+import { ProductsComponent } from './pages/store/products/products.component';
+import { SliderComponent } from './pages/store/slider/slider.component';
 
 const routes: Routes = [
   {
@@ -109,6 +113,22 @@ const routes: Routes = [
   {
     path: 'ventas-pendientes',
     component: VentasPendComponent
+  },
+  {
+    path: 'tienda',
+    component: StoreComponent
+  },
+  {
+    path: 'tienda/slider',
+    component: SliderComponent
+  },
+  {
+    path: 'tienda/productos',
+    component: ProductsComponent
+  },
+  {
+    path: 'tienda/configuraciones',
+    component: ConfigComponent
   },
 ];
 

@@ -103,6 +103,7 @@ getTotAnt(){
 
 //funcion que cambia el valor del dolar que luego será utilizado de manera global
   update(form:NgForm){
+    console.log(this.priceUSD)
     if(form.valid == true && this.priceUSD.priceUSD > 0){
       this.serv.updateUsdValor(0,this.priceUSD).subscribe(
         req =>{
@@ -117,8 +118,9 @@ getTotAnt(){
       )
       this.openSnackBar2()
     }
-    this.priceUSD.priceUSD = null;
+   
   }
+  
 //funcion que hace cambiar los permisos de edición a los empleados
   updatePemiss(){
     if(this.inputPermiss == true){

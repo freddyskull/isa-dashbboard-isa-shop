@@ -12,7 +12,7 @@ export class PromocionesComponent implements OnInit {
 
   productos:any = [];
   categorys:any = [];
-  divisa:boolean = true;
+  divisa:boolean = false;
   aux:boolean = false;
   
 
@@ -29,6 +29,8 @@ export class PromocionesComponent implements OnInit {
     )
   }
 
-  
+  divisaChange(e){
+    this.divisa = e;
+  }
 
 }

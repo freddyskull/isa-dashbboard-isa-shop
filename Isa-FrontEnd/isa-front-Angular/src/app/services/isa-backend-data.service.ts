@@ -36,4 +36,12 @@ export class IsaBackendDataService {
     return this.http.get(`${this.URI}/promo`);
   }
 
+  getsliders(){
+    return this.http.get(`${this.URI}/slider`);
+  }
+
+  addSlider(item){
+    return this.http.post(`${this.URI}/slider`,item);
+  }
+
 }

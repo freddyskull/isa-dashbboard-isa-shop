@@ -1,0 +1,27 @@
+<h1 mat-dialog-title class="text-center">{{data.nombre}}</h1>
+<form #form="ngForm" (ngSubmit)="comprar(form)">
+  <div mat-dialog-content>
+    <p class="mt-4">Seleccione la divisa con la que desea comprar el articulo</p>
+    <div class="mb-4">
+      <mat-select placeholder="Placeholder" [(ngModel)]="result.divisa" name="item">
+          <mat-option *ngFor="let item of divisas" [value]="item.value">
+              {{item.divisa}}
+          </mat-option>
+      </mat-select>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput placeholder="cantidad de productos" autocomplete="off" [(ngModel)]="result.stock" min="1" [attr.max]="data.stock" name="stock" type="number" >
+        </mat-form-field>
+    </div>
+  </div>
+  <div class="text-center m-4">
+      <h6>
+          Precio del articulo <span *ngIf="!result.divisa">Bs {{data.precioBs * result.stock | bs}}</span> <span *ngIf="result.divisa">{{data.precioDolar * result.stock | currency}}</span>
+      </h6>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button type="submit"  cdkFocusInitial>comprar</button>
+  </div>
+</form>

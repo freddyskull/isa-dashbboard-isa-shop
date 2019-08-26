@@ -18,7 +18,8 @@ export class CarComponent implements OnInit {
   cestaLenght:number = 0;
   totalDolar:number = 0;
   totalBolivares:number = 0;
-  divisa:boolean = false
+  divisa:boolean = false;
+  loading:boolean = false;
   totales:any = {
     dolar: 0,
     bolivares: 0
@@ -30,25 +31,39 @@ export class CarComponent implements OnInit {
 
 getProduct(){
   if(localStorage.getItem('cart') != null){
-    let cesta:any = [] 
+    this.loading = true;
+    let cesta:any = []; 
     cesta = this.cart.getproducts();
     let products:any = [];
     let j = 0;
     this.serv.getProducts().subscribe(
       req => {
+        this.loading = false;
         products = req;
-        products.forEach(element => {
-          if(cesta[j].id == element.id){
-            cesta[j].precioBs    = element.precioBs;
-            cesta[j].precioDolar = element.precioDolar;
-            j++;
-          }
-        });
-        this.cesta = cesta;
-        this.cart.editproduct(this.cesta);
-        this.calcular()
+        
+        // products.forEach(element => {
+        //   console.log(element.id)
+        //   if(cesta[j].id == element.id){
+        //     cesta[j].precioBs    = element.precioBs;
+        //     cesta[j].precioDolar = element.precioDolar;
+        //     j++;
+        //   }
+        // });
+        
       }
     );
+    if(this.loading){
+      for (let i = 0; i < products.length; i++) {
+        if(cesta[j].id == products[i].id){
+          cesta[j].precioBs    = products[i].precioBs;
+          cesta[j].precioDolar = products[i].precioDolar;
+          j++;
+        }
+      }
+        this.cesta = cesta;
+        this.cart.editproduct(this.cesta);
+        this.calcular();
+    }
   }
 }
 

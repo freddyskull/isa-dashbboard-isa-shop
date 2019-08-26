@@ -77,11 +77,13 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="text-center" *ngIf="cestaLenght == 0">
-                <h2> por ahora usted no posee productos en su cesta</h2>
-                <br>
+            <div class="text-center animated fadeIn" *ngIf="loading">
+                <img src="./assets/img/loading.svg" alt="">
             </div>
-
+            <div class="text-center animated fadeIn" *ngIf="cestaLenght == 0 && !loading">
+                    <h2> por ahora usted no posee productos en su cesta</h2>
+                    <br>
+                </div>
             <div class="cart-summary d-lg-flex flex-wrap justify-content-end align-items-center text-right">
                 <div class="item-text"><span class="mr-2 animated fadeIn"> Precios Total:</span> {{totales.dolar | currency}} </div>
                 <div class="item-text"><span class="mr-2 animated fadeIn"> Precios Total:</span> Bs {{totales.bolivares| bs}}  </div>

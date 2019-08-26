@@ -1,0 +1,27 @@
+<div class="animated fadeIn">
+    <app-navigate></app-navigate>
+    <div class="ml-5">
+      <nav class="nav-component">
+        <a [routerLink]="['/inicio']" routerLinkActive="router-link-active" >Inicio / </a> <a [routerLink]="['/tienda']" routerLinkActive="router-link-active" >  Tienda / </a> <span class="text-light"> Productos </span>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center des text-light">
+          <h3>Tienda</h3>
+          <p>Dentro de esta sección se encuentan las configuraciones de la tienda al igual que los productos que son importados a ella, es importante destacar que los productos de la tienda no se descuentan automaticamente por eso el usuario debe definir cuando se actualizarán los productos en la tienda. Utilice el botón flotante ubicado en la parte de abajo para navegar dentro de la tienda.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <app-list-product-store 
+        [isaBack]="isaBack"
+        [Usd]="Usd"
+        ></app-list-product-store>
+      </div>
+      <div class="col-md-6">
+
+      </div>
+    </div>
+  </div>

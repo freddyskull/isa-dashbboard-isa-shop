@@ -14,8 +14,8 @@
                                     </a>
                                 </div>
                                 <div class="price-n-rating d-flex justify-content-between align-items-center">
-                                    <div class="product-price-2 animated fadeIn" *ngIf="divisa == false">{{item.precioDolar | currency}}</div>
-                                    <div class="product-price-2 animated fadeIn" *ngIf="divisa">Bs {{item.precioBs | bs}}</div>
+                                    <div class="product-price-2 animated fadeIn" *ngIf="divisa">{{item.precioDolar | currency}}</div>
+                                    <div class="product-price-2 animated fadeIn" *ngIf="!divisa">Bs {{item.precioBs | bs}}</div>
                                     <div class="stars-rating" data-rate="5">
                                         <span class="fa fa-star"></span>
                                         <span class="fa fa-star"></span>

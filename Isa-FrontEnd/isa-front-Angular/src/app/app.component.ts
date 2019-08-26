@@ -26,5 +26,5 @@ export class AppComponent implements OnInit {
     }
   }
 
-  images = [1, 2, 3].map(() => `https://picsum.photos/600/200?random&t=${Math.random()}`);
+  
 }
