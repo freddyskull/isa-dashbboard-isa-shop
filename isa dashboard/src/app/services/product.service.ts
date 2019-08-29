@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { product } from '../models/productModel';
 import { client } from '../models/client';
 import { provider } from '../models/providersModel';
@@ -52,7 +52,7 @@ deleteAllPre(){
   API_URI2 = 'https://s3.amazonaws.com/dolartoday/data.json'
 
 
-  constructor( private http: HttpClient) {
+  constructor( private http: HttpClient, private _snackBar: MatSnackBar) {
     this.presupuesto=[
       // {
       //   category: "1",
@@ -295,5 +295,12 @@ saveclient(clien: client){
   // api de dolartoday
   getDolar(){
     return this.http.get(`${this.API_URI2}`);
+  }
+
+
+  openDialog(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+    });
   }
 }

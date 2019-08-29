@@ -61,9 +61,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
 import { ConvertBsPipe } from './pipes/bsPipes/convert-bs.pipe';
 import { ConfirmFacNotaComponent } from './components/dialog/confirm-fac-nota/confirm-fac-nota.component';
+import { StoreComponent } from './pages/store/store.component';
+import { StoreListProductComponent } from './pages/store/store-list-product/store-list-product.component';
+import { DasboardListProductComponent } from './pages/store/dasboard-list-product/dasboard-list-product.component';
+import { StoreApiService } from './services/isa-store/store-api.service';
 // importing
 @NgModule({
   declarations: [
+    StoreComponent,
+    DasboardListProductComponent,
+    StoreListProductComponent,
     ConfirmFacNotaComponent,
     ExportExcelComponent,
     HistoryUserComponent,
@@ -124,7 +131,8 @@ import { ConfirmFacNotaComponent } from './components/dialog/confirm-fac-nota/co
   ],
   providers: [
     ProductService,
-    ExcelFormatsService
+    ExcelFormatsService,
+    StoreApiService
   ],
   entryComponents: [
     ConfirmDialogComponent,

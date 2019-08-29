@@ -15,8 +15,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatIconModule } from '@angular/material'
 @NgModule({
     imports: [
+        MatIconModule,
+        MatChipsModule,
+        MatListModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatTooltipModule,
@@ -35,6 +41,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         MatFormFieldModule
     ],
     exports: [
+        MatIconModule,
+        MatChipsModule,
+        MatListModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatTooltipModule,
