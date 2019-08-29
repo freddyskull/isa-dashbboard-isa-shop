@@ -61,20 +61,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
 import { ConvertBsPipe } from './pipes/bsPipes/convert-bs.pipe';
 import { ConfirmFacNotaComponent } from './components/dialog/confirm-fac-nota/confirm-fac-nota.component';
-import { StoreComponent } from './pages/store/store.component'
-import { ConfigComponent } from './pages/store/config/config.component';
-import { ProductsComponent } from './pages/store/products/products.component';
-import { SliderComponent } from './pages/store/slider/slider.component';
-import { ListProductStoreComponent } from './pages/store/products/list-product-store/list-product-store.component';
-import { IsaApiFrontService } from './services/isa-db-front/isa-api-front.service';
+import { StoreApiService } from './services/isa-store/store-api.service';
 // importing
+
 @NgModule({
   declarations: [
-    ListProductStoreComponent,
-    ConfigComponent,
-    ProductsComponent,
-    SliderComponent,
-    StoreComponent,
     ConfirmFacNotaComponent,
     ExportExcelComponent,
     HistoryUserComponent,
@@ -136,7 +127,7 @@ import { IsaApiFrontService } from './services/isa-db-front/isa-api-front.servic
   providers: [
     ProductService,
     ExcelFormatsService,
-    IsaApiFrontService
+    StoreApiService
   ],
   entryComponents: [
     ConfirmDialogComponent,

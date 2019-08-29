@@ -9,7 +9,7 @@ export class IsaBackendDataService {
 
   constructor(private http:HttpClient, private _snackBar: MatSnackBar) { }
 
-  URI = 'http://localhost:8000/api'
+  URI = 'http://pruebas.clinicasanjuanbosco.com/db_isa_front/public/api'
 
   getProducts(){
     return this.http.get(`${this.URI}/productos`);

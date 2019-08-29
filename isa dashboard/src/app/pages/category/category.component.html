@@ -162,7 +162,11 @@
                     <td *ngIf="item.priceB == 0">{{item.priceS$ * Usd | convertBs}} </td>
                     <td *ngIf="item.priceB == 0">{{item.priceS$ | currency}} </td>
                     <td> {{item.fecven}} </td> 
-                    <td *ngIf="permiss == 1 || position == 'jefe'"> <button class="btn btn-sm btn-warning"  [routerLink]="['/productos/editar',item.id]"><i class="material-icons">create</i></button> </td>
+                    <td *ngIf="permiss == 1 || position == 'jefe'"> 
+                        <button class="btn btn-sm btn-warning"  [routerLink]="['/productos/editar',item.id]">
+                            <i class="material-icons">create</i>
+                        </button> 
+                    </td>
                     <td *ngIf="permiss == 1 || position == 'jefe'"> 
                         <button class="btn btn-sm btn-danger" (click)="openDialog(item.id)"> 
                             <i class="material-icons">delete</i>

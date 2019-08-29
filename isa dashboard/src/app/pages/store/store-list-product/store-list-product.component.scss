@@ -1,12 +1,3 @@
-body{
-    transition:all .5s ease-in-out;
-}
-.container-fluid{
-    transition:all .5s ease-in-out;
-}
-.contenedor:hover .imagen {transition:all .5s ease-in-out; -webkit-transform:scale(1.1);transform:scale(1.1);}
-.contenedor {overflow:hidden; transition:all .5s ease-in-out;}
-
 .text-grey{
     color: rgb(190, 186, 186);
   }

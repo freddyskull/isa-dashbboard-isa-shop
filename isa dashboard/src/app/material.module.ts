@@ -15,12 +15,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatIconModule } from '@angular/material'
 @NgModule({
     imports: [
+        MatIconModule,
+        MatChipsModule,
         MatListModule,
-        MatCheckboxModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatTooltipModule,
@@ -40,7 +42,9 @@ import {MatListModule} from '@angular/material/list';
     ],
     exports: [
         MatListModule,
-        MatCheckboxModule,
+        MatIconModule,
+        MatChipsModule,
+        MatListModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatTooltipModule,
