@@ -65,9 +65,14 @@ import { StoreComponent } from './pages/store/store.component';
 import { StoreListProductComponent } from './pages/store/store-list-product/store-list-product.component';
 import { DasboardListProductComponent } from './pages/store/dasboard-list-product/dasboard-list-product.component';
 import { StoreApiService } from './services/isa-store/store-api.service';
+import { StoreProductsComponent } from './components/dialog/store-products/store-products.component';
+import { StoreCategoryComponent } from './components/dialog/store-category/store-category.component';
+
 // importing
 @NgModule({
   declarations: [
+    StoreCategoryComponent,
+    StoreProductsComponent,
     StoreComponent,
     DasboardListProductComponent,
     StoreListProductComponent,
@@ -141,7 +146,9 @@ import { StoreApiService } from './services/isa-store/store-api.service';
     HistoryVentasComponent,
     HistoryVentasDialogComponent,
     UpdatePendComponent,
-    UpdatePreComponent
+    UpdatePreComponent,
+    StoreProductsComponent,
+    StoreCategoryComponent
   ],
   bootstrap: [AppComponent]
 })

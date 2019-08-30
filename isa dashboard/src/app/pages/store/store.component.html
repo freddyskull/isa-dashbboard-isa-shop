@@ -1,7 +1,7 @@
 <app-navigate></app-navigate>
 <div class="ml-5 animated fadeIn">
   <nav class="nav-component">
-    <a [routerLink]="['/inicio']" routerLinkActive="router-link-active" >Inicio / </a> <a [routerLink]="['/tienda']" routerLinkActive="active" >Tienda / </a> <a [routerLink]="['/tienda/ventas']" routerLinkActive="active" >Ventas / </a> 
+    <a [routerLink]="['/inicio']" routerLinkActive="active" >Inicio / </a> <a [routerLink]="['/tienda']" routerLinkActive="active" >Tienda / </a> <a [routerLink]="['/tienda/ventas']" routerLinkActive="active" >Ventas / </a> 
   </nav>
 </div>
 <div class="row lign-items-center animated fadeIn mb-4">
@@ -13,12 +13,15 @@
       <p>Dentro del inicio tiene a la izquiera los prodúctos del sistema y a la derecha los prodúctos que se muestran dentro de la tienda</p>
     </div>
   </div>
+</div>
   <br><br>
+<div class="row mb-5">
   <div class="col-md-6">
     <div class="container-fluid">
       <div class="text-center contenedor">
-        <img class="imagen" src="./assets/img/isaSystem.png"  width="100" [attr.title]="'Cantidad de productos ' + lengthProducts + ' click aquí si desea verlos todos'" >
+        <img class="imagen" src="./assets/img/isaSystem.png" (click)="openProduct()"  width="100" [attr.title]="'Cantidad de productos ' + lengthProducts + ' click aquí si desea verlos todos'" >
       </div>
+      <br>
       <app-dasboard-list-product 
       [dataDashboard]="dataDashboard"
       [Usd]="Usd"
@@ -27,9 +30,13 @@
     </div>
   </div>
   <div class="col-md-6">
-    <app-store-list-product 
-    [storeProducts]="storeProducts"
-    [loadingStore]="loadingStore">
+    <div class="text-center contenedor">
+      <img class="imagen" src="./assets/img/isaStore.png" (click)="openCategorys()"  width="100" title="Click aquí para crear y ver categorias dentro de la tienda" >
+    </div>
+    <br>
+    <app-store-list-product
+    [Usd]="Usd"
+    [event]="event">
     </app-store-list-product>
   </div>
 </div>

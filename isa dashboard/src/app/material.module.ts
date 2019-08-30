@@ -17,9 +17,18 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
-import { MatIconModule } from '@angular/material'
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {BidiModule} from '@angular/cdk/bidi';
+import {MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+
+
 @NgModule({
     imports: [
+        BidiModule,
+        DragDropModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
         MatIconModule,
         MatChipsModule,
         MatListModule,
@@ -41,6 +50,10 @@ import { MatIconModule } from '@angular/material'
         MatFormFieldModule
     ],
     exports: [
+        BidiModule,
+        DragDropModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
         MatIconModule,
         MatChipsModule,
         MatListModule,

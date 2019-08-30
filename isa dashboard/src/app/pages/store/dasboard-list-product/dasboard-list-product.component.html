@@ -1,21 +1,21 @@
 <div class="row">
   <div class="col-md-12 animated fadeIn">
-    <mat-select placeholder="Buscar categoria" name="category"
+    <mat-select placeholder="Buscar categoria dentro del sistema" class="my-select-panel-class" name="category"
       [(ngModel)]="categoryId"  (ngModelChange)="selectCategory($event)">
-        <mat-option *ngFor="let item of categorys" [value]="item.id">
+        <mat-option  *ngFor="let item of categorys" [value]="item.id">
           {{item.name}}
         </mat-option>
       </mat-select>
-      <br><br>
-      <div class="container mb-4 animated fadeIn" *ngIf="length > 0">
-        <div class="form-group">
+  </div>
+</div>
+      <!--<br><br>
+      <mat-selection-list #list id="list" class="animated d-none" [(ngModel)]="selectedOptions">
+        <div class="form-group mb-4">
           <input type="text" class="form-control" placeholder="Buscar producto dentro del sistema..." name="filter" [(ngModel)]="filter">
         </div>
-        <br><br>
-        <button type="button" class="btn btn-primary btn-sm btn-block" (click)="add()">Agregar</button> 
-      </div>
-      <mat-selection-list #list [(ngModel)]="selectedOptions">
-          <mat-list-option *ngFor="let item of products | filterProduct:filter | orderBy:order:reverse:'case-insensitive'" [value]="item">
+        <button type="button" class="btn btn-primary btn-sm btn-block" (click)="add(); categoryId = 0">Agregar</button> 
+        <button mat-button class="text-light" (click)="selectAll(list)">Todos</button>
+        <mat-list-option *ngFor="let item of products | filterProduct:filter | orderBy:order:reverse:'case-insensitive'" [value]="item">
             <img matListAvatar [src]="item.img == '' ? './assets/img/noimg.png' : item.img">
             <h3 matLine> {{item.name}} </h3>
             <p matLine>
@@ -37,7 +37,37 @@
                 </ng-template>
               </span>
             </p>
-          </mat-list-option>
-        </mat-selection-list>
+        </mat-list-option>
+      </mat-selection-list>
+      
   </div>
-</div>
+</div> -->
+
+
+  <div class="example-container">
+      <h2>To do</h2>
+    
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doneList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.name}}</div>
+      </div>
+    </div>
+    
+    <div class="example-container">
+      <h2>Done</h2>
+    
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.name}}</div>
+      </div>
+    </div>

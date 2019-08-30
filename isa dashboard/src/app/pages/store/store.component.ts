@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { StoreApiService } from 'src/app/services/isa-store/store-api.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { StoreProductsComponent } from '../../components/dialog/store-products/store-products.component';
+import { StoreCategoryComponent } from 'src/app/components/dialog/store-category/store-category.component';
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -9,8 +11,9 @@ import { StoreApiService } from 'src/app/services/isa-store/store-api.service';
 })
 export class StoreComponent implements OnInit {
 
-  constructor(private serv:ProductService, private servStore: StoreApiService) { }
+  constructor(private serv:ProductService, private servStore: StoreApiService, public dialog: MatDialog) { }
   Usd: number;
+  event:boolean = false;
   dashboardProducts:any = [];
   storeProducts:any = [];
   filter:string = "";
@@ -66,6 +69,27 @@ export class StoreComponent implements OnInit {
         this.storeProducts = req;
       }
     )
+  }
+
+  openProduct(): void {
+    const dialogRef = this.dialog.open(StoreProductsComponent, {
+      width: '550px',
+      data: this.dataDashboard
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.dataDashboard = result;
+    });
+  }
+
+  openCategorys(): void {
+    const dialogRef = this.dialog.open(StoreCategoryComponent, {
+      width: '550px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.event = result;
+    });
   }
 
 }

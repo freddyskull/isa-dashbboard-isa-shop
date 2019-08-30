@@ -206,6 +206,11 @@
       </mat-slide-toggle>
       <small> tenga en cuenta que este cambio serán visible solo para los empleados, los vendedores simplemente no pueden hacer cambios al inventario</small>
     </div>
+    <div class="col-lg-6 col-md-12" *ngIf="position == 'jefe'">
+        <mat-slide-toggle name="store" color="primary" >
+            <small> Activar o desactiva la tienda </small>
+          </mat-slide-toggle>
+    </div>
   </div>
   
 

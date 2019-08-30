@@ -111,7 +111,7 @@ input{
     } 
 }
 .loading{
-    margin-top: 150px;
+    margin-top: 50px;
 }
 
 ul li {
@@ -134,3 +134,8 @@ ul li {
     left: 140px;
     color: #ff9800;
   }
+
+  mat-expansion-panel-header {
+    background-color: transparent;
+}
+
