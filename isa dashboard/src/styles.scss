@@ -1,6 +1,23 @@
+.startAnimated{
+  display:none;
+}
+
+.text-grey{
+  color: rgb(190, 186, 186);
+}
+
 .no-class{
   background: none;
-  boder:none;
+  border:none;
+}
+
+.my-select-panel-class {
+  font-size: 1.2rem;
+  text-align:center;
+}
+
+.active{
+  color:white;
 }
 
 .card {

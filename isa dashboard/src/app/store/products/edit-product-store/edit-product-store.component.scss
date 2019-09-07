@@ -1,9 +1,19 @@
-.text-grey{
-    color: rgb(190, 186, 186);
-  }
+mat-form-field{
+    width: 100%;
+}
+.text{
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.no-class{
+    color:rgb(192, 26, 26);
+}
+.delete{
+    color: rgb(179, 10, 10);
+    font-weight: bold;
+}
 
-
-  h5, h4, h3, h2, h1, p {
+h5, h4, h3, h2, h1, p {
     color: rgb(216, 214, 214);
 }
 .icon{
@@ -22,9 +32,7 @@
 #send:hover{
     color:#00bcd4;
 }
-input{
-    font-size: 1.5rem;
-}
+
 .cantidad{
     position: relative;
     bottom: 110px;
@@ -110,9 +118,6 @@ input{
       font-size: 12px;
     } 
 }
-.loading{
-    margin-top: 150px;
-}
 
 ul li {
     cursor: pointer;  
@@ -134,8 +139,6 @@ ul li {
     left: 140px;
     color: #ff9800;
   }
-
-  mat-expansion-panel-header {
-    background-color: transparent;
-}
-
+  .link{
+      color: #8998ee
+  }

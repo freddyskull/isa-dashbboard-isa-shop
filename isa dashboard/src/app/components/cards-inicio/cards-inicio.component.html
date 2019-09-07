@@ -10,7 +10,8 @@
               <form #form="ngForm" (ngSubmit)="update(form)">
                 <table class="example-full-width ml-3 mt-2" cellspacing="4">
                   <tr>
-                    <td><mat-form-field class="example-form-field">
+                    <td>
+                      <mat-form-field class="example-form-field">
                         <input matInput type="number" placeholder="Ultimo Precio: {{(USD.toLocaleString())}} BS" name="priceUsd" [(ngModel)]="priceUSD.priceUSD">
                       </mat-form-field></td>
                     <td>
@@ -205,6 +206,11 @@
         <small>Activar o desactiva la Edición de inventario, </small>
       </mat-slide-toggle>
       <small> tenga en cuenta que este cambio serán visible solo para los empleados, los vendedores simplemente no pueden hacer cambios al inventario</small>
+    </div>
+    <div class="col-lg-6 col-md-12" *ngIf="position == 'jefe'">
+        <mat-slide-toggle name="store" color="primary" >
+            <small> Activar o desactiva la tienda </small>
+          </mat-slide-toggle>
     </div>
   </div>
   

@@ -1,0 +1,38 @@
+<div class="sidebar" data-color="azure" data-background-color="black" data-image="./assets/img/wall.jpg">
+  <!--
+    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+    Tip 2: you can also add an image using data-image tag
+-->
+  <div class="logo animated fadeIn delay-1s">
+    <img src="./assets/img/logo.png" class="img-logo" >
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item animated fadeIn" [routerLink]="['/tienda']" routerLinkActive="active">
+        <a class="nav-link" >
+          <i class="material-icons">dashboard</i>
+          <p>Inicio Tienda</p>
+        </a>
+      </li>
+      <li class="nav-item animated fadeIn" [routerLink]="['/tienda-producto']" routerLinkActive="active">
+        <a class="nav-link" >
+          <i class="material-icons">assignment</i>
+          <p>Productos</p>
+        </a>
+      </li>
+      <li class="nav-item animated fadeIn" [routerLink]="['/tienda-promociones']" routerLinkActive="active">
+        <a class="nav-link" >
+          <i class="material-icons">star</i>
+          <p>promociones</p>
+        </a>
+      </li>
+      <li class="nav-item animated fadeIn" [routerLink]="['/inicio']" routerLinkActive="active">
+        <a class="nav-link" >
+          <i class="material-icons">home</i>
+          <p>Volver al sistema</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import {MatSnackBar} from '@angular/material';
 import { ProductService } from '../../services/product.service';
 import { priceUSD } from '../../models/priceUsdModel'
 import { NgForm } from '@angular/forms';
+import { StoreApiService } from 'src/app/services/isa-store/store-api.service';
 
 @Component({
   selector: 'app-cards-inicio',
@@ -44,7 +45,7 @@ export class CardsInicioComponent implements OnInit {
   dateUSD: string = "";
   userName:string = "";
   user:any = [];
-  constructor(private serv: ProductService, private snackBar: MatSnackBar) { }
+  constructor(private serv: ProductService, private snackBar: MatSnackBar, private servStore: StoreApiService) { }
 
   ngOnInit() {
     this.getTotalProduct();
@@ -103,24 +104,45 @@ getTotAnt(){
 
 //funcion que cambia el valor del dolar que luego será utilizado de manera global
   update(form:NgForm){
+<<<<<<< HEAD
     console.log(this.priceUSD)
+=======
+    
+>>>>>>> hola
     if(form.valid == true && this.priceUSD.priceUSD > 0){
+      this.updateStoreUsd(this.priceUSD.priceUSD);
       this.serv.updateUsdValor(0,this.priceUSD).subscribe(
         req =>{
           this.serv.getUsdValor().subscribe(
             req => {
               this.USD = Object.values(req)[0].priceUSD
               this.userUSD = Object.values(req)[0].userName
-              this.dateUSD = Object.values(req)[0].date
+              this.dateUSD = Object.values(req)[0].date;
+              
             }
           )
         }
       )
-      this.openSnackBar2()
     }
    
   }
+<<<<<<< HEAD
   
+=======
+
+  updateStoreUsd(req){
+    let result:any = {
+      dolarPrice: req
+    }
+    this.servStore.updateConfig(1,result).subscribe(
+      req => {
+       this.serv.openDialog("El precio del dolar ha sido actualizado, dentro del sistema y la tienda","")
+      }
+    )
+  }
+
+
+>>>>>>> hola
 //funcion que hace cambiar los permisos de edición a los empleados
   updatePemiss(){
     if(this.inputPermiss == true){

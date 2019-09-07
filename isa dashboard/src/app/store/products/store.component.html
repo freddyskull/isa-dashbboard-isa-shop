@@ -1,0 +1,101 @@
+<body class="dark-edition animated fadeIn">
+  <div class="wrapper ">
+    <app-store-menu></app-store-menu>
+      <div class="main-panel">
+        <div class="mt-4">
+            <div class="container-fluid">
+              <div class="row lign-items-center animated fadeIn">
+                <div class="col-md-12">
+                  <div class="text-center text-grey">
+                    <h3> 
+                      Tienda <button class="no-class" matTooltip="Arrastre los productos que necesite de isa system a isa store, al arrastrar un producto de isa system a isa store este por defecto no poseé descripciones ni datos adicionales, y esto será reflejado con un icono de precaución, por favor rellene la información lo ates posible."> <i class="fas fa-info-circle" ></i> </button>
+                    </h3>
+                    <p class="text">Dentro del inicio tiene a la izquiera los productos del sistema, los cuales aparecen solo cuando ya ha seleccionado una categoria dentro de la tienda donde introducirlos y a la derecha los prodúctos que se muestran dentro de la tienda, si desea crear o eliminar nuevas categorias solo precione el logo de isa store.</p>
+                  </div>
+                </div>
+              </div>
+                <br><br>
+              <div class="row mb-5">
+                <div class="col-md-6">
+                  <div class="container-fluid">
+                    <div class="text-center contenedor">
+                      <img class="imagen" src="./assets/img/isaSystem.png" (click)="openProduct()"  width="100" [attr.title]="'Cantidad de productos ' + lengthProducts + ' click aquí si desea verlos todos'" >
+                    </div>
+                    <br>
+                    <mat-select name="dasboard" class="my-select-panel-class" 
+                    [disabled]="storeCategoryById != 0 ? false : true"
+                    [placeholder]="storeCategoryById != 0 ? 'Buscar en categorias desde el sistema' : 'Primero seleccione la categoria dentro de Isa Store'"  
+                    [(ngModel)]="systemCategoryById"
+                    (ngModelChange)="selectCategoryBySystem($event)">
+                      <mat-option *ngFor="let item of CategorysBySystem" [value]="item.id">
+                        {{item.name}}
+                      </mat-option>
+                    </mat-select>
+                    <div id="dash" class="example-container animated fadeIn" [ngClass]="{'d-none': systemCategoryById != 0 ? false : true}">
+                    <button class="btn btn-block btn-sm btn-waring mt-2 mb-2" [routerLink]="[ '/productos']">Ir a productos</button>
+                    <input type="text" class="form-control mt-2 mb-4" placeholder="Buscar productos isa sistema..." name="filterSystem" [(ngModel)]="filterSystem">
+                      <div
+                        cdkDropList
+                        #todoList="cdkDropList"
+                        [cdkDropListData]="systemProducts"
+                        [cdkDropListConnectedTo]="[doneList]"
+                        class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of systemProducts  | filterProduct:filterSystem" cdkDrag>{{item.name}} Id-ISA: {{item.id}}
+                          <ul class="list-inline">
+                            <li class="list-inline-item icon-edit">
+                              <i class="material-icons" title="Editar producto" [routerLink]="['/tienda/productos/editar',item.id]">edit</i>
+                            </li>       
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="text-center contenedor">
+                    <img class="imagen" src="./assets/img/isaStore.png" (click)="openCategorys()"  width="100" title="Click aquí para crear y ver categorias dentro de la tienda" >
+                  </div>
+                  <br>
+                  <mat-select class="my-select-panel-class" placeholder="Buscar en categorias desde la tienda" name="store"
+                  [(ngModel)]="storeCategoryById" 
+                  (ngModelChange)="selectCategoryByStore($event)">
+                    <mat-option *ngFor="let item of CategorysByStore" [value]="item.id">
+                      {{item.nombre}}
+                    </mat-option>
+                  </mat-select>
+                  <div id="store" class="example-container animated fadeIn" [ngClass]="{'d-none': storeCategoryById != 0 ? false : true}">
+                  <button class="btn btn-block btn-sm btn-success mt-2 mb-2" (click)="addStore()">Guardar</button>
+                  <input type="text" class="form-control mt-2 mb-4" placeholder="Buscar productos isa tienda..." name="filterStore" [(ngModel)]="filterStore">
+                    <div
+                      cdkDropList
+                      #doneList="cdkDropList"
+                      [cdkDropListData]="storeProductsTemp"
+                      class="example-list"
+                      (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let item of storeProductsTemp | filterProduct:filterStore" cdkDrag>{{item.name}} Id-ISA: {{item.description}}
+                        <ul class="list-inline">
+                          <li  class="list-inline-item text-danger icon-edit" 
+                          *ngIf="item.description == null && item.tags == null && item.img == null" >
+                            <i class="material-icons" matTooltip="Producto sin infomación básica por favor click en editar y llene los campos necesarios para que este icono desaparezca, quzás falte la imágen o las etiquetas o la descripción del mismo">warning</i>
+                          </li>
+                          <li class="list-inline-item icon-edit">
+                            <a [routerLink]="[ '/tienda-producto/edit-product', item.id ]">
+                              <i class="material-icons">edit</i>
+                            </a>
+                          </li>
+                          <li class="list-inline-item icon-delete">
+                            <i class="material-icons" (click)="deleteStoreProduct(item.id)">delete</i>
+                          </li>            
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</body>
+
