@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
@@ -19,7 +19,12 @@ import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { AddEmpleadosComponent } from './pages/empleados/add-empleados/add-empleados.component';
 import { VentasPendComponent } from './pages/ventas/ventas-pend/ventas-pend.component';
-import { StoreComponent } from './pages/store/store.component';
+import { StoreComponent } from './store/products/store.component';
+import { EditProductStoreComponent } from './store/products/edit-product-store/edit-product-store.component';
+import { HomeStoreComponent } from './store/home-store/home-store.component';
+import { PromoComponent } from './store/promo/promo.component';
+import { EditComponent } from './store/promo/edit/editPromo.component';
+
 
 const routes: Routes = [
   {
@@ -112,9 +117,25 @@ const routes: Routes = [
     component: VentasPendComponent
   },
   {
-    path: 'tienda',
+    path: 'tienda-producto',
     component: StoreComponent
-  }
+  },
+  {
+    path: 'tienda',
+    component: HomeStoreComponent
+  },
+  {
+    path: 'tienda-producto/edit-product/:id',
+    component: EditProductStoreComponent
+  },
+  { 
+    path: 'tienda-promociones',
+    component: PromoComponent
+  },
+  {
+    path: 'tienda-promociones/edit-promo/:id',
+    component: EditComponent
+  },
 ];
 
 @NgModule({

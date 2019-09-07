@@ -53,4 +53,27 @@ export class StoreApiService {
   saveCategory(prodct: any){
     return this.http.post( `${this.API_URI}/categorias`,prodct)
   }
+
+
+  //config
+
+  getConfigs(){
+    return this.http.get(`${this.API_URI}/config`); 
+  }
+
+  getConfig(id: string | number){
+    return this.http.get(`${this.API_URI}/config/${id}`); 
+  }
+
+  deleteConfig(id: string){
+    return this.http.delete(`${this.API_URI}/config/${id}`);
+  }
+
+  updateConfig(id: string|number, updatecategory: any){
+    return this.http.put(`${this.API_URI}/config/${id}`, updatecategory)
+  }
+
+  saveConfig(prodct: any){
+    return this.http.post( `${this.API_URI}/config`,prodct)
+  }
 }
