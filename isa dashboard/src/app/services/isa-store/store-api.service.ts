@@ -10,11 +10,7 @@ export class StoreApiService {
 
   constructor(private http: HttpClient) { }
 
-<<<<<<< HEAD
-  API_URI = `http://pruebas.clinicasanjuanbosco.com/db_isa_front/public/api`
-=======
   API_URI = `http://localhost/db_isa_front/public/api`;
->>>>>>> hola
 
   getProducts(){
     return this.http.get(`${this.API_URI}/productos`); 
