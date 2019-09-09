@@ -19,8 +19,8 @@ class CreatePromocionesTable extends Migration
             $table->string('chat_id')->nullable();
             $table->string('description')->nullable();
             $table->integer('stock');
-            $table->integer('precioS');
-            $table->integer('precioSD');
+            $table->integer('priceS');
+            $table->integer('priceSD');
             $table->longText('precio_ancla')->nullable();
             $table->integer('infoAddStatus')->nullable();
             $table->longText('infoAdd')->nullable();
