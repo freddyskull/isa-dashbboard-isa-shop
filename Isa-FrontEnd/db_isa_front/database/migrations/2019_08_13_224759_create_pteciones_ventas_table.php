@@ -21,7 +21,7 @@ class CreatePtecionesVentasTable extends Migration
             $table->integer('totalBs');
             $table->float('totalDolar', 8, 2);
             $table->string('status');
-            $table->json('items');
+            $table->longText('items');
             $table->string('divisa');
             $table->string('nombre');
             $table->string('correo');

@@ -17,9 +17,45 @@
                 <br><br>
               <div class="row mb-5">
                 <div class="col-md-6">
-                  
+                  <div class="text-center contenedor">
+                    <img class="imagen" src="./assets/img/isaStore.png"  width="100">
+                  </div>
+                  <br>
+                  <mat-select class="my-select-panel-class" placeholder="Buscar en categorias desde la tienda" name="store"
+                  [(ngModel)]="storeCategoryById" 
+                  (ngModelChange)="selectCategoryByStore($event)">
+                    <mat-option *ngFor="let item of CategorysByStore" [value]="item.id">
+                      {{item.nombre}}
+                    </mat-option>
+                  </mat-select>
+                  <div class="example-container">
+                    <div
+                      cdkDropList
+                      #todoList="cdkDropList"
+                      [cdkDropListData]="storeProductsTemp"
+                      [cdkDropListConnectedTo]="[doneList]"
+                      class="example-list"
+                      (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let item of storeProductsTemp" cdkDrag>{{item.name}}</div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-6">
+                  <div class="example-container">
+                    <div class="text-center contenedor mb-1">
+                      <img class="imagen" src="./assets/img/isaStore.png"  width="100">
+                    </div>
+                    <button class="btn btn-block btn-sm btn-success mt-2 mb-2" (click)="savePromo()">Guardar</button>
+                    <div
+                      cdkDropList
+                      #doneList="cdkDropList"
+                      [cdkDropListData]="promoTemp"
+                      [cdkDropListConnectedTo]="[todoList]"
+                      class="example-list"
+                      (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let item of promoTemp" cdkDrag>{{item.name}}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

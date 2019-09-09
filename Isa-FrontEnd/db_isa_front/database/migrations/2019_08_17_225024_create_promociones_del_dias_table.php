@@ -24,11 +24,11 @@ class CreatePromocionesDelDiasTable extends Migration
             $table->integer('precioBs');
             $table->float('precioDolar', 8, 2);
             $table->integer('IVA');
-            $table->json('precio_ancla');
+            $table->longText('precio_ancla');
             $table->integer('infoAddStatus')->nullable();
-            $table->json('infoAdd')->nullable();
-            $table->json('tags')->nullable();
-            $table->json('color_data')->nullable();
+            $table->longText('infoAdd')->nullable();
+            $table->longText('tags')->nullable();
+            $table->longText('color_data')->nullable();
             $table->timestamps();
         });
     }

@@ -25,11 +25,11 @@ export class StoreApiService {
   }
 
   updateProduct(id: string|number, updateproductos: any){
-    return this.http.put(`${this.API_URI}/productos/${id}`, updateproductos)
+    return this.http.put(`${this.API_URI}/productos/${id}`, updateproductos);
   }
 
   saveProduct(prodct: any){
-    return this.http.post( `${this.API_URI}/productos`,prodct)
+    return this.http.post( `${this.API_URI}/productos`,prodct);
   }
 
   //categorys
@@ -47,11 +47,11 @@ export class StoreApiService {
   }
 
   updateCategory(id: string|number, updatecategory: any){
-    return this.http.put(`${this.API_URI}/categorias/${id}`, updatecategory)
+    return this.http.put(`${this.API_URI}/categorias/${id}`, updatecategory);
   }
 
   saveCategory(prodct: any){
-    return this.http.post( `${this.API_URI}/categorias`,prodct)
+    return this.http.post( `${this.API_URI}/categorias`,prodct);
   }
 
 
@@ -70,10 +70,31 @@ export class StoreApiService {
   }
 
   updateConfig(id: string|number, updatecategory: any){
-    return this.http.put(`${this.API_URI}/config/${id}`, updatecategory)
+    return this.http.put(`${this.API_URI}/config/${id}`, updatecategory);
   }
 
   saveConfig(prodct: any){
-    return this.http.post( `${this.API_URI}/config`,prodct)
+    return this.http.post( `${this.API_URI}/config`,prodct);
+  }
+
+  // promo
+  getpromos(){
+    return this.http.get(`${this.API_URI}/promociones`); 
+  }
+
+  getpromo(id: string | number){
+    return this.http.get(`${this.API_URI}/promociones/${id}`); 
+  }
+
+  deletepromo(id: string){
+    return this.http.delete(`${this.API_URI}/promociones/${id}`);
+  }
+
+  updatepromo(id: string|number, data: any){
+    return this.http.put(`${this.API_URI}/promociones/${id}`, data);
+  }
+
+  savepromo(data: any){
+    return this.http.post( `${this.API_URI}/promociones`,data);
   }
 }

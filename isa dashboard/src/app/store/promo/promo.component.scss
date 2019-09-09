@@ -1,0 +1,217 @@
+.text-grey{
+    color: rgb(190, 186, 186);
+  }
+  
+  
+  h5, h4, h3, h2, h1, p {
+    color: rgb(216, 214, 214);
+  }
+  .icon{
+    transition: 0.5s all;
+  }
+  #edit:hover  {
+    color: #ff9800;
+  }
+  
+  #delete:hover{
+    color:#f44336;
+  }
+  .text-name{
+    font-size: 2vh;
+  }
+  #send:hover{
+    color:#00bcd4;
+  }
+  input{
+    font-size: 1.5rem;
+  }
+  .cantidad{
+    position: relative;
+    bottom: 110px;
+    left: 150px;
+    background-color: #7b1091;
+    width: 50px;
+    height: 35px;
+    border-radius: 50%;
+    div{
+        position: absolute;
+        bottom: 56%;
+        right:65%;
+    }
+    span{
+        position: relative;
+        top:5px;
+        font-size: 1rem;
+        text-align: center;
+    }
+  }
+  
+  .custom-select{
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: rgb(102, 104, 105);
+  }
+  .nav-component {
+    
+    a{
+        color: rgb(189, 184, 184);
+    }
+  }
+  .disabled{
+    color: rgb(70, 67, 67)
+  }
+  
+  .no-class{
+    background-color: transparent;
+    border: none;
+    color: aliceblue;
+    :hover{
+        color: #f44336;
+    }
+  }
+  
+  .card-pro{
+    position: absolute;
+    bottom:16.5%;
+    width: 100%;
+  }
+  .ofertas{
+    position: absolute;
+        top: 20%;
+        img{
+            width: 50px;
+        height: 50px;
+        }
+  }
+  
+  
+  .textcolor{
+   th{
+    color: rgb(189, 184, 184);
+   }
+   td{
+    color: rgb(189, 184, 184);
+   }
+  }
+  .tablee2  {
+    th{
+        padding-right: 100px;
+        color: #1a2035;
+        font-weight: bold;
+        font-size: 15px;
+       
+    }
+    td{ 
+      padding-right: 100px;
+      color: #1a2035;
+      font-weight: bold;
+      font-size: 12px;
+    } 
+  }
+  .loading{
+    margin-top: 50px;
+  }
+  
+  ul li {
+    cursor: pointer;  
+    span {
+      visibility: hidden;
+    }
+  
+    &.active {
+      color: white;
+  
+      span {
+        visibility: visible;
+      }
+    }
+  }
+  .iva{
+    position: absolute;
+    bottom: 70px;
+    left: 140px;
+    color: #ff9800;
+  }
+  
+  mat-expansion-panel-header {
+    background-color: transparent;
+  }
+  
+  
+    .example-container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 25px 25px 0;
+      display: inline-block;
+      vertical-align: top;
+    }
+    
+    .example-list {
+      border: solid 1px rgb(155, 155, 155);
+      min-height: 60px;
+      background: #202940;
+      border-radius: 4px;
+      overflow: hidden;
+      display: block;
+    }
+    .text{
+      padding-left: 140px;
+      padding-right: 140px;
+    }
+    
+    .example-box {
+      padding: 20px 10px;
+      border-bottom: solid 1px rgb(255, 255, 255);
+      color: rgba(230, 230, 230, 0.87);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      cursor: move;
+      background: #202940;
+      font-size: 14px;
+    }
+    
+    .cdk-drag-preview {
+      box-sizing: border-box;
+      border-radius: 4px;
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+    
+    .cdk-drag-placeholder {
+      opacity: 0;
+    }
+    
+    .cdk-drag-animating {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+    
+    .example-box:last-child {
+      border: none;
+    }
+    
+    .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+  
+    .icon-edit{
+      color:rgb(204, 204, 204);
+      :hover{
+        color: #ff9800;
+      }
+      a{
+        position: relative; 
+        bottom: 8px;
+      }
+    }
+    .icon-delete{
+      color:rgb(204, 204, 204);
+      :hover{
+        color: #b81212;
+      }
+    }

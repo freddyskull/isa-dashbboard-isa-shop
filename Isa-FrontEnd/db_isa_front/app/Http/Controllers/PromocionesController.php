@@ -26,23 +26,16 @@ class PromocionesController extends Controller
     public function store(Request $request)
     {
         $data = new promociones();
-        $data->id_isa_backend  = $request->id_isa_backend;
+        $data->id_isa_fontEnd  = $request->id_isa_fontEnd;
         $data->chat_id         = $request->chat_id;
-        $data->promo           = $request->promo;
-        $data->nombre          = $request->nombre;
-        $data->descripcion     = $request->descripcion;
-        $data->img             = $request->img;
-        $data->img_alt         = $request->img_alt;
+        $data->description     = $request->description;
         $data->stock           = $request->stock;
-        $data->precioBs        = $request->precioBs;
-        $data->precioDolar     = $request->precioDolar;
-        $data->IVA             = $request->IVA;
+        $data->priceS          = $request->priceS;
+        $data->priceSD         = $request->priceSD;
         $data->precio_ancla    = $request->precio_ancla;
-        $data->category_id     = $request->category_id;
         $data->infoAddStatus   = $request->infoAddStatus;
         $data->infoAdd         = $request->infoAdd;
         $data->tags            = $request->tags;
-        $data->color_data      = $request->color_data;
         $data->rate            = $request->rate;
         $data->save();
         return ['promocion creada' => true];
@@ -70,23 +63,16 @@ class PromocionesController extends Controller
     public function update(Request $request, $id)
     {
         $data = promociones::findOrFail($id);
-        $data->id_isa_backend  = $request->id_isa_backend;
+        $data->id_isa_fontEnd  = $request->id_isa_fontEnd;
         $data->chat_id         = $request->chat_id;
-        $data->promo           = $request->promo;
-        $data->nombre          = $request->nombre;
-        $data->descripcion     = $request->descripcion;
-        $data->img             = $request->img;
-        $data->img_alt         = $request->img_alt;
+        $data->description     = $request->description;
         $data->stock           = $request->stock;
-        $data->precioBs        = $request->precioBs;
-        $data->precioDolar     = $request->precioDolar;
-        $data->IVA             = $request->IVA;
+        $data->priceS          = $request->priceS;
+        $data->priceSD         = $request->priceSD;
         $data->precio_ancla    = $request->precio_ancla;
-        $data->category_id     = $request->category_id;
         $data->infoAddStatus   = $request->infoAddStatus;
         $data->infoAdd         = $request->infoAdd;
         $data->tags            = $request->tags;
-        $data->color_data      = $request->color_data;
         $data->rate            = $request->rate;
         $data->save();
         return ['promocion actualizada' => true];

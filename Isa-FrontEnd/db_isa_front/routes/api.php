@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('productos', 'ProductosController');
 Route::apiResource('categorias', 'CategoryController');
 Route::apiResource('prom_dia', 'PromocionesDelDiaController');
-Route::apiResource('promo', 'PromocionesController');
+Route::apiResource('promociones', 'PromocionesController');
 Route::apiResource('slider', 'SliderController');
