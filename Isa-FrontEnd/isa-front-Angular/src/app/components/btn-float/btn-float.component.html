@@ -1,6 +1,6 @@
-<div id='divisa' (click)="open =! open">
-    <button class="botonF1">
-        <span><img src="./assets/img/transaccion.svg" alt="ajustes"></span>
+<div id='divisa'  (click)="open =! open" style="z-index: 100000">
+    <button [ngClass]="{'pulse': click, 'no-pulse': !click}" (click)="click = false; getButtonStatus()">
+        <i class="fas fa-coins"></i>
     </button>
     <button class="btnn botonF2" [ngClass]="{'animacionVer': open}">
         <span (click)="divChangeBs()"><img title="Ver los articulos en bolivares" src="./assets/img/Bs.svg" alt="bolivares"></span>
@@ -8,7 +8,4 @@
     <button class="btnn botonF3" [ngClass]="{'animacionVer': open}">
         <span (click)="divChangeDolar()" ><img title="Ver los articulos en dolares" src="./assets/img/dinero.svg" alt="dolares"></span>
     </button>
-    <!-- <button class="btnn botonF4" [ngClass]="{'animacionVer': open}">
-        <span>+</span>
-    </button> -->
 </div>

@@ -101,7 +101,7 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        $data = examenes::find($id);
+        $data = productos::find($id);
         $data->delete();
         return ['producto eliminado' => true];
     }

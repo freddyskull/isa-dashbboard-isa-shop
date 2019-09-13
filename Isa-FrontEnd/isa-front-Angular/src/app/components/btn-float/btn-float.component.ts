@@ -11,10 +11,18 @@ export class BtnFloatComponent implements OnInit {
   constructor(private serv:IsaBackendDataService) { }
   divisa:boolean = false;
   open:boolean = false;
+  click:boolean = true;
   ngOnInit() {
-
+    if(sessionStorage.getItem("btn") == null ||sessionStorage.getItem("btn") == undefined){
+      this.getButtonStatus()    
+    }else{
+      this.click = JSON.parse(sessionStorage.getItem("btn"))
+    }
   }
 
+  getButtonStatus(){
+    sessionStorage.setItem("btn", JSON.stringify(this.click))
+  }
   @Output()change: EventEmitter<boolean> = new EventEmitter<boolean>();
   divChangeBs() {
     this.divisa = false;

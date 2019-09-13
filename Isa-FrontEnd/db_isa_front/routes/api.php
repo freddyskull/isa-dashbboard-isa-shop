@@ -22,3 +22,4 @@ Route::apiResource('categorias', 'CategoryController');
 Route::apiResource('prom_dia', 'PromocionesDelDiaController');
 Route::apiResource('promociones', 'PromocionesController');
 Route::apiResource('slider', 'SliderController');
+Route::apiResource('config', 'ConfiguracionesController');

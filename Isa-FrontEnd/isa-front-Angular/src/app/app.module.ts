@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
+import { CustomModModule } from './components/inicio/slider/custom-mod.module';
 
 import { AppComponent } from './app.component';
 import { IsaBackendDataService } from './services/isa-backend-data.service';
@@ -25,8 +26,9 @@ import { BtnFloatComponent } from './components/btn-float/btn-float.component';
 import { TodosComponent } from './components/productos/todos/todos.component';
 import { PromocionesComponent } from './components/productos/promociones/promociones.component';
 import { BtnComprarComponent } from './dialog/btn-comprar/btn-comprar.component';
-import { SliderInicioComponent } from './components/inicio/slider-inicio/slider-inicio.component';
 import { PruebaComponent } from './prueba/prueba.component';
+import { FilterProductPipe } from './pipes/filterProducto/filter-product.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -46,8 +48,9 @@ import { PruebaComponent } from './prueba/prueba.component';
     TodosComponent,
     PromocionesComponent,
     BtnComprarComponent,
-    SliderInicioComponent,
-    PruebaComponent
+    PruebaComponent,
+    FilterProductPipe,
+    FooterComponent
   ],
   imports: [
     OrderModule,
@@ -58,7 +61,8 @@ import { PruebaComponent } from './prueba/prueba.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CustomModModule
   ],
   providers: [IsaBackendDataService],
   entryComponents: [

@@ -1,28 +1,45 @@
 <div class="row mt-5">
     <div class="col-md-9 col-sm-12">
-        <div id="content">
+        <div *ngIf="loading == true" class="text-center animated fadeIn" style="margin-top: 50px;">
+            <img src="assets/img/loading.svg" alt="load-img">
+        </div>
+        <div class="animated fadeIn" id="content" *ngIf="!loading">
             <div class="container">
                 <!-- Products -->
                 <div class="row justify-content-center">
                     <!-- Product-item -->
-                    <div class="col-sm-6 col-lg-4" *ngFor="let item of productos | filter:category">
+                    <div class="col-sm-6 col-lg-4" *ngFor="let item of productos | orderBy: 'name' | filterProduct:filter | filter:category">
                         <article class="product-item-4">
                             <div class="position-relative">
                                 <div class="thumbnail animate-zoom">
                                     <a [routerLink]="[ '/detalles', item.id ]">
-                                        <img [src]="item.img" alt="item.alt">
+                                        <img [src]="item.img == null ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIrBu39qYsPByjTFT53FZqxs6vwSB7upWuR-9ZqeuUuYUqK-TL':item.img" [alt]="item.alt">
                                     </a>
                                 </div>
                                 <div class="price-n-rating d-flex justify-content-between align-items-center">
-                                    <div class="product-price-2 animated fadeIn" *ngIf="divisa">{{item.precioDolar | currency}}</div>
-                                    <div class="product-price-2 animated fadeIn" *ngIf="!divisa">Bs {{item.precioBs | bs}}</div>
-                                    <div class="stars-rating" data-rate="5">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
+                                    <div class="product-price-2 animated fadeIn" *ngIf="divisa">
+                                      <ng-container *ngIf="item.priceSD != 0; else elseTemplate">
+                                        {{item.priceSD | currency}}
+                                      </ng-container>
+                                      <ng-template #elseTemplate>
+                                        {{item.priceS / Usd | currency}}
+                                      </ng-template>
                                     </div>
+                                    <div class="product-price-2 animated fadeIn" *ngIf="!divisa">
+                                        <ng-container *ngIf="item.priceS != 0; else elseTemplate">
+                                            Bs {{item.priceS | bs}}
+                                        </ng-container>
+                                        <ng-template #elseTemplate>
+                                            Bs {{item.priceSD * Usd | bs}}
+                                        </ng-template>
+                                    </div>
+                                    <!-- <div class="stars-rating" data-rate="5">
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="item-content text-center">
@@ -31,7 +48,7 @@
                                 </div>
                                 <a class="no-color" [routerLink]="[ '/detalles', item.id ]">
                                     <h3 class="product-name animate-300 hover-color-primary">
-                                        {{item.nombre}}
+                                        {{item.name}}
                                     </h3>
                                 </a>
                                 <a class="button button-default hover-background-primary rounded-capsule" href="javascript:void(0)" (click)="openDialog(item)">Enviar al carrito</a>
@@ -46,7 +63,7 @@
         <div class="container">
             <div class="widget-subscribe mb-5">
                 <mat-form-field class="example-full-width">
-                    <input type="search" matInput placeholder="Buscar">
+                    <input type="search" name="buscar" [(ngModel)]="filter" matInput placeholder="Buscar">
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </div>
@@ -68,10 +85,10 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 text-center">
-                    <button class="buttonT type1" [ngClass]="{'active-type': aux}" (click)="divisa = true; aux =! divisa">$</button>
+                    <button class="buttonT type1" [ngClass]="{'active-type': !aux}" (click)="divisa = true; aux =! divisa">$</button>
                 </div>
                 <div class="col-md-6 col-sm-12 text-center">
-                    <button class="buttonT type1" [ngClass]="{'active-type1': divisa}" (click)="divisa = false; aux =! divisa">Bs</button>
+                    <button class="buttonT type1" [ngClass]="{'active-type1': !divisa}" (click)="divisa = false; aux =! divisa">Bs</button>
                 </div>
             </div>
         </div>

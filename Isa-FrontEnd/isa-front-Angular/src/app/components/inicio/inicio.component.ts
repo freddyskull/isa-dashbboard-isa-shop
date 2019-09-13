@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { IsaBackendDataService } from 'src/app/services/isa-backend-data.service';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { OrderPipe } from 'ngx-order-pipe';
 import { MatDialog } from '@angular/material';
 import { BtnComprarComponent } from '../../dialog/btn-comprar/btn-comprar.component'
-
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss']
 })
 export class InicioComponent implements OnInit {
-
-  constructor(private serv:IsaBackendDataService, private orderPipe: OrderPipe, private dialog:MatDialog) { }
+  location: Location;
+  constructor(private serv:IsaBackendDataService, private orderPipe: OrderPipe, private dialog:MatDialog, location: Location) { this.location = location; } 
   promo:any = [];
   products:any = [];
   promoDia:any = [];
@@ -21,12 +20,25 @@ export class InicioComponent implements OnInit {
   productDestac:any = [];
   divisa:boolean = false;
   divisaAux:boolean = true;
-  
+  Usd:number = 0;
+  mobil:boolean = false;
   ngOnInit() {
+    if(window.innerWidth < 767){
+      this.mobil = true;
+    }
     this.getProudctData();
     this.getcategorys();
-    this.getPromDia();
-    this.getPromoData();
+    // this.getPromDia();
+    // this.getPromoData();
+    this.getConvert();
+  }
+
+  getConvert(){
+    this.serv.getConfig(1).subscribe(
+      req => {
+        this.Usd = Object(req).dolarPrice;
+      }
+    )
   }
 
   getcategorys(){
@@ -78,6 +90,7 @@ export class InicioComponent implements OnInit {
       }
     )
   }
+
   comparaModal(item:any){
     const dialogRef = this.dialog.open(BtnComprarComponent, {
       width: '450px',

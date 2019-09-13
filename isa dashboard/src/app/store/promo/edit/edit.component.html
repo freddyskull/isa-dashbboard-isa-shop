@@ -1,3 +1,204 @@
-<p>
-  edit works!
-</p>
+<app-navigate></app-navigate>
+<div class="ml-5 animated fadeIn">
+  <nav class="nav-component text-grey">
+    <a [routerLink]="['/inicio']" routerLinkActive="active" >Inicio / </a> <a [routerLink]="['/tienda']" routerLinkActive="active" >Tienda / </a> <a [routerLink]="['/tienda/edit-product']" routerLinkActive="active" >Editar promo / </a> 
+  </nav>
+</div>
+<div class="row lign-items-center animated fadeIn mb-4">
+  <div class="col-md-12">
+    <div class="text-center text-grey mt-4">
+      <p class="text">Editar las promociones le permite elegir una cantidad de productos especificos y llevarlos a un precio en particular<a class="link" [routerLink]="[ '/productos/editar', product.id_isa_backend ]">aquí</a> si desea editar el producto dentro del sistema.</p>
+    </div>
+  </div>
+</div>
+<div class="content mt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Agregar decripciones al producto {{result.name}}</h4>
+            <p class="card-category">Complete los datos requerido</p>
+          </div>
+          <div class="card-body">
+            <form #form="ngForm" class="form" (ngSubmit)="edit(form)">
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-form-field>
+                    <input matInput placeholder="Nombre conservelo igual en caso de que deseé que sea el mismo" name="nombre" autocomplete="off" [(ngModel)]="result.name" required>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                  <mat-form-field>
+                  <input matInput placeholder="imágen del producto" name="img" autocomplete="off" [(ngModel)]="result.img" required>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field>
+                  <input matInput placeholder="imágen descripción esta debe ser corta" name="img-alt" autocomplete="off" [(ngModel)]="result.img_alt" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <input type="number" matInput placeholder="Precio ancla" name="precio_ancla" autocomplete="off" [(ngModel)]="result.precio_ancla"> 
+                    <mat-icon matSuffix matTooltip="El efecto ancla afecta en muchos escenarios relacionados con la economía: al negociar una venta o una subasta, al hablar de condiciones salariales, a la hora de hacer la compra.">info</mat-icon>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-7">
+                  <!-- <mat-form-field class="example-chip-list">
+                    <mat-chip-list #chipList>
+                      <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                                [removable]="removable" (removed)="remove(fruit)">
+                        {{fruit.name}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                      <input placeholder="Etiquetas, escriba una y luego presione enter"
+                              [matChipInputFor]="chipList"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur"
+                              (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                  </mat-form-field> -->
+                </div>
+                <div class="col-md-1">
+                  <div class="icon">
+                    <mat-icon matSuffix matTooltip="Crear etiquetas sirve para localizar rápidamente un producto entre la tienda según sus característica.">info</mat-icon>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <mat-form-field>
+                      <textarea matInput placeholder="Descripción" name="descripcion" 
+                      [(ngModel)]="result.description" required></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <mat-slide-toggle name="infoAdd" 
+                      [(ngModel)]="result.infoAddStatus" 
+                      (ngModelChange)="ver($event)">Agregar campos adicionales</mat-slide-toggle>
+                    </li>
+                    <li class="list-inline-item">
+                      <mat-slide-toggle>Mostrar la cantidad de productos</mat-slide-toggle>
+                    </li>
+                    <li class="list-inline-item">
+                      <mat-slide-toggle>Mostrar marca</mat-slide-toggle>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row animated fadeIn" *ngIf="mostratInfo">
+                <div class="col-md-12">
+                  <div class="text-center">
+                    Modo agregar información adicional, presione agregar para agragar campos tipo clave valor y presione terminar para agregarlos definitivamente.
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput placeholder="Campo" [(ngModel)]="key" name="key" required>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput placeholder="Valor" [(ngModel)]="value" name="value" required>
+                  </mat-form-field>
+                </div>
+                <button class="btn btn-primary mt-5" type="button" (click)="addInfo()">Agregar</button>
+                <button class="btn mt-5 ml-2" (click)="mostratInfo = false">terminar</button>
+                <div class="clearfix"></div>
+              </div>
+              <div class="animated fadeIn" *ngIf="!mostratInfo">
+                <button class="btn btn-primary mt-5">Editar</button>
+                <button class="btn btn-warning mt-5 ml-2" title="Crea una promoción para este producto">Promoción</button>
+                <div class="clearfix"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-4 animated fadeInRight">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <img class="img" [src]="result.img == null ? './assets/img/no-product.png': result.img" />
+          </div>
+          <div class="cantidad">
+            <div *ngIf="product.stock == 0">
+              <i class="fas fa-exclamation-triangle text-danger" style="font-size: 1.5rem"></i>
+            </div>
+            <span class="text-light">{{result.stock}}</span>
+          </div>
+          <div class="card-body">
+            <div class="text-center">
+              <h3 class="text-name">
+                {{result.name}}
+              </h3>
+              <br>
+              <div class="mb-2" style="position:relative; bottom: 8px;">
+                  <small class="iva" *ngIf="result.IVA != 0">Este producto contine Iva</small>
+              </div>
+            </div>
+            <div class="mb-2" *ngIf="product.priceS != 0">
+              <h4 style="font-size:0.8rem">
+                <strong class="text-info">Precio en USD M:     {{ product.priceS / Usd | currency }}</strong> |
+                <strong class="text-warning">Precio en USD D:  {{ ((product.priceS / Usd) * 1.10) | currency }}</strong> 
+              </h4>
+            </div>
+            <div class="mb-2" *ngIf="product.priceSD != 0">
+                <h4 style="font-size:0.8rem">
+                  <strong class="text-info">Precio en Bs M:    {{ (product.priceSD * Usd) | convertBs }}</strong> |
+                  <strong class="text-warning">Precio en Bs D: {{ ((product.priceSD * Usd) * 1.10) | convertBs }}</strong>
+                </h4>
+            </div>
+            <br>
+            <div class="row mt-2 mb-2 text-left">
+              <div class="col-md-6" *ngIf="product.priceS != 0">
+                  <div class="text-warning" *ngIf="product.IVA == 0">
+                      Detal: {{ (product.priceS * 1.10) | convertBs }}
+                  </div>
+                  <div class="text-warning" *ngIf="product.IVA != 0">
+                      Detal: {{ (product.priceS * 0.16 + product.priceS * 1.10) | convertBs }}
+                  </div>
+              </div>
+              <div class="col-md-6" *ngIf="product.priceS != 0">
+                  <div class="text-info text-right" *ngIf="product.IVA == 0">
+                  Mayor: {{ (product.priceS) | convertBs }}
+                  </div>
+                  <div class="text-info text-right" *ngIf="product.IVA != 0">
+                      Mayor: {{ (product.priceS * 0.16 + product.priceS) | convertBs }}
+                  </div>
+              </div>
+              <div class="col-md-6 text-warning" *ngIf="product.priceS == 0">
+                  Detal: {{product.priceSD * 1.10 | currency}}
+              </div>
+              <div class="col-md-6 text-info text-right" *ngIf="product.priceS == 0">
+                  Mayor: {{product.priceSD | currency}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-profile animated fadeInRight" *ngIf="infoAdd.length > 0">
+          <div class="card-body">
+            <div class="text-center">
+              <h3>Campos adicionales</h3>
+            </div>
+            <table class="table">
+              <tbody *ngFor="let item of infoAdd">
+                <tr>
+                  <td>{{item.key}}</td>
+                  <td>{{item.value}}</td>
+                  <td class="delete" (click)="deleteInfoAdd(item)">
+                    <button class="no-class">X</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

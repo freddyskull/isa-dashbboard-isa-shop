@@ -14,17 +14,8 @@ class ConfiguracionesController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $data = configuraciones::all();
+        return $data;
     }
 
     /**
@@ -35,7 +26,12 @@ class ConfiguracionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new configuraciones();
+        $data->titulo       = $request->titulo;
+        $data->logo         = $request->logo;
+        $data->dolarPrice   = $request->dolarPrice;
+        $data->save();
+        return ['configuracion creada' => true];
     }
 
     /**
@@ -44,20 +40,10 @@ class ConfiguracionesController extends Controller
      * @param  \App\configuraciones  $configuraciones
      * @return \Illuminate\Http\Response
      */
-    public function show(configuraciones $configuraciones)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\configuraciones  $configuraciones
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(configuraciones $configuraciones)
-    {
-        //
+        $data = configuraciones::findOrFail($id);
+        return $data;
     }
 
     /**
@@ -67,9 +53,14 @@ class ConfiguracionesController extends Controller
      * @param  \App\configuraciones  $configuraciones
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, configuraciones $configuraciones)
+    public function update(Request $request, $id)
     {
-        //
+        $data = configuraciones::findOrFail($id);
+        $data->titulo       = $request->titulo;
+        $data->logo         = $request->logo;
+        $data->dolarPrice   = $request->dolarPrice;
+        $data->save();
+        return ['configuracion editada' => true];
     }
 
     /**
@@ -78,8 +69,10 @@ class ConfiguracionesController extends Controller
      * @param  \App\configuraciones  $configuraciones
      * @return \Illuminate\Http\Response
      */
-    public function destroy(configuraciones $configuraciones)
+    public function destroy($id)
     {
-        //
+        $data = configuraciones::find($id);
+        $data->delete();
+        return ['configuracion eliminado' => true];
     }
 }

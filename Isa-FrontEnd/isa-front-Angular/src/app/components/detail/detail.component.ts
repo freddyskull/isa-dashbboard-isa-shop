@@ -18,6 +18,7 @@ export class DetailComponent implements OnInit {
   divisa:boolean = false;
   auxD:boolean = true;
   categorys:any = [];
+  Usd:number = 0;
   car:Car = {
     nombre: '',
     id_isa_backend: 0,
@@ -26,7 +27,7 @@ export class DetailComponent implements OnInit {
     precioDolar: 0,
     stock: 1,
     img: '',
-    divisa: false
+    divisa: true
   }
   ngOnInit() {
     const params = this.activdeR.snapshot.params;
@@ -34,10 +35,21 @@ export class DetailComponent implements OnInit {
       this.serv.getProduct(params.id).subscribe(
         req => {
          this.product = req;
+         console.log(req)
         },
         err => console.error(err)
       )
     }
+    this.getConvert();
+  }
+
+
+  getConvert(){
+    this.serv.getConfig(1).subscribe(
+      req => {
+        this.Usd = Object(req).dolarPrice;
+      }
+    )
   }
 
   getCategory(){

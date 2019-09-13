@@ -44,4 +44,8 @@ export class IsaBackendDataService {
     return this.http.post(`${this.URI}/slider`,item);
   }
 
+  getConfig(id){
+    return this.http.get(`${this.URI}/config/1`);
+  }
+
 }

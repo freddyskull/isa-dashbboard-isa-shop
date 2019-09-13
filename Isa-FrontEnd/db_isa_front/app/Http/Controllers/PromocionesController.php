@@ -27,6 +27,7 @@ class PromocionesController extends Controller
     {
         $data = new promociones();
         $data->id_isa_fontEnd  = $request->id_isa_fontEnd;
+        $data->name            = $request->name;
         $data->chat_id         = $request->chat_id;
         $data->description     = $request->description;
         $data->stock           = $request->stock;
@@ -64,6 +65,7 @@ class PromocionesController extends Controller
     {
         $data = promociones::findOrFail($id);
         $data->id_isa_fontEnd  = $request->id_isa_fontEnd;
+        $data->name            = $request->name;
         $data->chat_id         = $request->chat_id;
         $data->description     = $request->description;
         $data->stock           = $request->stock;

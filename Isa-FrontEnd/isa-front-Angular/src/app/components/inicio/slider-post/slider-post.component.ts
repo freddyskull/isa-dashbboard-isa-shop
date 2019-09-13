@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IsaBackendDataService } from 'src/app/services/isa-backend-data.service';
 
 @Component({
   selector: 'app-slider-post',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderPostComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private serv: IsaBackendDataService) { }
+  products:any = [];
   ngOnInit() {
+    this.serv.getProducts().subscribe(
+      req => {
+        for (let i = 0; i < 15; i++) {
+          let randomItem = Object(req)[Math.random() * Object(req).length | 0];
+          this.products.push(randomItem)
+        }
+      }
+    )
   }
+
 
 }

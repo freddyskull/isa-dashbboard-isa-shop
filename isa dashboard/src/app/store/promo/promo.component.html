@@ -10,7 +10,7 @@
                     <h3> 
                       Tienda <button class="no-class" matTooltip="Arrastre los productos que necesite de isa system a isa store, al arrastrar un producto de isa system a isa store este por defecto no poseé descripciones ni datos adicionales, y esto será reflejado con un icono de precaución, por favor rellene la información lo ates posible."> <i class="fas fa-info-circle text-light" ></i> </button>
                     </h3>
-                    <p class="text">Promocinoes, las promociones son utilizadas para que al comprar una cantidad determinada de productos el cliente obtenga un descuento o promoción, para realizar una promocion el producto ya debe estar incluido dentro de la tienda, solo tome el producto y arrastrelo hacia las promociones.</p>
+                    <p class="text">Promocines, las promociones son utilizadas para que al comprar una cantidad determinada de productos el cliente obtenga un descuento o promoción, para realizar una promocion el producto ya debe estar incluido dentro de la tienda, solo tome el producto y arrastrelo hacia las promociones.</p>
                   </div>
                 </div>
               </div>
@@ -36,7 +36,11 @@
                       [cdkDropListConnectedTo]="[doneList]"
                       class="example-list"
                       (cdkDropListDropped)="drop($event)">
-                      <div class="example-box" *ngFor="let item of storeProductsTemp" cdkDrag>{{item.name}}</div>
+                      <div class="example-box" *ngFor="let item of storeProductsTemp" cdkDrag>{{item.name}}  Isa-store-ID: {{item.id}}
+                      <a [routerLink]="[ '/tienda-producto/edit-product', item.id ]">
+                        <i class="material-icons">edit</i>
+                      </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -53,7 +57,22 @@
                       [cdkDropListConnectedTo]="[todoList]"
                       class="example-list"
                       (cdkDropListDropped)="drop($event)">
-                      <div class="example-box" *ngFor="let item of promoTemp" cdkDrag>{{item.name}}</div>
+                      <div class="example-box" *ngFor="let item of promoTemp" cdkDrag>{{item.name}} Isa-store-ID: {{item.id_isa_fontEnd}}
+                        <ul class="list-inline">
+                          <li  class="list-inline-item text-danger icon-edit" 
+                          *ngIf="item.description == null && item.tags == null && item.img == null" >
+                            <i class="material-icons" matTooltip="Producto sin infomación básica por favor click en editar y llene los campos necesarios para que este icono desaparezca, quzás falte la imágen o las etiquetas o la descripción del mismo">warning</i>
+                          </li>
+                          <li class="list-inline-item icon-edit">
+                            <a [routerLink]="[ '/tienda-promociones/edit-promo', item.id ]">
+                              <i class="material-icons">edit</i>
+                            </a>
+                          </li>
+                          <li class="list-inline-item icon-delete">
+                            <i class="material-icons" (click)="deletePromoProduct(item.id)">delete</i>
+                          </li>            
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>

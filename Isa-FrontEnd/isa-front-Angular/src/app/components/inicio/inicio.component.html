@@ -1,6 +1,9 @@
-<app-slider-inicio></app-slider-inicio>
-<div id="content">
-    <section class="policies position-relative" style="top: -50px;">
+
+    <app-home-slider></app-home-slider>
+
+<!-- [ngClass]="{'content-2': !mobil}" -->
+<div id="content" >
+    <section class="policies mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-xl-3">
@@ -8,7 +11,7 @@
                         <div class="icon color-primary">
                             <i class="flaticon-box"></i>
                         </div>
-                        <h3 class="item-title">Envio a convniencia</h3>
+                        <h3 class="item-title">Envio a conveniencia</h3>
                         <div class="item-text">
                             Es posible realizar envios a todas partes del pais, por distitos courriers
                         </div>
@@ -30,9 +33,9 @@
                         <div class="icon color-primary">
                             <i class="flaticon-savings"></i>
                         </div>
-                        <h3 class="item-title">Reenvolso</h3>
+                        <h3 class="item-title">Multi divisa</h3>
                         <div class="item-text">
-                            Son realizados reembolzos en cazo de que nuestro productos lleguen a sus manos rotos o estropeados. 
+                            Realza operaciones de compra con la moneda de su preferencia, dolares o bolivares
                         </div>
                     </div>
                 </div>
@@ -50,12 +53,8 @@
             </div>
         </div>
     </section>
-
-    <mat-form-field>
-            <input matInput placeholder="label" value="value" name="number" [(ngModel)]="left">
-        </mat-form-field>
     <app-btn-float (change)="divisaChange($event)" ></app-btn-float>
-    <section class="product-deal">
+    <!-- <section class="product-deal">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-xl-10">
@@ -94,19 +93,19 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section style="padding: 115px 0;background: #fdfdfd;">
         <div class="container">
-            <div class="section-header-style-13 text-center">
+            <!-- <div class="section-header-style-13 text-center">
                 <h4 class="section-sub-title">Disfruta de nuestras promociones y descuentos</h4>
                 <h2 class="section-title">Promociones</h2>
             </div>
-            <!-- Products -->
+          
             <div class="row">
                 <div class="col-xl-8">
                     <div class="row justify-content-center">
-                        <!-- Product-item -->
+              
                         <div class="col-sm-6 col-lg-4" *ngFor="let item of promo">
                             <article class="product-item-4">
                                 <div class="position-relative">
@@ -162,7 +161,7 @@
                         </a>
                     </article>
                 </div>
-            </div>
+            </div> -->
             <div class="section-header-style-13 text-center">
                 <h4 class="section-sub-title">LOS ULTIMOS AGREGADOS</h4>
                 <h2 class="section-title">lo más actualizado</h2>
@@ -171,20 +170,13 @@
                 <div class="col-xl-4">
                     <article class="article-with-overlay-6">
                         <div class="thumbnail">
-                            <img [src]="productDestac.img" [alt]="productDestac.alt">
+                            <img src="./assets/images/product-detail.png" alt="productos">
                         </div>
-                        <a [routerLink]="[ '/detalles', productDestac.id]">
+                        <a [routerLink]="[ '/productos']">
                             <div class="overlay d-flex flex-column justify-content-end">
                                 <h2 class="item-title">
-                                    {{productDestac.nombre}}
+                                    Eche un vistazo a nuestros medicamentos
                                 </h2>
-                                <p>{{productDestac.descripcion}}</p>
-                                <h4 class="item-sub-title animated fadeIn" *ngIf="divisa">
-                                   {{productDestac.precioDolar | currency}}
-                                </h4>
-                                <h4 class="item-sub-title animated fadeIn" *ngIf="!divisa">
-                                   Bs {{productDestac.precioBs | bs}}
-                                </h4>
                             </div>
                         </a>
                     </article>
@@ -195,22 +187,36 @@
                         <div class="col-sm-6 col-lg-4" *ngFor="let item of products">
                             <article class="product-item-4">
                                 <div class="item-badge item-badge-red">Nuevo</div>
-                                <div class="position-relative">
+                                <div class="position-relative" style="z-index:10;">
                                     <div class="thumbnail animate-zoom">
                                         <a [routerLink]="[ '/detalles', item.id ]">
-                                            <img [src]="item.img" [alt]="item.alt">
+                                            <img class="img-fluid" [src]="item.img == null ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIrBu39qYsPByjTFT53FZqxs6vwSB7upWuR-9ZqeuUuYUqK-TL':item.img" [alt]="item.alt">
                                         </a>
                                     </div>
                                     <div class="price-n-rating d-flex justify-content-between align-items-center">
-                                        <div class="product-price-2 animated fadeIn" *ngIf="divisa">{{item.precioDolar | currency}}</div>
-                                        <div class="product-price-2 animated fadeIn" *ngIf="!divisa">Bs {{item.precioBs | bs}}</div>
-                                        <div class="stars-rating" data-rate="5">
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
+                                        <div class="product-price-2 animated fadeIn" *ngIf="divisa">
+                                        <ng-container *ngIf="item.priceSD != 0; else elseTemplate">
+                                            {{item.priceSD | currency}}
+                                        </ng-container>
+                                        <ng-template #elseTemplate>
+                                            {{item.priceS / Usd | currency}}
+                                        </ng-template>
                                         </div>
+                                        <div class="product-price-2 animated fadeIn" *ngIf="!divisa">
+                                            <ng-container *ngIf="item.priceS != 0; else elseTemplate">
+                                                Bs {{item.priceS | bs}}
+                                            </ng-container>
+                                            <ng-template #elseTemplate>
+                                                Bs {{item.priceSD * Usd | bs}}
+                                            </ng-template>
+                                        </div>
+                                        <!-- <div class="stars-rating" data-rate="5">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="item-content text-center">
@@ -219,7 +225,7 @@
                                     </div>
                                     <a class="no-color" [routerLink]="[ '/detalles', item.id ]">
                                         <h3 class="product-name animate-300 hover-color-primary">
-                                            {{item.nombre}}
+                                            {{item.name}}
                                         </h3>
                                     </a>
                                    En stock: {{item.stock}}
@@ -258,7 +264,7 @@
             </div>
         </div>
     </section>
-
+    <app-slider-post></app-slider-post>
     <section class="section-poppular-brands" style="padding: 110px 0 100px;">
         <div class="container">
             <div class="row">
@@ -377,7 +383,7 @@
         </div>
     </section> -->
     
-    <section class="newsletter">
+    <!-- <section class="newsletter">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-xl-10">
@@ -401,6 +407,8 @@
                 </div>
             </div>
         </div>
-    </section>
-
+    </section> -->
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3910.949118181569!2d-69.67647188527448!3d11.411239350275476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e85d5869a44f727%3A0x924ba1ed948c43f8!2sInsufarma!5e0!3m2!1ses-419!2s!4v1568317566282!5m2!1ses-419!2s" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
 </div>

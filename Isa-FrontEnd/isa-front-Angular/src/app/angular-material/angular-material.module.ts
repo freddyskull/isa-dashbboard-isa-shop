@@ -23,8 +23,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material';
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 @NgModule({
     imports: [
+        ScrollDispatchModule,
         MatIconModule,
         MatRadioModule,
         MatDividerModule,
@@ -50,6 +52,7 @@ import {MatIconModule} from '@angular/material';
         MatFormFieldModule
     ],
     exports: [
+        ScrollDispatchModule,
         MatIconModule,
         MatRadioModule,
         MatDividerModule,

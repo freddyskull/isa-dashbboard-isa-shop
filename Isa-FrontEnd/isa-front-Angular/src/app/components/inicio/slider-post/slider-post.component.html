@@ -1,0 +1,7 @@
+<div class="slider">
+	<div class="slide-track">
+		<div class="slide" *ngFor="let item of products">
+			<img [src]="item.img == null ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIrBu39qYsPByjTFT53FZqxs6vwSB7upWuR-9ZqeuUuYUqK-TL':item.img" [alt]="item.alt" [title]="item.name" />
+		</div>
+	</div>
+</div>

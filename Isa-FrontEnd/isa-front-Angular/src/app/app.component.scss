@@ -21,9 +21,109 @@ box-shadow: 0px 10px 8px -4px rgba(0,0,0,0.07);
         }
     }
 }
-#navbar{
-    margin-top: 20px;
+.static{
+    position: absolute;
+    top:0%;
+    z-index: 10000; 
+    width: 100%;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.384);
+    img{
+        position: relative;
+        bottom: 5px;
+    }
+    a{
+      font-family: 'Oswald', sans-serif;
+      transition: 0.5s all;
+      color:white;
+      font-size: 1.1rem;
+    }
+    a:hover{
+        color: rgb(109, 100, 236);
+    }  
+    
+}
+
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+.dark-text{
+  a{
+    font-family: 'Oswald', sans-serif;
+    transition: 0.5s all;
+    color:black;
+    font-size: 1.1rem;
+  }
+  a:hover{
+      color: chocolate;
+  }  
+}
+.no-color{
+    span{
+        font-size: 2rem
+    }
+}
+
+.light-text{
+    a{
+      font-family: 'Oswald', sans-serif;
+      transition: 0.5s all;
+      color:white;
+      font-size: 1.1rem;
+    }
+    a:hover{
+        color: chocolate;
+    }  
+  }
+  .no-color{
+      span{
+          font-size: 2rem
+      }
+  }
+
+  .orange-text{
+    a{
+      font-family: 'Oswald', sans-serif;
+      transition: 0.5s all;
+      color:chocolate;
+      font-size: 1.1rem;
+    }
+    a:hover{
+        color:white;
+    }  
+  }
+  .no-color{
+      span{
+          font-size: 2rem
+      }
+  }
+
+  .grey-text{
+    a{
+      font-family: 'Oswald', sans-serif;
+      transition: 0.5s all;
+      color:rgb(192, 192, 192);
+      font-size: 1.1rem;
+    }
+    a:hover{
+        color:chocolate;
+    }  
+  }
+  .active{
+        color: chocolate;
+      a{
+        color: chocolate;
+      }
+  }
+  .no-color{
+      span{
+          font-size: 2rem
+      }
+  }
 
 .content-fluid{
     margin-left:100px; 
@@ -73,3 +173,190 @@ box-shadow: 0px 10px 8px -4px rgba(0,0,0,0.07);
   .example-sidenav {
     padding: 40px;
   }
+  li{
+      padding-left:10px;
+      i{
+          padding-top: 10px;
+      }
+  }
+  .right{
+      li{padding-left:20px;}
+  }
+
+
+  // nav mobil 
+$font-family: 'Open Sans', sans-serif;
+$font-size:   1em;
+
+$color-body:  #e2e2e2;
+$color-text:  #282828;
+$color-menu:  #fcfcfc;
+
+$variable-menu-animation-time:        1s;
+$variable-burger-animation-time:      .35s;
+
+$variable-menu-animation-function:    cubic-bezier(.25, .1, .25, 1);
+$variable-burger-animation-function:  cubic-bezier(.68, -.55, .265, 1.55);
+
+/***************************
+ *	Project Main Styles
+ **************************/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
+}
+
+
+  #menu--toggle[type="checkbox"]:not(:checked),
+#menu--toggle[type="checkbox"]:checked {
+  display: none;
+}
+
+.menu--toggle__trigger,
+.menu--toggle__burger,
+.menu--toggle__burger:before,
+.menu--toggle__burger:after {
+  position: absolute;
+  top: 1.6em;
+  left: 1.6em;
+  width: 2em;
+  height: 5px;
+  background-color: $color-text;
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 100;
+  transition: $variable-burger-animation-time $variable-menu-animation-function;
+}
+
+.menu--toggle__trigger {
+  height: 2em;
+  background: none;
+}
+
+.menu--toggle__burger {
+  
+  &:before {
+    content: "";
+    top: 10px;
+    left: 0;
+  }
+  &:after {
+    content: "";
+    top: 20px;
+    left: 0;
+  }
+}
+
+.cont-navbar{
+    position: fixed;
+    z-index: 10000;
+}
+
+.menu__body {
+  position: absolute;
+  width: 5em;
+  height: 5em;
+  margin: 0;
+  padding: 0;
+  background-color: $color-menu;
+  border-bottom-right-radius: 100%;
+  box-shadow: 3px 3px 7px rgba($color-text, .2);
+  z-index: 10;
+  animation: checkboxUncheckedAnimation $variable-burger-animation-time both;
+}
+
+.menu__body-element,
+.menu__body-link {
+  display: none;
+  margin: 4.4em 0 -3.3em -.1em;
+  font-weight: normal;
+  color: $color-text;
+  text-decoration: none;
+  text-transform: none;
+  list-style: none;
+  outline: 0;
+}
+
+.menu__body-element {
+  text-indent: 2em;
+}
+
+.menu__body-link:hover {
+  display: block;
+  width: 0;
+  color: $color-text;
+  background-color: $color-body;
+  animation: changeWidthOfElementAnimation $variable-burger-animation-time both;
+}
+
+#menu--toggle:checked + .menu--toggle__trigger {
+  
+  & + .menu--toggle__burger {
+    top: 35px;
+    transform: rotate(405deg);
+    transition: transform $variable-burger-animation-time $variable-burger-animation-function;
+  
+    &:before {
+      top: 0;
+      transform: rotate(-90deg);
+      transition: transform $variable-burger-animation-time $variable-burger-animation-function;
+    }
+    &:after {
+      top: 0;
+      transform: rotate(90deg);
+      transition: transform $variable-burger-animation-time $variable-burger-animation-function;
+    }
+  }
+  
+  & + .menu--toggle__burger + .menu__body {
+    animation: checkboxCheckedAnimation $variable-menu-animation-time $variable-menu-animation-function both;
+  }
+  
+  & ~ .menu__body .menu__body-element,
+  & ~ .menu__body .menu__body-link {
+    display: block;
+  }
+}
+
+.promotion {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('http://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Gooseberry-spring.jpg/1280px-Gooseberry-spring.jpg');
+  background-size: cover;
+}
+
+/**
+ *	Animations
+ *
+ *  @note checkboxCheckedAnimation - added fix for Microsoft Edge
+ */
+@keyframes checkboxCheckedAnimation {
+  50% {
+    width: 100vw;
+    height: 100vh;
+  }
+  100% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+@keyframes checkboxUncheckedAnimation {
+  0% {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@keyframes changeWidthOfElementAnimation {
+  50% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

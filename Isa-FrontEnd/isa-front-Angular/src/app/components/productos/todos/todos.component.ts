@@ -16,12 +16,22 @@ export class TodosComponent implements OnInit {
   divisa:boolean = false;
   aux:boolean = false;
   category:number = 0;
-
+  Usd:number = 0;
+  filter:string = '';
+  loding:boolean = false;
   ngOnInit() {
     this.getProduct();
     this.getCategorys();
+    this.getConvert();
   }
 
+  getConvert(){
+    this.serv.getConfig(1).subscribe(
+      req => {
+        this.Usd = Object(req).dolarPrice;
+      }
+    )
+  }
 
   divisaChange(e){
     this.divisa = e;
@@ -41,9 +51,11 @@ export class TodosComponent implements OnInit {
 
 
   getProduct(){
+    this.loding = true;
     this.serv.getProducts().subscribe(
       req => {
         this.productos = req;
+        this.loding = false;
       }
     )
   }

@@ -133,6 +133,7 @@ export class StoreComponent implements OnInit {
           this.storeProductsTemp.push(element);
         }
       });
+      console.log("TCL: StoreComponent -> selectCategoryByStore -> his.storeProductsTemp", this.storeProductsTemp)
      } 
     )
   }

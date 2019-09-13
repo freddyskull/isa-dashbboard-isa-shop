@@ -73,7 +73,7 @@
                       [cdkDropListData]="storeProductsTemp"
                       class="example-list"
                       (cdkDropListDropped)="drop($event)">
-                      <div class="example-box" *ngFor="let item of storeProductsTemp | filterProduct:filterStore" cdkDrag>{{item.name}} Id-ISA: {{item.description}}
+                      <div class="example-box" *ngFor="let item of storeProductsTemp | filterProduct:filterStore" cdkDrag>{{item.name}} Id-ISA: {{item.id_isa_backend}}
                         <ul class="list-inline">
                           <li  class="list-inline-item text-danger icon-edit" 
                           *ngIf="item.description == null && item.tags == null && item.img == null" >
