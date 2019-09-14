@@ -1,8 +1,13 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
+/isa dashboard/dist
+/isa dashboard/node_modules
+/
+/sa-FrontEnd/isa-front-Angular/dist
+/sa-FrontEnd/isa-front-Angular/node_modules
+/sa-FrontEnd/db_isa_front/vendor
+node_modules
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
