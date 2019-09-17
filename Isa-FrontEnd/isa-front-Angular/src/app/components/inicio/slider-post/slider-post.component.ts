@@ -21,5 +21,12 @@ export class SliderPostComponent implements OnInit {
     )
   }
 
+// var names = personas.map(function (person) { return person.name; });
+// var sorted = names.sort();
+
+// var unique = sorted.filter(function (value, index) {
+//     return value !== sorted[index + 1];
+// });
+
 
 }

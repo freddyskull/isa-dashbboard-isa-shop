@@ -19,7 +19,12 @@
                 </div>
             </div>			
         </div>
-        <div id="content" style="padding: 125px 0 110px;">		
+        <div id="content" *ngIf="loading" style="text-align: center; margin-top: 200px; margin-bottom: 200px;">
+            <h3>Transfiriendo datos del producto...</h3>
+            <br>
+            <img src="./assets/img/loading.svg" class="img-fluid" alt="loader">
+        </div>		
+        <div id="content" *ngIf="!loading" style="padding: 125px 0 110px;">		
             <section class="product-detail-2">
                 <div class="container">
                     <div class="product-detail-header">
@@ -40,18 +45,18 @@
                                             <div class="product-stock pb-4">
                                                 Disponibilidad: <span class="ml-2 color-primary">{{product.stock}}</span>
                                             </div> 
-                                            <div class="stars-rating justify-content-center" data-rate="5">
+                                            <!-- <div class="stars-rating justify-content-center" data-rate="5">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                            </div>
+                                            </div> -->
                                             <div class="product-price-2">
                                                 <ng-container *ngIf="!divisa; else elseTemplate">
-                                                    <span class="regular-price mr-2" *ngIf="product.precio_ancla != null">
+                                                    <!-- <span class="regular-price mr-2" *ngIf="product.precio_ancla != null">
                                                         {{product.precioAncla}}
-                                                    </span>
+                                                    </span> -->
                                                     <span class="sale-price animated fadeInRight">
                                                         <ng-container *ngIf="product.priceS != 0; else elseTemplate">
                                                             Bs {{product.priceS | bs}} 
@@ -78,12 +83,9 @@
                                         </div>
                                     </div>
                                     <p class="product-description">
-                                        {{product.descripcion}}
+                                        {{product.description}}
                                     </p>
-                                    <div class="d-flex flex-wrap align-items-center mb-4">
-                                        <div class="product-detail-quanty">
-                                            <input type="number" name="stock" min="1" [(ngModel)]="car.stock"  placeholder="Introduzca cantidad" class="input-styled">
-                                        </div>									
+                                    <div class="d-flex flex-wrap align-items-center mb-4">								
                                         <!-- <div class="product-color-picker ml-3">
                                             <a href="#" class="no-color" style="background: #20c6f6"></a>
                                             <a href="#" class="no-color" style="background: #5ad439"></a>
@@ -91,13 +93,9 @@
                                             <a href="#" class="no-color" style="background: #e32121"></a>
                                         </div> -->
                                     </div>
-                                    <div class="row">
-                                        <button class="buttonT type1" (click)="divisa = false; auxD =! divisa" >Bs</button>
-                                        <button class="buttonT type1" (click)="divisa = true;  auxD =! divisa" >$</button>
-                                    </div>
                                     <div class="row align-items-center">
                                         <div class="col-auto">
-                                            <button class="button rounded-capsule animate-400 hover-background-primary hover-color-white" (click)="agregar()">
+                                            <button class="button rounded-capsule animate-400 hover-background-primary hover-color-white" (click)="openDialog(product)">
                                                 Comprar
                                             </button>
                                             <button title="Agregar a lista de deseos" class="button button-circle animate-400 hover-background-primary hover-color-white">
@@ -112,45 +110,28 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="product-tags">
+                                    <div class="product-tags" *ngIf="this.tags.length > 0">
                                         <i class="fa fa-tags color-primary mr-2"></i>
-                                        <a class="no-color" href="#">Gym</a>, 
-                                        <a class="no-color" href="#">Body Building</a>, 
-                                        <a class="no-color" href="#">bullet</a>, 
-                                        <a class="no-color" href="#">Quotes</a>, 
-                                        <a class="no-color" href="#">Medical</a>
-                                    </div> -->
+                                        <a class="no-color tags" *ngFor="let item of tags" href="#">{{item.name}}, </a> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="product-detail-content">
                         <div class="row justify-content-center">
                            <div class="col-12 col-xl-10">
                                 <p>
-                                    {{product.descripcion}}
+                                    {{product.description}}
                                 </p>
                                 <div class="product-additional-information" *ngIf="product.infoAddStatus != null && product.infoAddStatus != false ">
                                     <div class="section-header-style-12">
                                         <h2 class="section-title">Información adicional</h2>
                                     </div>
                                     <ul class="no-style">
-                                        <li class="d-flex">
-                                            <span class="lb flex-auto">Weight:</span>
-                                            <span class="flex-fill">2 kg</span>
-                                        </li>
-                                        <li class="d-flex">
-                                            <span class="lb flex-auto">Dimensions:</span>
-                                            <span class="flex-fill">60 x 40 x 60 cm</span>
-                                        </li>
-                                        <li class="d-flex">
-                                            <span class="lb flex-auto">Colors:</span>
-                                            <span class="flex-fill">Blue, Red, Yellow, Grey</span>
-                                        </li>
-                                        <li class="d-flex">
-                                            <span class="lb flex-auto">Size:</span>
-                                            <span class="flex-fill">large, Small, X Large</span>
+                                        <li class="d-flex" *ngFor="let item of product.infoAdd">
+                                            <span class="lb flex-auto">{{item.key}}:</span>
+                                            <span class="flex-fill">{{item.value}}</span>
                                         </li>
                                     </ul>
                                 </div>

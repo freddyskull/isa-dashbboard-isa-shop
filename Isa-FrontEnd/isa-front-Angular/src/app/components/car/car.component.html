@@ -1,5 +1,5 @@
 <div class="page-header-5" [ngStyle]="{'background': 'url(./assets/img/car.jpg)'}">
-    <div class="overlay">				
+    <div class="overlay">
         <div class="container">
             <div class="inner-content row align-items-center">
                 <div class="col-md-6 col-lg-4">
@@ -8,25 +8,27 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="page-header-breadcrumb">
-                        <a [routerLink]="[ '/inicio']"> inicio</a> - <a [routerLink]="[ '/productos']"><span> Tienda</span></a> - <span> Cesta </span>
+                        <a [routerLink]="[ '/inicio']"> inicio</a> - <a [routerLink]="[ '/productos']"><span>
+                                Tienda</span></a> - <span> Cesta </span>
                     </div>
                 </div>
-            </div>				
+            </div>
         </div>
-    </div>			
+    </div>
 </div>
 <div id="content" style="padding: 125px 0 110px;">
-        <div class="text-center mb-4">
-            <h3>Pagar todo</h3>
-            <small>Eliga la manera de pagar que más le convenga.</small>
-            <br>
-            <button class="buttonT type1" (click)="allBs()">Bs</button> <button class="buttonT type1" (click)="allDolar()">$</button>
-            <br>
-            <br>
-            <button class="button rounded btn-danger text-light" (click)="deleteAll()">
-                Eliminar todo
-            </button>
-        </div>
+    <div class="text-center mb-4">
+        <h3>Pagar todo</h3>
+        <small>Eliga la manera de pagar que más le convenga.</small>
+        <br>
+        <button class="buttonT type1" (click)="allBs()">Bs</button> <button class="buttonT type1"
+            (click)="allDolar()">$</button>
+        <br>
+        <br>
+        <button class="button rounded btn-danger text-light" (click)="deleteAll()">
+            Eliminar todo
+        </button>
+    </div>
     <section class="">
         <div class="container">
             <table class="cart-table">
@@ -59,19 +61,19 @@
                         <td>
                             <br>
                             <span *ngIf="item.divisa">
-                                {{item.precioDolar | currency}}
+                                {{item.priceSD | currency}}
                             </span>
                             <span *ngIf="!item.divisa">
-                                Bs {{item.precioBs | bs}}
+                                Bs {{item.priceS | bs}}
                             </span>
                         </td>
                         <td class="text-center">{{item.stock}}</td>
                         <td>
                             <span *ngIf="item.divisa">
-                                {{item.precioDolar * item.stock | currency}}
+                                {{item.priceSD * item.stock | currency}}
                             </span>
                             <span *ngIf="!item.divisa">
-                               Bs {{item.precioBs * item.stock | bs}}
+                                Bs {{item.priceS * item.stock | bs}}
                             </span>
                         </td>
                     </tr>
@@ -81,12 +83,14 @@
                 <img src="./assets/img/loading.svg" alt="">
             </div>
             <div class="text-center animated fadeIn" *ngIf="cestaLenght == 0 && !loading">
-                    <h2> por ahora usted no posee productos en su cesta</h2>
-                    <br>
-                </div>
+                <h2> por ahora usted no posee productos en su cesta</h2>
+                <br>
+            </div>
             <div class="cart-summary d-lg-flex flex-wrap justify-content-end align-items-center text-right">
-                <div class="item-text"><span class="mr-2 animated fadeIn"> Precios Total:</span> {{totales.dolar | currency}} </div>
-                <div class="item-text"><span class="mr-2 animated fadeIn"> Precios Total:</span> Bs {{totales.bolivares| bs}}  </div>
+                <div class="item-text"><span class="mr-2 animated fadeIn"> Precios Total:</span>
+                    {{totales.dolar | currency}} </div>
+                <div class="item-text"><span class="mr-2 animated fadeIn"> Precios Total:</span> Bs
+                    {{totales.bolivares| bs}} </div>
                 <a [routerLink]="['/pagar']" class="button rounded">
                     Ir a pagar
                 </a>
@@ -145,22 +149,24 @@
                             <div class="cart-total-box">
                                 <div style="padding: 20px;">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="lb">TOTAl</span>  <b class="val"></b>
+                                        <span class="lb">TOTAl</span> <b class="val"></b>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="lb">TOTAl</span>  <b class="val"></b>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">											
-                                        <span class="lb">IVA acumulado</span>  <b class="val">$ 295,15</b>
+                                        <span class="lb">TOTAl</span> <b class="val"></b>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="lb">Monto exonerado de IVA</span>  <b class="val">$ 295,15</b>
+                                        <span class="lb">IVA acumulado</span> <b class="val">$ 295,15</b>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="lb">SUB TOTAL BOLIVARES</span>  <b class="val">Bs {{totales.bolivares| bs}}</b>
+                                        <span class="lb">Monto exonerado de IVA</span> <b class="val">$ 295,15</b>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="lb">SUB TOTAL DOLARES</span>  <b class="val">{{totales.dolar | currency}}</b>
+                                        <span class="lb">SUB TOTAL BOLIVARES</span> <b class="val">Bs
+                                            {{totales.bolivares| bs}}</b>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="lb">SUB TOTAL DOLARES</span> <b
+                                            class="val">{{totales.dolar | currency}}</b>
                                     </div>
                                 </div>
                                 <div class="mt-35px">

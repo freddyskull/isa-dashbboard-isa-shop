@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-6 col-xl-3">
                         <div class="widget">
-                            <h3 class="widget-title">Sobre nosotros</h3>
+                            <h3 class="widget-title">SOBRE NOSOTROS</h3>
                             <div class="widget-text">
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur ilm
@@ -24,13 +24,13 @@
                                     </li> -->
                                 </ul>
                                 <p class="color-lighten font-italic" style="font-family: Lato;">
-                                    PO Box 16122 Collins Victoria 3000  Australia
+                                    4101 Calle Gonzáles entre calle Unión y Urdaneta, Coro estado Falcón
                                 </p>
                             </div>
                             
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-3">
+                    <!-- <div class="col-md-6 col-xl-3">
                         <div class="widget">
                             <h3 class="widget-title text-uppercase">Lastest news</h3>
                             <div class="">
@@ -50,20 +50,17 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-4 col-xl-2">
                         <div class="widget">
-                            <h3 class="widget-title">MY ACCOUNT</h3>
+                            <h3 class="widget-title">MI CUENTA</h3>
                             <div class="widget-menu">
                                 <ul class="no-style">
                                     <li>
-                                        <a href="#" class="no-color">My account </a>
+                                        <a [routerLink]="[ '/usuario']" class="no-color">Mi Cuenta</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="no-color">Wish list </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="no-color">Specials</a>
+                                        <a [routerLink]="[ '/cesta']" class="no-color">Cesta de compras</a>
                                     </li>
                                     <li>
                                         <a href="#" class="no-color">Order history</a>
@@ -75,7 +72,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-xl-2">
+                    <!-- <div class="col-md-4 col-xl-2">
                         <div class="widget">
                             <h3 class="widget-title">INFORMATION</h3>
                             <div class="widget-menu">
@@ -113,25 +110,28 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 </footer>
-<!-- /Footer -->
-
-<!-- Copyright -->
 <div class="copyright dark-style">
     <div class="container">
         <div class="row flex-wrap justify-content-between">
             <div class="col-auto">
-                <a href="#" class="color-primary">Ronby</a> - Copyright 2017. Design by <a href="#" class="color-primary">Theme-Squared</a>
+                <a href="#" class="color-primary">Isa</a> - Sistema administrativo 
             </div>
-            <div class="col-auto">
-                <img src="../assets/images/credit-cards.png" alt="">
-            </div>
+            <ul class="col-auto">
+                <li class="list-inline-item">
+                    <p>Ante cualquier duda o incoformidad contactar</p>
+                </li>
+                <li class="list-inline-item" id="whatsapp">
+                    <a  href="https://api.whatsapp.com/send?phone=34123456789" target="blank">
+                        <i class="flaticon-whatsapp"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

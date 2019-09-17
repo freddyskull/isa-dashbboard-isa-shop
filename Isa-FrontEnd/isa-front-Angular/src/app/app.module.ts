@@ -29,6 +29,7 @@ import { BtnComprarComponent } from './dialog/btn-comprar/btn-comprar.component'
 import { PruebaComponent } from './prueba/prueba.component';
 import { FilterProductPipe } from './pipes/filterProducto/filter-product.pipe';
 import { FooterComponent } from './components/footer/footer.component';
+import { PricePipe } from './pipes/priceReal/price.pipe';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { FooterComponent } from './components/footer/footer.component';
     BtnComprarComponent,
     PruebaComponent,
     FilterProductPipe,
-    FooterComponent
+    FooterComponent,
+    PricePipe
   ],
   imports: [
     OrderModule,

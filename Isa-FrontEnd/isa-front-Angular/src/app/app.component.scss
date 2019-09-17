@@ -41,13 +41,20 @@ box-shadow: 0px 10px 8px -4px rgba(0,0,0,0.07);
     a{
       font-family: 'Oswald', sans-serif;
       transition: 0.5s all;
-      color:white;
+      color:white !important;
       font-size: 1.1rem;
     }
     a:hover{
-        color: rgb(109, 100, 236);
-    }  
-    
+      color: chocolate !important;
+    }
+    i{
+      transition: 0.5s all;
+      color:white !important;
+    }
+    i:hover{
+      color: chocolate !important;
+    }
+
 }
 
 @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
@@ -358,5 +365,36 @@ $variable-burger-animation-function:  cubic-bezier(.68, -.55, .265, 1.55);
   }
   100% {
     width: 100%;
+  }
+}
+.icon{
+  i{
+    padding: 4px 0px 10px 10px;
+  }
+}
+.icon-r{
+  i{
+    transition: 0.5s all;
+    padding: 20px -10px 0px 100px;
+    color: black;
+    font-size: 30px;
+  }
+}
+
+#whatsapp{
+  i:hover{
+    color: rgb(117, 212, 117) !important;
+  }
+}
+
+#instagram{
+  i:hover{
+    color: rgb(219, 59, 198) !important;
+  }
+}
+
+#facebook{
+  i:hover{
+    color: rgb(20, 39, 211) !important;
   }
 }

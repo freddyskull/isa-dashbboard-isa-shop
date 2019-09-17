@@ -1,4 +1,4 @@
-<h1 mat-dialog-title class="text-center">{{data.nombre}}</h1>
+<h1 mat-dialog-title class="text-center">{{data.name}}</h1>
 <form #form="ngForm" (ngSubmit)="comprar(form)">
   <div mat-dialog-content>
     <p class="mt-4">Seleccione la divisa con la que desea comprar el articulo</p>
@@ -15,9 +15,17 @@
         </mat-form-field>
     </div>
   </div>
-  <div class="text-center m-4">
+  <div class="text-center m-4" style="display:inline">
       <h6>
-          Precio del articulo <span *ngIf="!result.divisa">Bs {{data.precioBs * result.stock | bs}}</span> <span *ngIf="result.divisa">{{data.precioDolar * result.stock | currency}}</span>
+          Precio del articulo 
+         <span class="animated fadeIn" *ngIf="!loding">
+            <ng-container *ngIf="!result.divisa; else elseTemplate">
+              Bs {{data.priceS * result.stock | bs}}
+            </ng-container>
+            <ng-template #elseTemplate>
+                {{data.priceSD * result.stock | currency}}
+            </ng-template>
+         </span>
       </h6>
   </div>
   <div mat-dialog-actions>

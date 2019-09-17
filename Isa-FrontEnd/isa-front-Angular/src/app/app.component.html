@@ -1,4 +1,3 @@
-
 <div class="cont-navbar" *ngIf="mobil">
     <article>
         <div class="menu">
@@ -7,84 +6,81 @@
             <label class="menu--toggle__burger" for="menu--toggle"></label>
             <ul class="menu__body">
                 <li class="menu__body-element" routerLinkActive="active" *ngFor="let item of routes">
-                    <a class="menu__body-link" [routerLink]="[item.rout]" >{{item.name}}</a>
+                    <a class="menu__body-link" [routerLink]="[item.rout]">{{item.name}}</a>
                 </li>
             </ul>
         </div>
-    </article>       
+    </article>
 </div>
-<body class="layout-5">
-    <div id="wrapper">        
-        <div class="hidden-search-form">
-            <div class="overlay-absolute">
-                <div class="search-form">
-                    <div class="text-right">
-                        <span class="form-close">
-                            <i class="fa fa-times-circle"></i>
-                        </span>
-                    </div>
-                    <form action="#">
-                        <div class="form-group-with-button">
-                            <input class="form-element-styled form-group-input" type="search" name="s" placeholder="Enter keywords">
-                            <button class="form-group-button background-primary color-inverse" type="submit"><i class="fa fa-search"></i></button>
-                        </div>										
-                    </form>
-                </div>
-            </div>
-        </div>
 
-    <div id="header" class="header-5" *ngIf="!mobil">
-        <nav class="navbar navbar-expand-md nav-bar animated" id="navbar" 
-        [ngClass]="{
+<body class="layout-5">
+    <div id="wrapper">
+        <div id="header" class="header-5" *ngIf="!mobil">
+            <nav class="navbar navbar-expand-md nav-bar animated" id="navbar" [ngClass]="{
             'static': !sticky,
-            'sticky': sticky,
+            'sticky':sticky,
             'dark-text': location.path() == '/inicio',
             'light-text': location.path() != '/inicio'
             }">
-            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-                <ul class="navbar-nav mr-auto" >
-                    <li class="nav-item" routerLinkActive="active" *ngFor="let item of routes">
-                        <a class="nav-link" [routerLink]="[item.rout]" >{{item.name}}</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="mx-auto order-0">
-                <a [routerLink]="[ '/inicio' ]" class="no-color">
-                    <img src="./assets/img/logo-fav.png" class="mt-1" alt="Insufarma-logo">
-                    
-                </a> 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul class="navbar-nav ml-auto right mr-4">
-                    <li class="nav-item">
-                        <a [routerLink]="[ '/usuario']">
-                            <i class="fa fa-user" title="Mi cuenta"></i>
-                        </a>
-                    </li> 
-                    <li class="nav-item">
-                        <a [routerLink]="[ '/cesta']" class="no-color animate-300 hover-color-primary">
-                            <i class="fa fa-shopping-basket" title="Cesta de productos" [matBadge]="carLength" [matBadgeHidden]="!show" matBadgeSize="small" matBadgeColor="warn"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
+                <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item" routerLinkActive="active" *ngFor="let item of routes">
+                            <a class="nav-link" [routerLink]="[item.rout]">{{item.name}}</a>
+                        </li>
+                        <li class="nav-item icon">
+                            <a [routerLink]="[ '/usuario']">
+                                <i class="fa fa-user" title="Mi cuenta"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item icon">
+                            <a [routerLink]="[ '/cesta']" class="no-color animate-300 hover-color-primary">
+                                <i class="fa fa-shopping-basket" title="Cesta de productos" [matBadge]="carLength"
+                                    [matBadgeHidden]="!show" matBadgeSize="small" matBadgeColor="warn"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item icon">
+                            <a href="#" class="no-color animate-300 hover-color-primary hidden-search-form-toggler">
+                                <i class="fa fa-search" title="Buscar producto"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mx-auto order-0">
+                    <a [routerLink]="[ '/inicio' ]" class="no-color">
+                        <img src="./assets/img/logo-fav.png" class="mt-1" alt="Insufarma-logo">
+
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <ul class="navbar-nav ml-auto right mr-4">
+                        <li class="nav-item icon-r" id="whatsapp">
+                            <a  href="https://api.whatsapp.com/send?phone=34123456789" target="blank">
+                                <i class="flaticon-whatsapp"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item icon-r" id="instagram">
+                            <a href="https://www.instagram.com/insufarmafalcon/" target="blank">
+                                <i class="flaticon-instagram-social-network-logo-of-photo-camera"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item icon-r" id="facebook">
+                            <a href="https://www.facebook.com/insufarma.falcon" target="blank">
+                                <i class="flaticon-facebook-logo"></i>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
                         <a [routerLink]="[ '/deseos']" class="no-color animate-300 hover-color-primary">
                             <i class="fa fa-heart" title="Lista de deseos"></i>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="no-color animate-300 hover-color-primary hidden-search-form-toggler">
-                            <i class="fa fa-search" title="Buscar producto"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+                    </li> -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
         <router-outlet></router-outlet>
     </div>
-    <app-footer></app-footer>  
+    <app-footer></app-footer>
 </body>
-
