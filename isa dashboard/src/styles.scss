@@ -1,10 +1,23 @@
 .startAnimated{
   display:none;
 }
-
+.full-width-input {
+  width: 100%;
+  input{
+    color: rgb(190, 186, 186);
+  }
+}
 .text-grey{
   color: rgb(190, 186, 186);
 }
+
+.icon{
+  cursor:pointer;
+  :hover i{
+    color:rgb(136, 21, 139) !important;
+  }
+}
+
 
 .no-class{
   background: none;

@@ -1,0 +1,218 @@
+<div class="contanier-fluid text-light animated fadeIn">
+  <div class="text-center">
+    <h3>CONFIGURACIÓN DE FACTURAS</h3>
+    <p class="text-grey">Configure los parametros generales de su factura, dirección de su local y números de cuentas a
+      los cuales serán realizadas las transferencias bancarias</p>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center text-grey">Datos generales de su factura</h5>
+        <form #form="ngForm" (ngSubmit)="addConfiguraciones(form)">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field class="full-width-input">
+                  <input matInput #message maxlength="85" placeholder="Introduzca dirección de su local"
+                    [(ngModel)]="direccion" name="direccion" required>
+                  <mat-hint align="start"><strong>No supere el maximo de caracteres</strong> </mat-hint>
+                  <mat-hint align="end">{{message.value.length}} / 85</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field class="full-width-input">
+                  <input matInput #message maxlength="85" placeholder="Introduzca dirección de su local" name="direccion2"
+                    [(ngModel)]="direccion2">
+                  <mat-hint align="start"><strong>No supere el maximo de caracteres</strong> </mat-hint>
+                  <mat-hint align="end">{{message.value.length}} / 85</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field class="full-width-input">
+                  <input matInput placeholder="Introduzca código postal de su local" name="codigo" [(ngModel)]="codigo" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field class="full-width-input">
+                  <input matInput placeholder="Introduzca número telefónico de su local" name="tlf" [(ngModel)]="telefono"
+                    required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row animated fadeIn">
+              <div class="col-md-6">
+                <mat-form-field class="full-width-input">
+                  <input matInput placeholder="banco" [(ngModel)]="cuenta" name="cuenta" required>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="full-width-input">
+                  <input matInput type="number" placeholder="número de cuenta" name="nro" [(ngModel)]="nro" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn btn-warning btn-sm btn-block" [disabled]="!form.valid" type="submit">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center">Lista de números de cuenta</h5>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <th>Banco</th>
+              <th>Nro de Cuenta</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </thead>
+            <tbody *ngFor="let item of queryCuentas">
+              <tr>
+                <td>{{item.banco}}</td>
+                <td>{{item.nro}}</td>
+                <td class="icon">
+                  <i class="ml-2 text-warning far fa-edit"></i>
+                </td>
+                <td class="icon"  (click)="deleteCnta(item)">
+                  <i class="ml-2 text-danger  far fa-trash-alt"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="factura container-fluid animated fadeIn">
+      <div class="header  mt-2">
+        <img class="mt-2" src="./assets/img/facturacion.png" width="350px">
+        <div class="des">
+          <ul>
+            <li class="pri">FORMA LIBRE SERIE "A"</li>
+            <li>FACTURA NRO </li>
+          </ul>
+        </div>
+      </div>
+      <div class="des2">
+        <div class="row">
+          <div class="col-md-6">
+            <P style="font-size:6px; line-height:8px;">VENTA DE INSUMOS MEDICOS CALLE GONZALEZ CC SAN MIGUEL NIVEL
+              PLANTA BAJA LOCAL N,01 SECTOR PANTANO ABAJO SANTA ANA DE CORO FALCON ZONA POSTAL 4101 TELF 0412
+              661.58.59</P>
+          </div>
+          <div class="col-md-6 text-right">
+            <ul class="list-inline head-fec">
+              <li class="list-inline-item">FECHA Y LUGAR DE EMISION</li>
+              <li class="list-inline-item">DIA</li>
+              <li class="list-inline-item">MES</li>
+              <li class="list-inline-item">AÑO</li>
+            </ul>
+            <ul class="list-inline fec text-right">
+              <li class="list-inline-item"><strong>SANTA ANA DE CORO</strong></li>
+              <li class="list-inline-item item2">fecha</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="fila1">
+        <div class="row">
+          <div class="col-md-8">
+            <p>NOMBRE O RAZÓN SOCIAL:</p>
+          </div>
+          <div class="col-md-4 text-right">
+            <p>RIF/C.I: <span></span> </p>
+          </div>
+        </div>
+      </div>
+      <div class="fila2">
+        <div class="row">
+          <div class="col-md-8">
+            <h2>nombre</h2>
+          </div>
+          <div class="col-md-4 text-right">
+            <h2>J-08500744-0</h2>
+          </div>
+          <div class="col-md-8 ">
+            <div class="d-flex block">
+              <small>DIRECCIÓN FISCAL: </small>
+            </div>
+            <div><small>direccion</small></div>
+            <div><small>direccion 2</small></div>
+          </div>
+          <div class="col-md-4 text-right">
+            <p>NRO. DE CONTACT </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <p>VENDENDOR: </p>
+          </div>
+          <div class="col-md-4 text-right">
+            <p>CONDICIONES DE PAGO: </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col">CANTIDAD</th>
+                  <th scope="col">CONCEPTO O DESCRIPCIÓN DE LA VENTA</th>
+                  <th scope="col">PRECIO DE VENTA UNITARIO</th>
+                  <th scope="col">MONTO BS</th>
+                </tr>
+              </thead>
+            </table>
+            <br><br><br><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-right totales">
+            <!-- condiciones que evaluan si está al mayor o al detal si está al detal solo se le suma el 10%-->
+            <p> SUB-TOTAL BS. S: </p>
+            <p> MONTO TOTAL BASE IMPONIBLE AL 16% BS.S </p>
+            <p> MONTO TOTAL EXONERADO O EXENTO DE IVA BS.S </p>
+            <p> MONTO TOTAL DE I.V.A AL 16 % BS.S </p>
+            <h2>MONTO TOTAL A PAGAR BS.S: </h2>
+          </div>
+          <div class="col-md-4 text-left totales">
+            <p>OBSERVACIONES</p>
+            <p>FORMA DE PAGO</p>
+            <P>EFECTIVO </P>
+            <P>TRANSFEENCIA O DEPOSITO</P>
+          </div>
+          <div class="col-md-8 text-right">
+            <p>"OBSERVACIONES"</p>
+            <P>"metodo"</P>
+            <p>ORIGEN PEDIDO NRO.</p>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="text-left">
+            <p>REALIZAR TRANSFERENCIAS A LAS SIGUIENTES CUENTAS</p>
+            <p>BOD 0116-0177-42-0028764030 /MERCANTIL 0105-0104-11-1104169118</p>
+            <p>CARONI 0128-0113-12-1301026982 </p>
+          </div>
+          <div class="text-right">
+            <p>CONTROL NÚMERO. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

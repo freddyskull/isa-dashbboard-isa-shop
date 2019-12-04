@@ -24,6 +24,7 @@ import { EditProductStoreComponent } from './store/products/edit-product-store/e
 import { HomeStoreComponent } from './store/home-store/home-store.component';
 import { PromoComponent } from './store/promo/promo.component';
 import { EditComponent } from './store/promo/edit/editPromo.component';
+import { ConfigComponent } from './pages/config/config.component';
 
 
 
@@ -137,6 +138,10 @@ const routes: Routes = [
     path: 'tienda-promociones/edit-promo/:id',
     component: EditComponent
   },
+  {
+    path: 'configuracion',
+    component: ConfigComponent
+  }
 ];
 
 @NgModule({

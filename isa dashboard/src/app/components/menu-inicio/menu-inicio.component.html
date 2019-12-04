@@ -9,59 +9,65 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item active animated fadeIn">
-        <a class="nav-link" [routerLink]="['/inicio']" routerLinkActive="router-link-active"  >
+      <li class="nav-item  animated fadeIn" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/inicio']"   >
           <i class="material-icons">dashboard</i>
           <p>Inicio</p>
         </a>
       </li>
-      <li class="nav-item animated fadeIn ">
-        <a class="nav-link" [routerLink]="['/productos']" routerLinkActive="router-link-active">
+      <li class="nav-item animated fadeIn " routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/productos']" >
           <i class="material-icons">assignment</i>
           <p>Productos</p>
         </a>
       </li>
-      <li class="nav-item animated fadeIn ">
-        <a class="nav-link" [routerLink]="['/categorias']" routerLinkActive="router-link-active">
+      <li class="nav-item animated fadeIn " routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/categorias']" >
           <i class="material-icons">format_list_numbered</i>
           <p>Categorias</p>
         </a>
       </li>
-      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe' || position == 'empleado'">
-        <a class="nav-link" [routerLink]="['/clientes']" routerLinkActive="router-link-active" >
+      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe' || position == 'empleado'" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/clientes']" >
           <i class="material-icons">person</i>
           <p>Clientes</p>
         </a>
       </li>
-      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe' || position == 'empleado'">
-        <a class="nav-link" [routerLink]="['/proveedores']" routerLinkActive="router-link-active">
+      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe' || position == 'empleado'" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/proveedores']" >
           <i class="material-icons">supervisor_account</i>
           <p>Proveedores</p>
         </a>
       </li>
-      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe'">
-        <a class="nav-link" [routerLink]="['/empleados']" routerLinkActive="router-link-active">
+      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe'" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/empleados']" >
           <i class="material-icons">wc</i>
           <p>Empleados</p>
         </a>
       </li>
-      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe' || position == 'empleado'">
-        <a class="nav-link" [routerLink]="['/presupuestos']" routerLinkActive="router-link-active">
+      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe' || position == 'empleado'" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/presupuestos']" >
           <i class="material-icons">event_note</i>
           <p><small>Presupuesto & facturación</small></p>
         </a>
       </li>
-      <li class="nav-item animated fadeIn">
-        <a class="nav-link" [routerLink]="['/ventas-pendientes']" routerLinkActive="router-link-active">
+      <li class="nav-item animated fadeIn" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/ventas-pendientes']" >
           <i class="material-icons">info</i>
           <p *ngIf="position != 'jefe'">Ventas pendientes</p>
           <p *ngIf="position == 'jefe'" matBadge="{{pendJe}}" matBadgeOverlap="false"><small>Ventas pendientes & historial</small></p>
         </a>
       </li>
-      <li class="nav-item animated fadeIn">
-        <a class="nav-link" [routerLink]="['/tienda']" routerLinkActive="router-link-active">
+      <!-- <li class="nav-item animated fadeIn" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/tienda']" >
           <i class="material-icons">store</i>
           <p>Tienda</p>
+        </a>
+      </li> -->
+      <li class="nav-item animated fadeIn" *ngIf="position == 'jefe'" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/configuracion']" >
+          <i class="material-icons">settings</i>
+          <p>Configuraciones</p>
         </a>
       </li>
     </ul>

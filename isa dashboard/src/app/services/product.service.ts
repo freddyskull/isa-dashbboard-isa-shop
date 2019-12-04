@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { product } from '../models/productModel';
 import { client } from '../models/client';
 import { provider } from '../models/providersModel';
@@ -15,36 +15,36 @@ import { priceUSD } from '../models/priceUsdModel';
   providedIn: 'root'
 })
 export class ProductService {
-  
- presupuesto: presupuesto[];
 
-getPresupuestos(){
-  return this.presupuesto;
-}
+  presupuesto: presupuesto[];
 
-addPre(pre:presupuesto){
-  this.presupuesto.push(pre)
-}
+  getPresupuestos() {
+    return this.presupuesto;
+  }
 
-deletePre(pre:presupuesto){
-  for(let i = 0; i < this.presupuesto.length; i++){
-    if(pre == this.presupuesto[i]){
-      this.presupuesto.splice(i,1);
+  addPre(pre: presupuesto) {
+    this.presupuesto.push(pre)
+  }
+
+  deletePre(pre: presupuesto) {
+    for (let i = 0; i < this.presupuesto.length; i++) {
+      if (pre == this.presupuesto[i]) {
+        this.presupuesto.splice(i, 1);
+      }
     }
   }
-}
 
-editPre(pre:presupuesto){
-  for(let i = 0; i < this.presupuesto.length; i++){
-    if(pre == this.presupuesto[i]){
-      this.presupuesto[i] = pre;
+  editPre(pre: presupuesto) {
+    for (let i = 0; i < this.presupuesto.length; i++) {
+      if (pre == this.presupuesto[i]) {
+        this.presupuesto[i] = pre;
+      }
     }
   }
-}
 
-deleteAllPre(){
-  this.presupuesto.splice(0,50);
-}
+  deleteAllPre() {
+    this.presupuesto.splice(0, 50);
+  }
 
 
   API_URI = `http://192.168.1.11:3000/api`;
@@ -52,8 +52,8 @@ deleteAllPre(){
   API_URI2 = 'https://s3.amazonaws.com/dolartoday/data.json'
 
 
-  constructor( private http: HttpClient, private _snackBar: MatSnackBar) {
-    this.presupuesto=[
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {
+    this.presupuesto = [
       // {
       //   category: "1",
       //   description: "",
@@ -103,197 +103,212 @@ deleteAllPre(){
       //   stock: 4,
       // },
     ]
-   }
-
-
-  dropPresupuesto(){
-  this.presupuesto.splice(0,30);
   }
 
 
-//editando el precio del dolar
-updateUsdValor(id: string|number, usdValor: priceUSD){
-  return this.http.put(`${this.API_URI}/usdvalor/${id}`, usdValor)
-}
-
-getUsdValor(){
-  return this.http.get(`${this.API_URI}/usdvalor`); 
-}
-
-saveUsdValor(usdValor: priceUSD){
-  return this.http.post( `${this.API_URI}/usdvalor`,usdValor)
-}
-
-//editandar permisos de edición valga la redundancia
-updatePermiss(id: string|number, updatePermiss: permiss){
-  return this.http.put(`${this.API_URI3}/permiss/${id}`, updatePermiss)
-}
-
-getPermiss(){
-  return this.http.get(`${this.API_URI3}/permiss`); 
-}
-
-//usuarios
-  getUsers(){
-    return this.http.get(`${this.API_URI3}/users`); 
+  dropPresupuesto() {
+    this.presupuesto.splice(0, 30);
   }
 
-  getUser(id: string | number){
-    return this.http.get(`${this.API_URI3}/users/${id}`); 
+
+  //editando el precio del dolar
+  updateUsdValor(id: string | number, usdValor: priceUSD) {
+    return this.http.put(`${this.API_URI}/usdvalor/${id}`, usdValor)
   }
 
-  deleteUser(id: string){
+  getUsdValor() {
+    return this.http.get(`${this.API_URI}/usdvalor`);
+  }
+
+  saveUsdValor(usdValor: priceUSD) {
+    return this.http.post(`${this.API_URI}/usdvalor`, usdValor)
+  }
+
+  //editandar permisos de edición valga la redundancia
+  updatePermiss(id: string | number, updatePermiss: permiss) {
+    return this.http.put(`${this.API_URI3}/permiss/${id}`, updatePermiss)
+  }
+
+  getPermiss() {
+    return this.http.get(`${this.API_URI3}/permiss`);
+  }
+
+  //usuarios
+  getUsers() {
+    return this.http.get(`${this.API_URI3}/users`);
+  }
+
+  getUser(id: string | number) {
+    return this.http.get(`${this.API_URI3}/users/${id}`);
+  }
+
+  deleteUser(id: string) {
     return this.http.delete(`${this.API_URI3}/users/${id}`);
   }
 
-  updateUser(id: string|number, updateUsers: Users){
+  updateUser(id: string | number, updateUsers: Users) {
     return this.http.put(`${this.API_URI3}/users/${id}`, updateUsers)
   }
 
-  saveUser(prodct: Users){
-    return this.http.post( `${this.API_URI3}/users`,prodct)
+  saveUser(prodct: Users) {
+    return this.http.post(`${this.API_URI3}/users`, prodct)
   }
 
   //Historial de ventas
-  getStatAct(){
-    return this.http.get(`${this.API_URI3}/ventas/statAct`); 
+  getStatAct() {
+    return this.http.get(`${this.API_URI3}/ventas/statAct`);
   }
 
-  getStatAnt(){
-    return this.http.get(`${this.API_URI3}/ventas/statAnt`); 
+  getStatAnt() {
+    return this.http.get(`${this.API_URI3}/ventas/statAnt`);
   }
 
-  getHistorys(){
-    return this.http.get(`${this.API_URI3}/ventas`); 
+  getHistorys() {
+    return this.http.get(`${this.API_URI3}/ventas`);
   }
 
-  getHistory(id: string | number){
-    return this.http.get(`${this.API_URI3}/ventas/${id}`); 
+  getHistory(id: string | number) {
+    return this.http.get(`${this.API_URI3}/ventas/${id}`);
   }
 
-  deleteHistory(id: string){
+  deleteHistory(id: string) {
     return this.http.delete(`${this.API_URI3}/ventas/${id}`);
   }
 
-  updateHistory(id: string|number, updateHistorys: history){
+  updateHistory(id: string | number, updateHistorys: history) {
     return this.http.put(`${this.API_URI3}/ventas/${id}`, updateHistorys)
   }
 
-  saveHistory(prodct: history){
-    return this.http.post( `${this.API_URI3}/ventas`,prodct)
+  saveHistory(prodct: history) {
+    return this.http.post(`${this.API_URI3}/ventas`, prodct)
   }
 
-//ventas pendientes
-getPends(){
-  return this.http.get(`${this.API_URI}/pendientes`); 
-}
-
-getPend(id: string | number){
-  return this.http.get(`${this.API_URI}/pendientes/${id}`); 
-}
-
-deletePend(id: string){
-  return this.http.delete(`${this.API_URI}/pendientes/${id}`);
-}
-
-updatePend(id: string|number, updateventas: pend){
-  return this.http.put(`${this.API_URI}/pendientes/${id}`, updateventas)
-}
-
-savePend(prodct: pend){
-  return this.http.post( `${this.API_URI}/pendientes`,prodct)
-}
-//productos
-
-  getProducts(){
-    return this.http.get(`${this.API_URI}/product`); 
-  }
-  
-  getProduct(id: string | number){
-    return this.http.get(`${this.API_URI}/product/${id}`); 
+  //ventas pendientes
+  getPends() {
+    return this.http.get(`${this.API_URI}/pendientes`);
   }
 
-  deleteProduct(id: string){
+  getPend(id: string | number) {
+    return this.http.get(`${this.API_URI}/pendientes/${id}`);
+  }
+
+  deletePend(id: string) {
+    return this.http.delete(`${this.API_URI}/pendientes/${id}`);
+  }
+
+  updatePend(id: string | number, updateventas: pend) {
+    return this.http.put(`${this.API_URI}/pendientes/${id}`, updateventas)
+  }
+
+  savePend(prodct: pend) {
+    return this.http.post(`${this.API_URI}/pendientes`, prodct)
+  }
+  //productos
+
+  getProducts() {
+    return this.http.get(`${this.API_URI}/product`);
+  }
+
+  getProduct(id: string | number) {
+    return this.http.get(`${this.API_URI}/product/${id}`);
+  }
+
+  deleteProduct(id: string) {
     return this.http.delete(`${this.API_URI}/product/${id}`);
   }
 
-  updateProduct(id: string|number, updateProduct: product){
+  updateProduct(id: string | number, updateProduct: product) {
     return this.http.put(`${this.API_URI}/product/${id}`, updateProduct)
   }
 
-  saveProduct(prodct: product){
-    return this.http.post( `${this.API_URI}/product`,prodct)
+  saveProduct(prodct: product) {
+    return this.http.post(`${this.API_URI}/product`, prodct)
   }
-//cierre de productos
+  //cierre de productos
 
-//clientes
+  //clientes
 
-getClients(){
-  return this.http.get(`${this.API_URI}/client`); 
-}
-
-getClient(id: string){
-  return this.http.get(`${this.API_URI}/client/${id}`); 
-}
-
-deleteclient(id: string){
-  return this.http.delete(`${this.API_URI}/client/${id}`);
-}
-
-updateclient(id: string|number, updateclient: client){
-  return this.http.put(`${this.API_URI}/client/${id}`, updateclient)
-}
-
-saveclient(clien: client){
-  return this.http.post( `${this.API_URI}/client`,clien)
-}
-
-// proveedores
-
-  getProviders(){
-    return this.http.get(`${this.API_URI}/provider`); 
+  getClients() {
+    return this.http.get(`${this.API_URI}/client`);
   }
 
-  getProvider(id: string){
-    return this.http.get(`${this.API_URI}/provider/${id}`); 
+  getClient(id: string) {
+    return this.http.get(`${this.API_URI}/client/${id}`);
   }
 
-  deleteProvider(id: string){
+  deleteclient(id: string) {
+    return this.http.delete(`${this.API_URI}/client/${id}`);
+  }
+
+  updateclient(id: string | number, updateclient: client) {
+    return this.http.put(`${this.API_URI}/client/${id}`, updateclient)
+  }
+
+  saveclient(clien: client) {
+    return this.http.post(`${this.API_URI}/client`, clien)
+  }
+
+  // proveedores
+
+  getProviders() {
+    return this.http.get(`${this.API_URI}/provider`);
+  }
+
+  getProvider(id: string) {
+    return this.http.get(`${this.API_URI}/provider/${id}`);
+  }
+
+  deleteProvider(id: string) {
     return this.http.delete(`${this.API_URI}/provider/${id}`);
   }
 
-  updateProvider(id: string|number, updateprovider: provider){
+  updateProvider(id: string | number, updateprovider: provider) {
     return this.http.put(`${this.API_URI}/provider/${id}`, updateprovider)
   }
 
-  saveProvider(pro: category){
-    return this.http.post( `${this.API_URI}/provider`, pro)
+  saveProvider(pro: category) {
+    return this.http.post(`${this.API_URI}/provider`, pro)
   }
 
+  //config 
+  
+  queryConfig(){
+    return this.http.get(`${this.API_URI}/config`);
+  }
+  saveConfig(form: any) {
+    return this.http.post(`${this.API_URI}/config`, form);
+  }
+  deleteConfig(id) {
+    return this.http.delete(`${this.API_URI}/config/${id}`);
+  }
+  updateConfig(id,form: any) {
+    return this.http.put(`${this.API_URI}/config/${id}`, form);
+  }
+  
   //category
 
-  saveCategory(cat: category | string){
-    return this.http.post( `${this.API_URI}/category`, cat)
+  saveCategory(cat: category | string) {
+    return this.http.post(`${this.API_URI}/category`, cat)
   }
 
-  getCategorys(){
-    return this.http.get(`${this.API_URI}/category`); 
+  getCategorys() {
+    return this.http.get(`${this.API_URI}/category`);
   }
 
-  getCategory(id: number | string){
-    return this.http.get(`${this.API_URI}/category/${id}`); 
+  getCategory(id: number | string) {
+    return this.http.get(`${this.API_URI}/category/${id}`);
   }
 
-  deleteCategory(id: string){
+  deleteCategory(id: string) {
     return this.http.delete(`${this.API_URI}/category/${id}`);
   }
 
-  updateCategory(id: string|number, updateCategory: category){
+  updateCategory(id: string | number, updateCategory: category) {
     return this.http.put(`${this.API_URI}/category/${id}`, updateCategory)
   }
 
   // api de dolartoday
-  getDolar(){
+  getDolar() {
     return this.http.get(`${this.API_URI2}`);
   }
 

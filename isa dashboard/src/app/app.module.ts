@@ -31,6 +31,8 @@ import { CategoryComponent } from './pages/category/category.component';
 import { CategoryaddComponent } from './pages/categoryadd/categoryadd.component';
 import { FilterProductPipe } from './pipes/filter-product.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
+import { ConfigComponent } from './pages/config/config.component';
+
 // componentes de facturacion y presupuesto
 import { PresupuestoComponent } from './pages/presupuesto/presupuesto.component';
 import { LisproductPreComponent } from './pages/presupuesto/lisproduct-pre/lisproduct-pre.component';
@@ -38,7 +40,6 @@ import { AddPreComponent } from './pages/presupuesto/add-pre/add-pre.component';
 import { HermanoComponent } from './pages/presupuesto/hermano/hermano.component';
 import { FormFacturaComponent } from './pages/generarfacturas/PDFBs/form-factura.component'
 import { NotaDEntregaComponent } from './pages/generarfacturas/PDFNota/nota-d-entrega.component';
-//fin
 //dialogs
 import { HistoryComponent } from './components/dialog/history/history.component';
 import { HistoryVentasDialogComponent } from './components/dialog/history-ventas-dialog/history-ventas-dialog.component'
@@ -72,7 +73,8 @@ import { StoreMenuComponent } from './components/menu-inicio/store-menu/store-me
 import { HomeStoreComponent } from './store/home-store/home-store.component';
 import { PromoComponent } from './store/promo/promo.component';
 import { EditComponent } from './store/promo/edit/editPromo.component';
-// importing
+import { FacturasConfigComponent } from './pages/config/facturas-config/facturas-config.component';
+
 
 @NgModule({
   declarations: [
@@ -131,6 +133,8 @@ import { EditComponent } from './store/promo/edit/editPromo.component';
     VentasPendComponent,
     HistoryVentasDialogComponent,
     UpdatePendComponent,
+    ConfigComponent,
+    FacturasConfigComponent,
   ],
   imports: [
     OrderModule,
